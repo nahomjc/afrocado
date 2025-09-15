@@ -184,8 +184,11 @@ export default function ProductsSection() {
               <div className="h-56 relative overflow-hidden">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={`Premium ${product.name} - High quality African produce for export`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  width="400"
+                  height="224"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 
@@ -323,8 +326,11 @@ export default function ProductsSection() {
               <div className="relative h-64 overflow-hidden rounded-t-3xl">
                 <img
                   src={selectedProduct.image}
-                  alt={selectedProduct.name}
+                  alt={`Premium ${selectedProduct.name} - Detailed view of high quality African produce`}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  width="600"
+                  height="256"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 

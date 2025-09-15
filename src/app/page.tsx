@@ -51,50 +51,62 @@ export default function Home() {
       ) : (
         <>
           <Navigation />
-          <section
-            id="home"
-            className={highlightedSection === "home" ? "section-highlight" : ""}
-          >
-            <HeroSection />
-          </section>
-          <section
-            id="about"
-            className={
-              highlightedSection === "about" ? "section-highlight" : ""
-            }
-          >
-            <AboutSection />
-          </section>
-          <section
-            id="products"
-            className={
-              highlightedSection === "products" ? "section-highlight" : ""
-            }
-          >
-            <ProductsSection />
-          </section>
-          <section
-            id="testimonials"
-            className={
-              highlightedSection === "testimonials" ? "section-highlight" : ""
-            }
-          >
-            <TestimonialSection />
-          </section>
-          <section
-            id="team"
-            className={highlightedSection === "team" ? "section-highlight" : ""}
-          >
-            <TeamSection />
-          </section>
-          <section
-            id="contact"
-            className={
-              highlightedSection === "contact" ? "section-highlight" : ""
-            }
-          >
-            <ContactSection />
-          </section>
+          <main>
+            <section
+              id="home"
+              className={
+                highlightedSection === "home" ? "section-highlight" : ""
+              }
+              aria-label="Hero Section"
+            >
+              <HeroSection />
+            </section>
+            <section
+              id="about"
+              className={
+                highlightedSection === "about" ? "section-highlight" : ""
+              }
+              aria-label="About Us"
+            >
+              <AboutSection />
+            </section>
+            <section
+              id="products"
+              className={
+                highlightedSection === "products" ? "section-highlight" : ""
+              }
+              aria-label="Our Products"
+            >
+              <ProductsSection />
+            </section>
+            <section
+              id="testimonials"
+              className={
+                highlightedSection === "testimonials" ? "section-highlight" : ""
+              }
+              aria-label="Customer Testimonials"
+            >
+              <TestimonialSection />
+            </section>
+            <section
+              id="team"
+              className={
+                highlightedSection === "team" ? "section-highlight" : ""
+              }
+              aria-label="Our Team"
+            >
+              <TeamSection />
+            </section>
+            <section
+              id="contact"
+              className={
+                highlightedSection === "contact" ? "section-highlight" : ""
+              }
+              aria-label="Contact Us"
+            >
+              <ContactSection />
+            </section>
+          </main>
           <Footer />
           <ChatBot />
         </>
