@@ -190,7 +190,7 @@ export default function ChatBot() {
     <>
       {/* Call Button */}
       <motion.button
-        className="fixed bottom-24 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg z-40"
+        className="fixed bottom-24 right-4 sm:right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg z-40"
         onClick={() => window.open("tel:+1234567890", "_self")}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -204,7 +204,7 @@ export default function ChatBot() {
 
       {/* Chat Button */}
       <motion.button
-        className="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg z-40"
+        className="fixed bottom-6 right-4 sm:right-6 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg z-40"
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -228,7 +228,7 @@ export default function ChatBot() {
             className={`fixed bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden ${
               isFullSize
                 ? "top-4 left-4 right-4 bottom-4"
-                : "bottom-24 right-6 w-96 h-[500px]"
+                : "bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 max-w-sm h-[500px]"
             }`}
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -236,19 +236,21 @@ export default function ChatBot() {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-4 flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <IconRobot size={20} />
+            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-3 sm:p-4 flex items-center justify-between">
+              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <IconRobot size={16} className="sm:w-5 sm:h-5" />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg">Afrocado Assistant</h3>
-                  <p className="text-xs text-green-100">
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-semibold text-sm sm:text-lg truncate">
+                    Afrocado Assistant
+                  </h3>
+                  <p className="text-xs text-green-100 truncate">
                     Online now • Ready to help
                   </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
                 <motion.button
                   onClick={() => setIsFullSize(!isFullSize)}
                   className="text-white hover:text-green-200 transition-colors p-1"
@@ -257,9 +259,9 @@ export default function ChatBot() {
                   title={isFullSize ? "Minimize" : "Maximize"}
                 >
                   {isFullSize ? (
-                    <IconMinimize size={20} />
+                    <IconMinimize size={18} className="sm:w-5 sm:h-5" />
                   ) : (
-                    <IconMaximize size={20} />
+                    <IconMaximize size={18} className="sm:w-5 sm:h-5" />
                   )}
                 </motion.button>
                 <motion.button
@@ -269,13 +271,13 @@ export default function ChatBot() {
                   whileTap={{ scale: 0.9 }}
                   title="Close chat"
                 >
-                  <IconX size={20} />
+                  <IconX size={18} className="sm:w-5 sm:h-5" />
                 </motion.button>
               </div>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -287,13 +289,15 @@ export default function ChatBot() {
                   transition={{ duration: 0.3 }}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-2xl ${
+                    className={`max-w-[85%] sm:max-w-[80%] p-2.5 sm:p-3 rounded-2xl ${
                       message.isUser
                         ? "bg-green-600 text-white"
                         : "bg-gray-100 text-gray-800"
                     }`}
                   >
-                    <p className="text-sm">{message.text}</p>
+                    <p className="text-xs sm:text-sm leading-relaxed">
+                      {message.text}
+                    </p>
                     <p className="text-xs opacity-70 mt-1">
                       {message.timestamp.toLocaleTimeString([], {
                         hour: "2-digit",
@@ -332,14 +336,14 @@ export default function ChatBot() {
 
             {/* Quick Questions */}
             {messages.length === 1 && (
-              <div className="p-4 border-t">
+              <div className="p-3 sm:p-4 border-t">
                 <p className="text-xs text-gray-500 mb-2">Quick questions:</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {quickQuestions.map((question, index) => (
                     <button
                       key={index}
                       onClick={() => setInputValue(question)}
-                      className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full hover:bg-green-100 transition-colors"
+                      className="text-xs bg-green-50 text-green-700 px-2 sm:px-3 py-1 rounded-full hover:bg-green-100 transition-colors break-words"
                     >
                       {question}
                     </button>
@@ -349,7 +353,7 @@ export default function ChatBot() {
             )}
 
             {/* Input */}
-            <div className="p-4 border-t">
+            <div className="p-3 sm:p-4 border-t">
               <div className="flex space-x-2">
                 <input
                   type="text"
@@ -357,17 +361,17 @@ export default function ChatBot() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask about our services..."
-                  className="flex-1 p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="flex-1 p-2.5 sm:p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm sm:text-base"
                 />
                 <motion.button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim()}
-                  className="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="bg-green-600 text-white p-2.5 sm:p-3 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   title="Send message"
                 >
-                  <IconSend size={18} />
+                  <IconSend size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </motion.button>
               </div>
             </div>

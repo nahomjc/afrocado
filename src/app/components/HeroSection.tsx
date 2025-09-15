@@ -2,9 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Variants } from "framer-motion";
 
 export default function HeroSection() {
+  const router = useRouter();
+
   const floatingVariants = {
     float: {
       y: [-15, 15, -15],
@@ -129,6 +132,71 @@ export default function HeroSection() {
         >
           🥝
         </motion.div>
+
+        {/* Additional floating fruits on the right side - closer to center */}
+        <motion.div
+          className="absolute top-16 right-1/4 transform translate-x-2 -translate-y-1 text-3xl"
+          variants={floatingVariants as Variants}
+          animate="float"
+        >
+          🍌
+        </motion.div>
+
+        <motion.div
+          className="absolute top-1/3 right-1/3 transform translate-x-4 -translate-y-3 text-2xl"
+          variants={floatingVariants as Variants}
+          animate="floatReverse"
+        >
+          🍍
+        </motion.div>
+
+        <motion.div
+          className="absolute top-1/2 right-1/5 transform -translate-x-2 translate-y-4 text-4xl"
+          variants={floatingVariants as Variants}
+          animate="floatSlow"
+        >
+          🥥
+        </motion.div>
+
+        <motion.div
+          className="absolute top-3/4 right-1/4 transform translate-x-3 translate-y-2 text-2xl"
+          variants={floatingVariants as Variants}
+          animate="float"
+        >
+          🍈
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-1/4 right-1/3 transform -translate-x-1 translate-y-3 text-3xl"
+          variants={floatingVariants as Variants}
+          animate="floatReverse"
+        >
+          🍉
+        </motion.div>
+
+        <motion.div
+          className="absolute top-1/6 right-1/5 transform translate-x-5 -translate-y-2 text-2xl"
+          variants={floatingVariants as Variants}
+          animate="floatSlow"
+        >
+          🍑
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-1/6 right-1/4 transform translate-x-2 translate-y-1 text-3xl"
+          variants={floatingVariants as Variants}
+          animate="float"
+        >
+          🍒
+        </motion.div>
+
+        <motion.div
+          className="absolute top-2/3 right-1/6 transform -translate-x-3 translate-y-5 text-2xl"
+          variants={floatingVariants as Variants}
+          animate="floatReverse"
+        >
+          🫐
+        </motion.div>
       </div>
 
       <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
@@ -198,20 +266,40 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row gap-4 mb-8"
               variants={fadeInUp}
             >
-              <motion.button
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+              <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                onClick={() => {
-                  const productsSection = document.getElementById("products");
-                  if (productsSection) {
-                    productsSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
               >
-                View Our Products
-              </motion.button>
+                <button
+                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log(
+                      "Button clicked - attempting navigation to /products-view"
+                    );
+
+                    // Try multiple navigation methods
+                    try {
+                      console.log("Trying router.push...");
+                      router.push("/products-view");
+                    } catch (error) {
+                      console.error("Router.push failed:", error);
+                      try {
+                        console.log("Trying window.location...");
+                        window.location.href = "/products-view";
+                      } catch (windowError) {
+                        console.error("Window.location failed:", windowError);
+                        // Last resort - direct navigation
+                        window.open("/products-view", "_self");
+                      }
+                    }
+                  }}
+                >
+                  View Exported Products
+                </button>
+              </motion.div>
             </motion.div>
 
             {/* Stats */}

@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { IconSearch, IconX, IconChevronDown } from "@tabler/icons-react";
 
 interface SearchResult {
@@ -12,6 +13,7 @@ interface SearchResult {
 }
 
 export default function Navigation() {
+  const router = useRouter();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -162,6 +164,34 @@ export default function Navigation() {
       content:
         "Comprehensive export services including cold chain logistics, quality control, packaging, and international shipping to 25+ countries.",
     },
+    {
+      id: 21,
+      title: "Our Values & Beliefs",
+      section: "Values",
+      content:
+        "The principles that guide our mission to deliver premium African produce to the world while supporting sustainable agriculture and fair trade practices.",
+    },
+    {
+      id: 22,
+      title: "Service Excellence",
+      section: "Values",
+      content:
+        "We believe that customer satisfaction is the cornerstone of our success in the global export market. Understanding our international partners' unique needs enables us to deliver tailored solutions that exceed expectations.",
+    },
+    {
+      id: 23,
+      title: "Integrity & Trust",
+      section: "Values",
+      content:
+        "Our core values are built on unwavering respect for our customers, employees, and farming partners across Africa. We maintain the highest ethical standards in all our business dealings.",
+    },
+    {
+      id: 24,
+      title: "Quality Assurance",
+      section: "Values",
+      content:
+        "Our primary mission is to ensure that our global customers receive the finest African produce available in international markets. We maintain rigorous quality control standards from farm to port.",
+    },
   ];
 
   const handleSearch = (query: string) => {
@@ -236,6 +266,17 @@ export default function Navigation() {
     }
   };
 
+  const handleLogoClick = () => {
+    // If we're on the home page, scroll to top
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("home");
+    } else {
+      // If we're on another page, navigate to home
+      router.push("/");
+    }
+  };
+
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
       searchInputRef.current.focus();
@@ -245,7 +286,7 @@ export default function Navigation() {
   // Listen for scroll events to update active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "products", "contact"];
+      const sections = ["home", "about", "products", "values", "contact"];
       const scrollPosition = window.scrollY + 100; // Offset for better UX
 
       for (const section of sections) {
@@ -295,14 +336,22 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <h1 className="text-3xl font-bold text-green-800 flex items-center">
-                <span className="text-4xl mr-2">🥑</span>
-                Afrocado
-              </h1>
-              <p className="text-sm text-gray-600 -mt-1">
-                Premium Export Company
-              </p>
+            <div className="flex-shrink-0 cursor-pointer">
+              <motion.button
+                onClick={handleLogoClick}
+                className="text-left"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h1 className="text-3xl font-bold text-green-800 flex items-center">
+                  <span className="text-4xl mr-2">🥑</span>
+                  Afrocado
+                </h1>
+                <p className="text-sm text-gray-600 -mt-1">
+                  Premium Export Company
+                </p>
+              </motion.button>
             </div>
           </div>
 
@@ -354,6 +403,18 @@ export default function Navigation() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 Products
+              </motion.button>
+              <motion.button
+                onClick={() => handleNavClick("values")}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeSection === "values"
+                    ? "text-green-700 border-b-2 border-green-700"
+                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                Values
               </motion.button>
               <motion.button
                 onClick={() => handleNavClick("contact")}
@@ -618,6 +679,21 @@ export default function Navigation() {
                     whileHover={{ scale: 1.02 }}
                   >
                     Products
+                  </motion.button>
+
+                  <motion.button
+                    onClick={() => {
+                      handleNavClick("values");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      activeSection === "values"
+                        ? "text-green-700 bg-green-50"
+                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    Values
                   </motion.button>
 
                   <motion.button

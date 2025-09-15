@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import Image from "next/image";
@@ -11,25 +11,42 @@ export default function AboutSection() {
   const aboutImages = [
     {
       id: 1,
-      src: "/about-img/unnamed (14).png",
-      alt: "Afrocado market scene with fresh produce",
-      title: "Our Vibrant Market",
+      src: "/about-img/image-1.png",
+      alt: "Afrocado team with cargo plane and fresh produce",
+      title: "Global Export Excellence",
       description:
-        "Experience the bustling energy of our fresh produce markets",
+        "Our dedicated team showcasing premium African produce ready for international markets",
     },
     {
       id: 2,
-      src: "/about-img/unnamed (15).png",
-      alt: "Fresh fruits and vegetables in wooden crate",
-      title: "Premium Quality Produce",
-      description: "Hand-selected fruits and vegetables from our partner farms",
+      src: "/about-img/image-2 (2).png",
+      alt: "Afrocado team members with fresh fruits and vegetables",
+      title: "Quality Team, Quality Produce",
+      description:
+        "Meet our passionate team members who ensure the highest standards in every shipment",
     },
     {
       id: 3,
-      src: "/about-img/unnamed (16).png",
-      alt: "Smiling woman with basket of fresh produce",
-      title: "Our Dedicated Team",
-      description: "Meet the passionate people behind our quality produce",
+      src: "/about-img/unnamed (17).png",
+      alt: "Afrocado team with diverse fresh produce",
+      title: "Diverse & Fresh Selection",
+      description:
+        "From traditional Ethiopian attire to modern export standards - celebrating our heritage",
+    },
+    {
+      id: 4,
+      src: "/about-img/unnamed (18).png",
+      alt: "Afrocado team showcasing fresh produce baskets",
+      title: "Heritage Meets Innovation",
+      description:
+        "Bridging traditional farming practices with modern export excellence",
+    },
+    {
+      id: 5,
+      src: "/about-img/unnamed (20).png",
+      alt: "Afrocado team with fresh produce",
+      title: "Premium Quality Produce",
+      description: "Hand-selected fruits and vegetables from our partner farms",
     },
   ];
 
@@ -43,19 +60,6 @@ export default function AboutSection() {
     );
   };
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: "easeOut" },
-  };
-
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,11 +146,12 @@ export default function AboutSection() {
         >
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              See Our <span className="text-green-600">World in Action</span>
+              Meet Our <span className="text-green-600">Global Team</span>
             </h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover the vibrant markets, premium produce, and dedicated
-              people that make Afrocado a global leader in agricultural exports.
+              From our cargo operations to quality control, discover the
+              dedicated people and premium produce that make Afrocado a trusted
+              global leader in agricultural exports.
             </p>
           </div>
 

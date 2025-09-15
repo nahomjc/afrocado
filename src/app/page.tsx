@@ -5,6 +5,8 @@ import Navigation from "./components/Navigation";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import ProductsSection from "./components/ProductsSection";
+
+import ValuesSection from "./components/ValuesSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import ChatBot from "./components/ChatBot";
@@ -78,6 +80,15 @@ export default function Home() {
               aria-label="Our Products"
             >
               <ProductsSection />
+            </section>
+            <section
+              id="values"
+              className={
+                highlightedSection === "values" ? "section-highlight" : ""
+              }
+              aria-label="Our Values & Beliefs"
+            >
+              <ValuesSection />
             </section>
             <section
               id="testimonials"
