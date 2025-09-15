@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Afrocado</title>
+    <meta name="description" content="The page you're looking for could not be found. Return to Afrocado's homepage to explore our premium African produce export services.">
+    <link rel="canonical" href="https://afrocado.com/404">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #ecfdf5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .error-code {
+            font-size: 120px;
+            font-weight: bold;
+            color: #16a34a;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .avocado {
+            font-size: 40px;
+            margin-left: 10px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #16a34a, #059669);
+            color: white;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #16a34a;
+            color: #16a34a;
+            transform: translateY(-2px);
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .quick-link {
+            padding: 20px;
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #1f2937;
+            transition: all 0.3s ease;
+            border: 1px solid #d1fae5;
+        }
+        
+        .quick-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+        }
+        
+        .quick-link-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .quick-link-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .quick-link-desc {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .footer-note {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .footer-note a {
+            color: #16a34a;
+            text-decoration: none;
+        }
+        
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .error-code {
+                font-size: 80px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">
+            404<span class="avocado">🥑</span>
+        </div>
+        
+        <h1>Oops! Page Not Found</h1>
+        <p>The page you're looking for seems to have vanished like a ripe avocado!<br>
+        Don't worry, our premium produce is still fresh and available.</p>
+        
+        <div class="buttons">
+            <a href="/" class="btn btn-primary">
+                🏠 Back to Home
+            </a>
+            <button onclick="history.back()" class="btn btn-secondary">
+                ← Go Back
+            </button>
+        </div>
+        
+        <div class="quick-links">
+            <a href="/#products" class="quick-link">
+                <div class="quick-link-icon">🥑</div>
+                <div class="quick-link-title">Our Products</div>
+                <div class="quick-link-desc">Premium African produce</div>
+            </a>
+            
+            <a href="/#about" class="quick-link">
+                <div class="quick-link-icon">🏢</div>
+                <div class="quick-link-title">About Us</div>
+                <div class="quick-link-desc">Our story and mission</div>
+            </a>
+            
+            <a href="/#contact" class="quick-link">
+                <div class="quick-link-icon">📞</div>
+                <div class="quick-link-title">Contact</div>
+                <div class="quick-link-desc">Get in touch with us</div>
+            </a>
+        </div>
+        
+        <div class="footer-note">
+            If you believe this is an error, please <a href="/#contact">contact our support team</a>
+        </div>
+    </div>
+</body>
+</html>

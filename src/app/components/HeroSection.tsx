@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Variants } from "framer-motion";
 
 export default function HeroSection() {
   const floatingVariants = {
@@ -58,7 +59,7 @@ export default function HeroSection() {
         {/* Randomly positioned fruits */}
         <motion.div
           className="absolute top-24 left-1/4 transform -translate-x-4 -translate-y-2 text-4xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="float"
         >
           🥑
@@ -66,7 +67,7 @@ export default function HeroSection() {
 
         <motion.div
           className="absolute top-1/4 right-1/5 transform translate-x-6 -translate-y-4 text-3xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="floatSlow"
         >
           🥭
@@ -74,7 +75,7 @@ export default function HeroSection() {
 
         <motion.div
           className="absolute top-1/3 left-1/4 transform -translate-x-8 -translate-y-4 text-3xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="floatReverse"
         >
           🍊
@@ -82,7 +83,7 @@ export default function HeroSection() {
 
         <motion.div
           className="absolute top-2/3 left-1/3 transform translate-x-6 -translate-y-2 text-2xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="float"
         >
           🍅
@@ -90,7 +91,7 @@ export default function HeroSection() {
 
         <motion.div
           className="absolute top-1/2 right-1/4 transform -translate-x-4 translate-y-8 text-2xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="floatSlow"
         >
           🍋
@@ -98,7 +99,7 @@ export default function HeroSection() {
 
         <motion.div
           className="absolute bottom-1/4 left-1/3 transform -translate-x-8 translate-y-6 text-3xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="floatReverse"
         >
           🍇
@@ -106,7 +107,7 @@ export default function HeroSection() {
 
         <motion.div
           className="absolute bottom-1/3 right-1/4 transform translate-x-4 translate-y-2 text-3xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="float"
         >
           🫑
@@ -115,7 +116,7 @@ export default function HeroSection() {
         {/* Additional random fruits for more natural look */}
         <motion.div
           className="absolute top-1/4 right-1/3 transform translate-x-8 -translate-y-6 text-2xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="floatReverse"
         >
           🍓
@@ -123,14 +124,14 @@ export default function HeroSection() {
 
         <motion.div
           className="absolute bottom-1/3 left-1/5 transform -translate-x-4 translate-y-4 text-2xl"
-          variants={floatingVariants}
+          variants={floatingVariants as Variants}
           animate="floatSlow"
         >
           🥝
         </motion.div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <motion.div
           className="grid lg:grid-cols-2 gap-12 items-center"
           variants={staggerContainer}
@@ -202,14 +203,12 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300 }}
-              >
-                Request Quote
-              </motion.button>
-              <motion.button
-                className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                onClick={() => {
+                  const productsSection = document.getElementById("products");
+                  if (productsSection) {
+                    productsSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 View Our Products
               </motion.button>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 
 interface LoadingScreenProps {
@@ -156,7 +156,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         {/* Logo */}
         <motion.div
           className="mb-8"
-          variants={logoVariants}
+          variants={logoVariants as Variants}
           initial="initial"
           animate="animate"
         >
@@ -172,7 +172,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         {/* Loading Text */}
         <motion.div
           className="mb-8"
-          variants={textVariants}
+          variants={textVariants as Variants}
           initial="initial"
           animate="animate"
         >
