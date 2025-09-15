@@ -224,33 +224,33 @@ export default function TestimonialSection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="bg-white rounded-3xl p-6 shadow-xl border border-gray-100">
+                  <div className="bg-white rounded-3xl p-6 shadow-xl border border-gray-100 min-h-[320px] flex flex-col">
                     {/* Rating */}
                     <div className="flex items-center mb-4">
                       {renderStars(testimonial.rating)}
                     </div>
 
                     {/* Testimonial Text */}
-                    <blockquote className="text-gray-700 mb-6 leading-relaxed italic">
+                    <blockquote className="text-gray-700 mb-6 leading-relaxed italic flex-1 text-sm">
                       "{testimonial.text}"
                     </blockquote>
 
                     {/* Customer Info */}
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-4 mt-auto">
                       <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-2xl shadow-lg">
                         {testimonial.image}
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900">
+                        <h4 className="font-bold text-gray-900 text-sm">
                           {testimonial.name}
                         </h4>
-                        <p className="text-sm text-gray-600 font-medium">
+                        <p className="text-xs text-gray-600 font-medium">
                           {testimonial.role}
                         </p>
-                        <p className="text-sm font-bold text-green-600">
+                        <p className="text-xs font-bold text-green-600">
                           {testimonial.company}
                         </p>
-                        <p className="text-sm text-gray-500 mt-1 font-medium">
+                        <p className="text-xs text-gray-500 mt-1 font-medium">
                           {testimonial.country}
                         </p>
                       </div>
@@ -276,67 +276,6 @@ export default function TestimonialSection() {
             ))}
           </div>
         </div>
-
-        {/* Stats Section */}
-        <motion.div
-          className="mt-24 bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl p-12 shadow-2xl"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Trusted by Global Leaders
-            </h3>
-            <p className="text-green-100 text-lg">
-              Our numbers speak for themselves
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <motion.div
-              className="bg-white bg-opacity-20 rounded-2xl p-6 backdrop-blur-sm border border-white border-opacity-20"
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="text-5xl font-bold text-white mb-3">98%</div>
-              <div className="text-white font-semibold">
-                Customer Satisfaction
-              </div>
-              <div className="text-green-100 text-sm mt-1">Rated Excellent</div>
-            </motion.div>
-            <motion.div
-              className="bg-white bg-opacity-20 rounded-2xl p-6 backdrop-blur-sm border border-white border-opacity-20"
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="text-5xl font-bold text-white mb-3">500+</div>
-              <div className="text-white font-semibold">Happy Clients</div>
-              <div className="text-green-100 text-sm mt-1">Worldwide</div>
-            </motion.div>
-            <motion.div
-              className="bg-white bg-opacity-20 rounded-2xl p-6 backdrop-blur-sm border border-white border-opacity-20"
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="text-5xl font-bold text-white mb-3">25+</div>
-              <div className="text-white font-semibold">Countries Served</div>
-              <div className="text-green-100 text-sm mt-1">Global Reach</div>
-            </motion.div>
-            <motion.div
-              className="bg-white bg-opacity-20 rounded-2xl p-6 backdrop-blur-sm border border-white border-opacity-20"
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="text-5xl font-bold text-white mb-3">15+</div>
-              <div className="text-white font-semibold">Years Experience</div>
-              <div className="text-green-100 text-sm mt-1">
-                Industry Leaders
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

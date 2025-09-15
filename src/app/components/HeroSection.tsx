@@ -53,65 +53,80 @@ export default function HeroSection() {
 
   return (
     <section className="relative bg-white text-gray-900 overflow-hidden min-h-screen flex items-center">
-      {/* Floating Fruits Across Hero Section - Minimal */}
+      {/* Floating Fruits Across Hero Section - Random Positions */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Top Left */}
+        {/* Randomly positioned fruits */}
         <motion.div
-          className="absolute top-20 left-20 text-4xl"
+          className="absolute top-24 left-1/4 transform -translate-x-4 -translate-y-2 text-4xl"
           variants={floatingVariants}
           animate="float"
         >
           🥑
         </motion.div>
 
-        {/* Top Right */}
         <motion.div
-          className="absolute top-24 right-32 text-4xl"
+          className="absolute top-1/4 right-1/5 transform translate-x-6 -translate-y-4 text-3xl"
           variants={floatingVariants}
           animate="floatSlow"
         >
           🥭
         </motion.div>
 
-        {/* Center Fruits */}
         <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl"
+          className="absolute top-1/3 left-1/4 transform -translate-x-8 -translate-y-4 text-3xl"
           variants={floatingVariants}
           animate="floatReverse"
         >
           🍊
         </motion.div>
+
         <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-16 -translate-y-8 text-2xl"
+          className="absolute top-2/3 left-1/3 transform translate-x-6 -translate-y-2 text-2xl"
           variants={floatingVariants}
           animate="float"
         >
           🍅
         </motion.div>
+
         <motion.div
-          className="absolute top-1/2 left-1/2 transform translate-x-12 -translate-y-4 text-2xl"
+          className="absolute top-1/2 right-1/4 transform -translate-x-4 translate-y-8 text-2xl"
           variants={floatingVariants}
           animate="floatSlow"
         >
           🍋
         </motion.div>
 
-        {/* Bottom Left */}
         <motion.div
-          className="absolute bottom-32 left-24 text-3xl"
+          className="absolute bottom-1/4 left-1/3 transform -translate-x-8 translate-y-6 text-3xl"
           variants={floatingVariants}
           animate="floatReverse"
         >
           🍇
         </motion.div>
 
-        {/* Bottom Right */}
         <motion.div
-          className="absolute bottom-28 right-24 text-3xl"
+          className="absolute bottom-1/3 right-1/4 transform translate-x-4 translate-y-2 text-3xl"
           variants={floatingVariants}
           animate="float"
         >
           🫑
+        </motion.div>
+
+        {/* Additional random fruits for more natural look */}
+        <motion.div
+          className="absolute top-1/4 right-1/3 transform translate-x-8 -translate-y-6 text-2xl"
+          variants={floatingVariants}
+          animate="floatReverse"
+        >
+          🍓
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-1/3 left-1/5 transform -translate-x-4 translate-y-4 text-2xl"
+          variants={floatingVariants}
+          animate="floatSlow"
+        >
+          🥝
         </motion.div>
       </div>
 
@@ -122,8 +137,31 @@ export default function HeroSection() {
           initial="initial"
           animate="animate"
         >
+          {/* Right Content - Image (shows first on mobile) */}
+          <motion.div
+            className="relative order-1 lg:order-2"
+            variants={fadeInUp}
+          >
+            <div className="relative">
+              {/* Main Image with Border */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-green-200">
+                <Image
+                  src="/unnamed (13).png"
+                  alt="Beautiful woman with fresh African produce"
+                  width={600}
+                  height={700}
+                  className="object-cover w-full h-auto"
+                  priority
+                />
+              </div>
+            </div>
+          </motion.div>
+
           {/* Left Content */}
-          <motion.div className="text-center lg:text-left" variants={fadeInUp}>
+          <motion.div
+            className="text-center lg:text-left order-2 lg:order-1"
+            variants={fadeInUp}
+          >
             <motion.div
               className="inline-flex items-center bg-green-100 rounded-full px-4 py-2 mb-6"
               whileHover={{ scale: 1.05 }}
@@ -204,23 +242,6 @@ export default function HeroSection() {
                 <div className="text-gray-600 text-sm">Years Experience</div>
               </motion.div>
             </motion.div>
-          </motion.div>
-
-          {/* Right Content - Image */}
-          <motion.div className="relative" variants={fadeInUp}>
-            <div className="relative">
-              {/* Main Image with Border */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-green-200">
-                <Image
-                  src="/unnamed (13).png"
-                  alt="Beautiful woman with fresh African produce"
-                  width={600}
-                  height={700}
-                  className="object-cover w-full h-auto"
-                  priority
-                />
-              </div>
-            </div>
           </motion.div>
         </motion.div>
       </div>
