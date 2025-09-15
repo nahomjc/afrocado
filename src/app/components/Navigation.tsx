@@ -17,6 +17,7 @@ export default function Navigation() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Website content for search
@@ -221,6 +222,7 @@ export default function Navigation() {
   };
 
   const handleNavClick = (section: string) => {
+    setActiveSection(section);
     const element = document.querySelector(`#${section}`);
     if (element) {
       // Dispatch highlight event
@@ -239,6 +241,31 @@ export default function Navigation() {
       searchInputRef.current.focus();
     }
   }, [isSearchOpen]);
+
+  // Listen for scroll events to update active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "products", "contact"];
+      const scrollPosition = window.scrollY + 100; // Offset for better UX
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close search and mobile menu when clicking outside
   useEffect(() => {
@@ -264,7 +291,7 @@ export default function Navigation() {
   }, [isSearchOpen, isMobileMenuOpen]);
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white/90 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-white/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
@@ -294,7 +321,11 @@ export default function Navigation() {
             <div className="flex items-baseline space-x-6">
               <motion.button
                 onClick={() => handleNavClick("home")}
-                className="text-green-700 hover:text-green-900 px-3 py-2 rounded-md text-sm font-medium transition-colors border-b-2 border-green-700"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeSection === "home"
+                    ? "text-green-700 border-b-2 border-green-700"
+                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -302,7 +333,11 @@ export default function Navigation() {
               </motion.button>
               <motion.button
                 onClick={() => handleNavClick("about")}
-                className="text-gray-700 hover:text-green-900 px-3 py-2 rounded-md text-sm font-medium transition-colors hover:border-b-2 hover:border-green-700"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeSection === "about"
+                    ? "text-green-700 border-b-2 border-green-700"
+                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -310,7 +345,11 @@ export default function Navigation() {
               </motion.button>
               <motion.button
                 onClick={() => handleNavClick("products")}
-                className="text-gray-700 hover:text-green-900 px-3 py-2 rounded-md text-sm font-medium transition-colors hover:border-b-2 hover:border-green-700"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeSection === "products"
+                    ? "text-green-700 border-b-2 border-green-700"
+                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -318,22 +357,17 @@ export default function Navigation() {
               </motion.button>
               <motion.button
                 onClick={() => handleNavClick("contact")}
-                className="text-gray-700 hover:text-green-900 px-3 py-2 rounded-md text-sm font-medium transition-colors hover:border-b-2 hover:border-green-700"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeSection === "contact"
+                    ? "text-green-700 border-b-2 border-green-700"
+                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 Contact
               </motion.button>
             </div>
-
-            <motion.button
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              Get Quote
-            </motion.button>
           </div>
 
           {/* Mobile menu button */}
@@ -546,7 +580,11 @@ export default function Navigation() {
                       handleNavClick("home");
                       setIsMobileMenuOpen(false);
                     }}
-                    className="block w-full text-left text-gray-700 hover:text-green-900 px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      activeSection === "home"
+                        ? "text-green-700 bg-green-50"
+                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
+                    }`}
                     whileHover={{ scale: 1.02 }}
                   >
                     Home
@@ -557,7 +595,11 @@ export default function Navigation() {
                       handleNavClick("about");
                       setIsMobileMenuOpen(false);
                     }}
-                    className="block w-full text-left text-gray-700 hover:text-green-900 px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      activeSection === "about"
+                        ? "text-green-700 bg-green-50"
+                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
+                    }`}
                     whileHover={{ scale: 1.02 }}
                   >
                     About
@@ -568,7 +610,11 @@ export default function Navigation() {
                       handleNavClick("products");
                       setIsMobileMenuOpen(false);
                     }}
-                    className="block w-full text-left text-gray-700 hover:text-green-900 px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      activeSection === "products"
+                        ? "text-green-700 bg-green-50"
+                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
+                    }`}
                     whileHover={{ scale: 1.02 }}
                   >
                     Products
@@ -579,19 +625,14 @@ export default function Navigation() {
                       handleNavClick("contact");
                       setIsMobileMenuOpen(false);
                     }}
-                    className="block w-full text-left text-gray-700 hover:text-green-900 px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      activeSection === "contact"
+                        ? "text-green-700 bg-green-50"
+                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
+                    }`}
                     whileHover={{ scale: 1.02 }}
                   >
                     Contact
-                  </motion.button>
-
-                  {/* Get Quote Button */}
-                  <motion.button
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors mt-4"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Get Quote
                   </motion.button>
                 </div>
               </motion.div>

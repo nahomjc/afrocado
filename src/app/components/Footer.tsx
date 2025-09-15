@@ -1,253 +1,401 @@
+"use client";
+
+import { motion } from "framer-motion";
+import {
+  IconBrandFacebook,
+  IconBrandLinkedin,
+  IconBrandTwitter,
+  IconMail,
+  IconPhone,
+  IconMapPin,
+  IconShield,
+  IconAward,
+  IconCertificate,
+  IconCheck,
+  IconArrowRight,
+} from "@tabler/icons-react";
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-8">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute top-0 left-0 w-full h-full"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        ></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Main Footer Content */}
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-10">
           {/* Company Info */}
-          <div className="md:col-span-1">
-            <div className="flex items-center mb-4">
-              <span className="text-3xl mr-2">🥑</span>
-              <h3 className="text-2xl font-bold text-green-400">Afrocado</h3>
-            </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+          <div className="lg:col-span-1">
+            <motion.div
+              className="flex items-center mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-3 shadow-lg">
+                <span className="text-xl">🥑</span>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                  Afrocado
+                </h3>
+                <p className="text-xs text-gray-400">Premium Export Company</p>
+              </div>
+            </motion.div>
+
+            <motion.p
+              className="text-gray-300 mb-6 leading-relaxed text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               Leading the global market in premium African produce. Connecting
               the world&apos;s finest fruits and vegetables from Africa to
               international markets with uncompromising quality.
-            </p>
-            <div className="flex space-x-4">
-              <a
+            </motion.p>
+
+            {/* Contact Info */}
+            <motion.div
+              className="space-y-3 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-green-600 rounded-lg flex items-center justify-center">
+                  <IconMail size={12} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400">Email</p>
+                  <p className="text-white font-medium text-sm">
+                    info@afrocado.com
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-green-600 rounded-lg flex items-center justify-center">
+                  <IconPhone size={12} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400">Phone</p>
+                  <p className="text-white font-medium text-sm">
+                    +254 20 123 4567
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-green-600 rounded-lg flex items-center justify-center">
+                  <IconMapPin size={12} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400">Location</p>
+                  <p className="text-white font-medium text-sm">
+                    Nairobi, Kenya
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Social Media */}
+            <motion.div
+              className="flex space-x-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <motion.a
                 href="#"
-                className="text-gray-400 hover:text-green-400 transition-colors"
+                className="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span className="sr-only">Facebook</span>
-                <svg
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
-              <a
+                <IconBrandFacebook size={16} className="text-white" />
+              </motion.a>
+              <motion.a
                 href="#"
-                className="text-gray-400 hover:text-green-400 transition-colors"
+                className="w-10 h-10 bg-gray-700 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span className="sr-only">LinkedIn</span>
-                <svg
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-              <a
+                <IconBrandLinkedin size={16} className="text-white" />
+              </motion.a>
+              <motion.a
                 href="#"
-                className="text-gray-400 hover:text-green-400 transition-colors"
+                className="w-10 h-10 bg-gray-700 hover:bg-sky-500 rounded-lg flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span className="sr-only">Twitter</span>
-                <svg
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                </svg>
-              </a>
-            </div>
+                <IconBrandTwitter size={16} className="text-white" />
+              </motion.a>
+            </motion.div>
           </div>
 
           {/* Products */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6">Products</h4>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h4 className="text-lg font-bold mb-6 text-white flex items-center">
+              <div className="w-6 h-6 bg-green-600 rounded-lg flex items-center justify-center mr-2">
+                <span className="text-xs">🥑</span>
+              </div>
+              Our Products
+            </h4>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
+              {[
+                "Premium Avocados",
+                "Citrus Fruits",
+                "Fresh Tomatoes",
+                "Spices & Herbs",
+                "Tropical Fruits",
+                "Leafy Greens",
+              ].map((product, index) => (
+                <motion.li
+                  key={product}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                 >
-                  Premium Avocados
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Citrus Fruits
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Fresh Tomatoes
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Spices & Herbs
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Tropical Fruits
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Leafy Greens
-                </a>
-              </li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-green-400 transition-all duration-300 flex items-center group"
+                  >
+                    <IconArrowRight
+                      size={16}
+                      className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    />
+                    <span className="group-hover:translate-x-1 transition-transform">
+                      {product}
+                    </span>
+                  </a>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6">Services</h4>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h4 className="text-lg font-bold mb-6 text-white flex items-center">
+              <div className="w-6 h-6 bg-blue-600 rounded-lg flex items-center justify-center mr-2">
+                <IconShield size={14} className="text-white" />
+              </div>
+              Our Services
+            </h4>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
+              {[
+                "Export Services",
+                "Quality Control",
+                "Cold Chain Logistics",
+                "Custom Packaging",
+                "Supply Chain Management",
+                "Market Research",
+              ].map((service, index) => (
+                <motion.li
+                  key={service}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                 >
-                  Export Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Quality Control
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Cold Chain Logistics
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Custom Packaging
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Supply Chain Management
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Market Research
-                </a>
-              </li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-blue-400 transition-all duration-300 flex items-center group"
+                  >
+                    <IconArrowRight
+                      size={16}
+                      className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    />
+                    <span className="group-hover:translate-x-1 transition-transform">
+                      {service}
+                    </span>
+                  </a>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact & Legal */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6">Contact & Legal</h4>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h4 className="text-lg font-bold mb-6 text-white flex items-center">
+              <div className="w-6 h-6 bg-purple-600 rounded-lg flex items-center justify-center mr-2">
+                <IconAward size={14} className="text-white" />
+              </div>
+              Company
+            </h4>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
+              {[
+                "Contact Us",
+                "About Us",
+                "Privacy Policy",
+                "Terms of Service",
+                "Certifications",
+                "Careers",
+              ].map((item, index) => (
+                <motion.li
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                 >
-                  Contact Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Request Quote
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Certifications
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
-                >
-                  Careers
-                </a>
-              </li>
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-purple-400 transition-all duration-300 flex items-center group"
+                  >
+                    <IconArrowRight
+                      size={16}
+                      className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    />
+                    <span className="group-hover:translate-x-1 transition-transform">
+                      {item}
+                    </span>
+                  </a>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
 
+        {/* Certifications Section */}
+        <motion.div
+          className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-xl p-6 mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="text-center mb-6">
+            <h3 className="text-xl font-bold text-white mb-1">
+              Our Certifications
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Trusted by international standards
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            <motion.div
+              className="flex items-center justify-center space-x-3 p-3 bg-white/10 rounded-lg backdrop-blur-sm"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                <IconCertificate size={20} className="text-white" />
+              </div>
+              <div className="text-left">
+                <p className="font-semibold text-white text-sm">ISO 22000</p>
+                <p className="text-xs text-gray-300">Food Safety</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="flex items-center justify-center space-x-3 p-3 bg-white/10 rounded-lg backdrop-blur-sm"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
+                <IconCheck size={20} className="text-white" />
+              </div>
+              <div className="text-left">
+                <p className="font-semibold text-white text-sm">Organic</p>
+                <p className="text-xs text-gray-300">Certified</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="flex items-center justify-center space-x-3 p-3 bg-white/10 rounded-lg backdrop-blur-sm"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <IconShield size={20} className="text-white" />
+              </div>
+              <div className="text-left">
+                <p className="font-semibold text-white text-sm">HACCP</p>
+                <p className="text-xs text-gray-300">Compliant</p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+        <motion.div
+          className="border-t border-gray-700 pt-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
-              <p className="text-gray-400">
+              <p className="text-gray-400 text-sm">
                 &copy; 2024 Afrocado Fruit and Vegetable Export Company. All
                 rights reserved.
               </p>
+              <p className="text-gray-500 text-xs mt-1">
+                Connecting Africa&apos;s finest produce to the world
+              </p>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm">
-              <div className="flex items-center">
-                <span className="text-green-400 mr-2">✓</span>
-                <span className="text-gray-400">ISO 22000 Certified</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-green-400 mr-2">✓</span>
-                <span className="text-gray-400">Organic Certified</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-green-400 mr-2">✓</span>
-                <span className="text-gray-400">HACCP Compliant</span>
-              </div>
+
+            <div className="flex flex-wrap gap-4 text-xs justify-end">
+              <motion.div
+                className="flex items-center space-x-1"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="w-4 h-4 bg-green-600 rounded-full flex items-center justify-center">
+                  <IconCheck size={8} className="text-white" />
+                </div>
+                <span className="text-gray-300">ISO 22000</span>
+              </motion.div>
+
+              <motion.div
+                className="flex items-center space-x-1"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="w-4 h-4 bg-emerald-600 rounded-full flex items-center justify-center">
+                  <IconCheck size={8} className="text-white" />
+                </div>
+                <span className="text-gray-300">Organic</span>
+              </motion.div>
+
+              <motion.div
+                className="flex items-center space-x-1"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="w-4 h-4 bg-blue-600 rounded-full flex items-center justify-center">
+                  <IconCheck size={8} className="text-white" />
+                </div>
+                <span className="text-gray-300">HACCP</span>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

@@ -2,6 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import {
+  IconMail,
+  IconPhone,
+  IconMapPin,
+  IconClock,
+  IconFileText,
+  IconCalendar,
+  IconPackage,
+  IconSend,
+  IconCheck,
+} from "@tabler/icons-react";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -9,12 +20,31 @@ export default function ContactSection() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({ name: "", email: "", message: "" });
+    }, 3000);
   };
 
   const fadeInUp = {
@@ -95,7 +125,7 @@ export default function ContactSection() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="bg-green-100 p-3 rounded-xl mr-4">
-                    <span className="text-green-600 text-xl">📧</span>
+                    <IconMail size={24} className="text-green-600" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
@@ -110,7 +140,7 @@ export default function ContactSection() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="bg-green-100 p-3 rounded-xl mr-4">
-                    <span className="text-green-600 text-xl">📞</span>
+                    <IconPhone size={24} className="text-green-600" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
@@ -125,7 +155,7 @@ export default function ContactSection() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="bg-green-100 p-3 rounded-xl mr-4">
-                    <span className="text-green-600 text-xl">📍</span>
+                    <IconMapPin size={24} className="text-green-600" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">
@@ -143,7 +173,7 @@ export default function ContactSection() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="bg-green-100 p-3 rounded-xl mr-4">
-                    <span className="text-green-600 text-xl">🕒</span>
+                    <IconClock size={24} className="text-green-600" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Hours</h4>
@@ -163,37 +193,40 @@ export default function ContactSection() {
               </h4>
               <div className="grid grid-cols-1 gap-3">
                 <motion.button
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left flex items-center space-x-3"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  📋 Request Product Catalog
+                  <IconFileText size={20} />
+                  <span>Request Product Catalog</span>
                 </motion.button>
                 <motion.button
-                  className="w-full border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left"
+                  className="w-full border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left flex items-center space-x-3"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  📞 Schedule a Call
+                  <IconCalendar size={20} />
+                  <span>Schedule a Call</span>
                 </motion.button>
                 <motion.button
-                  className="w-full border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left"
+                  className="w-full border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left flex items-center space-x-3"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  📦 Request Samples
+                  <IconPackage size={20} />
+                  <span>Request Samples</span>
                 </motion.button>
               </div>
             </div>
           </motion.div>
 
-          {/* Simple Contact Form */}
+          {/* Enhanced Contact Form */}
           <motion.div variants={fadeInUp}>
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <div className="mb-6">
+            <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+              <div className="mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   Send us a Message
                 </h3>
@@ -202,71 +235,105 @@ export default function ContactSection() {
                 </p>
               </div>
 
-              <form className="space-y-6">
+              {isSubmitted ? (
                 <motion.div
-                  whileFocus={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  className="text-center py-12"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300"
-                    placeholder="Your full name"
-                  />
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <IconCheck size={40} className="text-green-600" />
+                  </div>
+                  <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                    Message Sent Successfully!
+                  </h4>
+                  <p className="text-gray-600">
+                    Thank you for contacting us. We&apos;ll get back to you
+                    soon.
+                  </p>
                 </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <motion.div
+                    whileFocus={{ scale: 1.01 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      placeholder="Your full name"
+                    />
+                  </motion.div>
 
-                <motion.div
-                  whileFocus={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300"
-                    placeholder="your.email@company.com"
-                  />
-                </motion.div>
+                  <motion.div
+                    whileFocus={{ scale: 1.01 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      placeholder="your.email@company.com"
+                    />
+                  </motion.div>
 
-                <motion.div
-                  whileFocus={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    rows={5}
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none"
-                    placeholder="Tell us about your requirements, expected volumes, and any specific needs..."
-                  ></textarea>
-                </motion.div>
+                  <motion.div
+                    whileFocus={{ scale: 1.01 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      rows={5}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white"
+                      placeholder="Tell us about your requirements, expected volumes, and any specific needs..."
+                    ></textarea>
+                  </motion.div>
 
-                <motion.button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  Send Message
-                </motion.button>
-              </form>
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                    whileHover={{
+                      scale: isSubmitting ? 1 : 1.02,
+                      y: isSubmitting ? 0 : -2,
+                    }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <IconSend size={20} />
+                        <span>Send Message</span>
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+              )}
             </div>
           </motion.div>
         </motion.div>
