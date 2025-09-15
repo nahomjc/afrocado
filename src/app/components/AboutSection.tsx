@@ -1,8 +1,48 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import Image from "next/image";
 
 export default function AboutSection() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const aboutImages = [
+    {
+      id: 1,
+      src: "/about-img/unnamed (14).png",
+      alt: "Afrocado market scene with fresh produce",
+      title: "Our Vibrant Market",
+      description:
+        "Experience the bustling energy of our fresh produce markets",
+    },
+    {
+      id: 2,
+      src: "/about-img/unnamed (15).png",
+      alt: "Fresh fruits and vegetables in wooden crate",
+      title: "Premium Quality Produce",
+      description: "Hand-selected fruits and vegetables from our partner farms",
+    },
+    {
+      id: 3,
+      src: "/about-img/unnamed (16).png",
+      alt: "Smiling woman with basket of fresh produce",
+      title: "Our Dedicated Team",
+      description: "Meet the passionate people behind our quality produce",
+    },
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % aboutImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + aboutImages.length) % aboutImages.length
+    );
+  };
+
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -91,6 +131,102 @@ export default function AboutSection() {
             </ul>
           </div>
         </div>
+
+        {/* Image Carousel Section */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              See Our <span className="text-green-600">World in Action</span>
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover the vibrant markets, premium produce, and dedicated
+              people that make Afrocado a global leader in agricultural exports.
+            </p>
+          </div>
+
+          <div className="relative max-w-5xl mx-auto">
+            {/* Navigation Buttons */}
+            <motion.button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-50 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <IconChevronLeft size={24} className="text-green-600" />
+            </motion.button>
+
+            <motion.button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-50 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <IconChevronRight size={24} className="text-green-600" />
+            </motion.button>
+
+            {/* Carousel Container */}
+            <div className="overflow-hidden rounded-3xl shadow-2xl">
+              <motion.div
+                className="flex"
+                animate={{ x: -currentImageIndex * 100 + "%" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                {aboutImages.map((image, index) => (
+                  <div key={image.id} className="flex-shrink-0 w-full relative">
+                    <div className="relative h-[500px] md:h-[600px]">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"
+                        priority={index === 0}
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+                      {/* Content Overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                          <h4 className="text-3xl md:text-4xl font-bold mb-4">
+                            {image.title}
+                          </h4>
+                          <p className="text-lg md:text-xl text-gray-200 max-w-2xl">
+                            {image.description}
+                          </p>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-8 space-x-3">
+              {aboutImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex
+                      ? "bg-green-600 scale-125"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
         {/* Key Features */}
         <div className="grid md:grid-cols-3 gap-8">

@@ -9,6 +9,8 @@ import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import ChatBot from "./components/ChatBot";
 import LoadingScreen from "./components/LoadingScreen";
+import TestimonialSection from "./components/TestimonialSection";
+import TeamSection from "./components/TeamSection";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +29,8 @@ export default function Home() {
           <HeroSection />
           <AboutSection />
           <ProductsSection />
+          <TestimonialSection />
+          <TeamSection />
           <ContactSection />
           <Footer />
           <ChatBot />
