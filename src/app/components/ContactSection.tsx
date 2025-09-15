@@ -288,59 +288,143 @@ export default function ContactSection() {
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-xl">
-            <div className="relative h-96 rounded-xl overflow-hidden">
-              {/* Map Placeholder - You can replace this with actual map integration */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🗺️</div>
-                  <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                    Interactive Map
-                  </h4>
-                  <p className="text-gray-600 mb-4">
-                    Afrocado Export House, Westlands Business District
-                  </p>
-                  <motion.button
-                    className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    Get Directions
-                  </motion.button>
-                </div>
-              </div>
+            <div className="relative h-96 rounded-xl overflow-hidden border border-gray-200">
+              {/* Google Maps Embed */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31911.017!2d36.7827847!3d-1.3028617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sWestlands%2C%20Nairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1234567890123!5m2!1sen!2ske"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-xl"
+                title="Afrocado Export House Location"
+              ></iframe>
 
-              {/* Map Integration Placeholder */}
-              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center opacity-50">
-                <div className="text-center text-gray-500">
-                  <div className="text-4xl mb-2">📍</div>
-                  <p className="text-sm">
-                    Map integration available (Google Maps, OpenStreetMap, etc.)
-                  </p>
+              {/* Overlay with Location Info */}
+              <motion.div
+                className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg p-4 max-w-xs"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                    <div className="w-6 h-6 bg-green-600 rounded-full"></div>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">
+                      Afrocado Export House
+                    </h4>
+                    <p className="text-xs text-gray-600 mt-1">
+                      Westlands Business District
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">Nairobi, Kenya</p>
+                  </div>
                 </div>
+              </motion.div>
+
+              {/* Get Directions Button */}
+              <motion.div
+                className="absolute bottom-4 right-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                <motion.a
+                  href="https://maps.app.goo.gl/fWVq2X14pq7BRr8x8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition-colors flex items-center space-x-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="w-4 h-4">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">Get Directions</span>
+                </motion.a>
+              </motion.div>
+
+              {/* Map Controls Overlay */}
+              <div className="absolute top-4 right-4 space-y-2">
+                <motion.button
+                  className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded shadow-md flex items-center justify-center hover:bg-white transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Full Screen"
+                  onClick={() =>
+                    window.open(
+                      "https://maps.app.goo.gl/fWVq2X14pq7BRr8x8",
+                      "_blank"
+                    )
+                  }
+                >
+                  <div className="text-gray-600 text-sm font-bold">⛶</div>
+                </motion.button>
               </div>
             </div>
 
-            <div className="mt-6 grid md:grid-cols-3 gap-6 text-center">
-              <div className="p-4 bg-green-50 rounded-lg">
-                <div className="text-2xl mb-2">🚗</div>
-                <h5 className="font-semibold text-gray-900 mb-1">Parking</h5>
-                <p className="text-sm text-gray-600">Free parking available</p>
-              </div>
-              <div className="p-4 bg-green-50 rounded-lg">
-                <div className="text-2xl mb-2">🚌</div>
-                <h5 className="font-semibold text-gray-900 mb-1">
-                  Public Transport
-                </h5>
-                <p className="text-sm text-gray-600">Bus stop 2 minutes walk</p>
-              </div>
-              <div className="p-4 bg-green-50 rounded-lg">
-                <div className="text-2xl mb-2">✈️</div>
-                <h5 className="font-semibold text-gray-900 mb-1">Airport</h5>
-                <p className="text-sm text-gray-600">
-                  15 minutes from Jomo Kenyatta
-                </p>
-              </div>
+            <div className="mt-6 grid md:grid-cols-3 gap-6">
+              <motion.div
+                className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-100 hover:shadow-lg transition-all duration-300"
+                whileHover={{ y: -2 }}
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                    <div className="w-6 h-6 bg-white rounded-sm"></div>
+                  </div>
+                  <div className="text-left">
+                    <h5 className="font-semibold text-gray-900 mb-1">
+                      Free Parking
+                    </h5>
+                    <p className="text-sm text-gray-600">
+                      Secure parking available on-site
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-100 hover:shadow-lg transition-all duration-300"
+                whileHover={{ y: -2 }}
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <div className="w-6 h-6 bg-white rounded-sm"></div>
+                  </div>
+                  <div className="text-left">
+                    <h5 className="font-semibold text-gray-900 mb-1">
+                      Public Transport
+                    </h5>
+                    <p className="text-sm text-gray-600">
+                      Bus stop 2 minutes walk away
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-100 hover:shadow-lg transition-all duration-300"
+                whileHover={{ y: -2 }}
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <div className="w-6 h-6 bg-white rounded-sm"></div>
+                  </div>
+                  <div className="text-left">
+                    <h5 className="font-semibold text-gray-900 mb-1">
+                      Airport Access
+                    </h5>
+                    <p className="text-sm text-gray-600">
+                      15 minutes from Jomo Kenyatta
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>

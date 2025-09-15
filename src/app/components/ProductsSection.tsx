@@ -21,6 +21,8 @@ export default function ProductsSection() {
       id: 1,
       name: "Premium Avocados",
       emoji: "🥑",
+      image:
+        "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=800&h=600&fit=crop&crop=center",
       description:
         "Hass and Fuerte varieties with perfect ripeness and exceptional taste",
       details:
@@ -33,6 +35,8 @@ export default function ProductsSection() {
       id: 2,
       name: "Citrus Fruits",
       emoji: "🍊",
+      image:
+        "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=800&h=600&fit=crop&crop=center",
       description:
         "Fresh oranges, lemons, and grapefruits bursting with natural flavor",
       details:
@@ -50,6 +54,8 @@ export default function ProductsSection() {
       id: 3,
       name: "Fresh Tomatoes",
       emoji: "🍅",
+      image:
+        "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&h=600&fit=crop&crop=center",
       description:
         "Vine-ripened tomatoes perfect for fresh consumption and processing",
       details:
@@ -62,6 +68,8 @@ export default function ProductsSection() {
       id: 4,
       name: "Spices & Herbs",
       emoji: "🌶️",
+      image:
+        "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&h=600&fit=crop&crop=center",
       description:
         "Aromatic spices and fresh herbs to enhance your culinary creations",
       details:
@@ -74,6 +82,8 @@ export default function ProductsSection() {
       id: 5,
       name: "Tropical Fruits",
       emoji: "🥭",
+      image:
+        "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=800&h=600&fit=crop&crop=center",
       description:
         "Exotic tropical fruits including mangoes, pineapples, and passion fruits",
       details:
@@ -91,6 +101,8 @@ export default function ProductsSection() {
       id: 6,
       name: "Leafy Greens",
       emoji: "🥬",
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
       description:
         "Fresh leafy vegetables including kale, spinach, and lettuce varieties",
       details:
@@ -135,10 +147,13 @@ export default function ProductsSection() {
               whileHover={{ y: -10, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div
-                className={`h-48 bg-gradient-to-br ${product.color} flex items-center justify-center relative`}
-              >
-                <span className="text-8xl">{product.emoji}</span>
+              <div className="h-48 relative overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0  bg-opacity-20"></div>
                 <div className="absolute top-4 right-4 bg-black bg-opacity-30 backdrop-blur-sm rounded-full px-3 py-1">
                   <span className="text-white text-sm font-medium">
                     {product.season}

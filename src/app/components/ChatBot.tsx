@@ -2,6 +2,15 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
+import {
+  IconMessageCircle,
+  IconX,
+  IconSend,
+  IconPhone,
+  IconMaximize,
+  IconMinimize,
+  IconRobot,
+} from "@tabler/icons-react";
 
 interface Message {
   id: string;
@@ -12,6 +21,7 @@ interface Message {
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFullSize, setIsFullSize] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -178,6 +188,20 @@ export default function ChatBot() {
 
   return (
     <>
+      {/* Call Button */}
+      <motion.button
+        className="fixed bottom-24 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg z-40"
+        onClick={() => window.open("tel:+1234567890", "_self")}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ scale: 0, y: 20 }}
+        animate={{ scale: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
+        title="Call us now"
+      >
+        <IconPhone size={20} />
+      </motion.button>
+
       {/* Chat Button */}
       <motion.button
         className="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg z-40"
@@ -187,12 +211,13 @@ export default function ChatBot() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        title="Chat with us"
       >
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          {isOpen ? "✕" : "💬"}
+          {isOpen ? <IconX size={24} /> : <IconMessageCircle size={24} />}
         </motion.div>
       </motion.button>
 
@@ -200,7 +225,11 @@ export default function ChatBot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
+            className={`fixed bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden ${
+              isFullSize
+                ? "top-4 left-4 right-4 bottom-4"
+                : "bottom-24 right-6 w-96 h-[500px]"
+            }`}
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -209,20 +238,40 @@ export default function ChatBot() {
             {/* Header */}
             <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  🥑
+                <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                  <IconRobot size={20} />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Afrocado Assistant</h3>
-                  <p className="text-xs text-green-100">Online now</p>
+                  <h3 className="font-semibold text-lg">Afrocado Assistant</h3>
+                  <p className="text-xs text-green-100">
+                    Online now • Ready to help
+                  </p>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-white hover:text-green-200 transition-colors"
-              >
-                ✕
-              </button>
+              <div className="flex items-center space-x-2">
+                <motion.button
+                  onClick={() => setIsFullSize(!isFullSize)}
+                  className="text-white hover:text-green-200 transition-colors p-1"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  title={isFullSize ? "Minimize" : "Maximize"}
+                >
+                  {isFullSize ? (
+                    <IconMinimize size={20} />
+                  ) : (
+                    <IconMaximize size={20} />
+                  )}
+                </motion.button>
+                <motion.button
+                  onClick={() => setIsOpen(false)}
+                  className="text-white hover:text-green-200 transition-colors p-1"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="Close chat"
+                >
+                  <IconX size={20} />
+                </motion.button>
+              </div>
             </div>
 
             {/* Messages */}
@@ -316,8 +365,9 @@ export default function ChatBot() {
                   className="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  title="Send message"
                 >
-                  ➤
+                  <IconSend size={18} />
                 </motion.button>
               </div>
             </div>

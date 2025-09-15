@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import {
-  IconUser,
   IconBriefcase,
   IconSchool,
   IconMail,
@@ -23,6 +22,8 @@ export default function TeamSection() {
       education: "MBA in International Business",
       expertise: "Global Trade & Strategy",
       bio: "Leading Afrocado's vision to become the world's premier African produce exporter with over two decades of experience in international trade.",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
       linkedin: "https://linkedin.com/in/kwame-asante",
       twitter: "https://twitter.com/kwame_asante",
       facebook: "https://facebook.com/kwame.asante",
@@ -37,6 +38,8 @@ export default function TeamSection() {
       education: "MSc in Supply Chain Management",
       expertise: "Logistics & Quality Control",
       bio: "Ensuring seamless operations across our global network with expertise in cold chain logistics and quality assurance systems.",
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face",
       linkedin: "https://linkedin.com/in/aisha-okafor",
       twitter: "https://twitter.com/aisha_okafor",
       facebook: "https://facebook.com/aisha.okafor",
@@ -51,6 +54,8 @@ export default function TeamSection() {
       education: "PhD in Agricultural Sciences",
       expertise: "Sustainable Farming & Certification",
       bio: "Overseeing our network of 500+ partner farms, ensuring sustainable practices and premium quality standards across all produce.",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face",
       linkedin: "https://linkedin.com/in/david-kimani",
       twitter: "https://twitter.com/david_kimani",
       facebook: "https://facebook.com/david.kimani",
@@ -77,14 +82,7 @@ export default function TeamSection() {
 
   const cardVariants = {
     initial: { opacity: 0, y: 50 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
+    animate: { opacity: 1, y: 0 },
   };
 
   const getDepartmentColor = (department: string) => {
@@ -150,8 +148,12 @@ export default function TeamSection() {
                 {/* Profile Section */}
                 <div className="text-center mb-6">
                   <div className="relative inline-block">
-                    <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                      <IconUser size={32} className="text-white" />
+                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                       <IconCheck size={12} className="text-white" />

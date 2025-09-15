@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
@@ -13,7 +13,8 @@ export default function TestimonialSection() {
       name: "Sarah Johnson",
       company: "Fresh Market Europe",
       role: "Procurement Director",
-      image: "👩‍💼",
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face",
       rating: 5,
       text: "Afrocado has been our trusted partner for over 3 years. Their premium quality fruits and vegetables consistently exceed our expectations. The cold chain logistics ensure our customers receive the freshest produce possible.",
       country: "🇩🇪 Germany",
@@ -23,7 +24,8 @@ export default function TestimonialSection() {
       name: "Ahmed Hassan",
       company: "Middle East Imports",
       role: "CEO",
-      image: "👨‍💼",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       rating: 5,
       text: "The quality and reliability of Afrocado's export services are unmatched. Their attention to detail in packaging and shipping has helped us build a strong reputation in the Middle Eastern market.",
       country: "🇦🇪 UAE",
@@ -33,7 +35,8 @@ export default function TestimonialSection() {
       name: "Maria Rodriguez",
       company: "Tropical Foods Inc.",
       role: "Quality Manager",
-      image: "👩‍🔬",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       rating: 5,
       text: "Working with Afrocado has transformed our business. Their certified organic produce and sustainable farming practices align perfectly with our company values. Highly recommended!",
       country: "🇺🇸 USA",
@@ -53,14 +56,7 @@ export default function TestimonialSection() {
 
   const cardVariants = {
     initial: { opacity: 0, y: 50 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
+    animate: { opacity: 1, y: 0 },
   };
 
   const renderStars = (rating: number) => {
@@ -84,15 +80,6 @@ export default function TestimonialSection() {
     setCurrentIndex(
       (prev) => (prev - 1 + testimonials.length) % testimonials.length
     );
-  };
-
-  const getVisibleTestimonials = () => {
-    const visible = [];
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex + i) % testimonials.length;
-      visible.push(testimonials[index]);
-    }
-    return visible;
   };
 
   return (
@@ -155,7 +142,7 @@ export default function TestimonialSection() {
 
                 {/* Quote Icon */}
                 <div className="absolute top-6 right-6 text-green-200 text-6xl font-serif">
-                  "
+                  &ldquo;
                 </div>
 
                 {/* Testimonial Text */}
@@ -165,8 +152,12 @@ export default function TestimonialSection() {
 
                 {/* Customer Info */}
                 <div className="flex items-center space-x-5">
-                  <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-4xl shadow-xl group-hover:scale-110 transition-transform duration-300">
-                    {testimonial.image}
+                  <div className="w-20 h-20 rounded-full overflow-hidden shadow-xl group-hover:scale-110 transition-transform duration-300">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-gray-900 text-xl mb-1">
@@ -232,13 +223,17 @@ export default function TestimonialSection() {
 
                     {/* Testimonial Text */}
                     <blockquote className="text-gray-700 mb-6 leading-relaxed italic flex-1 text-sm">
-                      "{testimonial.text}"
+                      &ldquo;{testimonial.text}&rdquo;
                     </blockquote>
 
                     {/* Customer Info */}
                     <div className="flex items-center space-x-4 mt-auto">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-2xl shadow-lg">
-                        {testimonial.image}
+                      <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <div className="flex-1">
                         <h4 className="font-bold text-gray-900 text-sm">
