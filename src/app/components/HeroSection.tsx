@@ -69,7 +69,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="absolute top-1/4 right-1/5 transform translate-x-6 -translate-y-4 text-3xl"
+          className="absolute top-1/4 right-1/5 transform translate-x-6 -translate-y-4 text-3xl hidden sm:block"
           variants={floatingVariants as Variants}
           animate="floatSlow"
         >
@@ -93,7 +93,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="absolute top-1/2 right-1/4 transform -translate-x-4 translate-y-8 text-2xl"
+          className="absolute top-1/2 right-1/4 transform -translate-x-4 translate-y-8 text-2xl hidden md:block"
           variants={floatingVariants as Variants}
           animate="floatSlow"
         >
@@ -109,7 +109,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="absolute bottom-1/3 right-1/4 transform translate-x-4 translate-y-2 text-3xl"
+          className="absolute bottom-1/3 right-1/4 transform translate-x-4 translate-y-2 text-3xl hidden sm:block"
           variants={floatingVariants as Variants}
           animate="float"
         >
@@ -118,7 +118,7 @@ export default function HeroSection() {
 
         {/* Additional random fruits for more natural look */}
         <motion.div
-          className="absolute top-1/4 right-1/3 transform translate-x-8 -translate-y-6 text-2xl"
+          className="absolute top-1/4 right-1/3 transform translate-x-8 -translate-y-6 text-2xl hidden lg:block"
           variants={floatingVariants as Variants}
           animate="floatReverse"
         >
@@ -133,9 +133,26 @@ export default function HeroSection() {
           🥝
         </motion.div>
 
-        {/* Additional floating fruits on the right side - closer to center */}
+        {/* Additional left-side fruits for better balance */}
         <motion.div
-          className="absolute top-16 right-1/4 transform translate-x-2 -translate-y-1 text-3xl"
+          className="absolute top-1/6 left-1/6 transform -translate-x-2 -translate-y-1 text-2xl"
+          variants={floatingVariants as Variants}
+          animate="float"
+        >
+          🍎
+        </motion.div>
+
+        <motion.div
+          className="absolute top-2/3 left-1/6 transform translate-x-2 translate-y-3 text-3xl"
+          variants={floatingVariants as Variants}
+          animate="floatReverse"
+        >
+          🍐
+        </motion.div>
+
+        {/* Reduced floating fruits on the right side - mobile responsive */}
+        <motion.div
+          className="absolute top-16 right-1/4 transform translate-x-2 -translate-y-1 text-3xl hidden sm:block"
           variants={floatingVariants as Variants}
           animate="float"
         >
@@ -143,15 +160,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="absolute top-1/3 right-1/3 transform translate-x-4 -translate-y-3 text-2xl"
-          variants={floatingVariants as Variants}
-          animate="floatReverse"
-        >
-          🍍
-        </motion.div>
-
-        <motion.div
-          className="absolute top-1/2 right-1/5 transform -translate-x-2 translate-y-4 text-4xl"
+          className="absolute top-1/2 right-1/5 transform -translate-x-2 translate-y-4 text-4xl hidden md:block"
           variants={floatingVariants as Variants}
           animate="floatSlow"
         >
@@ -159,43 +168,11 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="absolute top-3/4 right-1/4 transform translate-x-3 translate-y-2 text-2xl"
-          variants={floatingVariants as Variants}
-          animate="float"
-        >
-          🍈
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-1/4 right-1/3 transform -translate-x-1 translate-y-3 text-3xl"
+          className="absolute bottom-1/4 right-1/3 transform -translate-x-1 translate-y-3 text-3xl hidden lg:block"
           variants={floatingVariants as Variants}
           animate="floatReverse"
         >
           🍉
-        </motion.div>
-
-        <motion.div
-          className="absolute top-1/6 right-1/5 transform translate-x-5 -translate-y-2 text-2xl"
-          variants={floatingVariants as Variants}
-          animate="floatSlow"
-        >
-          🍑
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-1/6 right-1/4 transform translate-x-2 translate-y-1 text-3xl"
-          variants={floatingVariants as Variants}
-          animate="float"
-        >
-          🍒
-        </motion.div>
-
-        <motion.div
-          className="absolute top-2/3 right-1/6 transform -translate-x-3 translate-y-5 text-2xl"
-          variants={floatingVariants as Variants}
-          animate="floatReverse"
-        >
-          🫐
         </motion.div>
       </div>
 
