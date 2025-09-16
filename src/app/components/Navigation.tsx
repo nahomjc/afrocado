@@ -417,6 +417,14 @@ export default function Navigation() {
                 Values
               </motion.button>
               <motion.button
+                onClick={() => router.push("/blog")}
+                className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                Blog
+              </motion.button>
+              <motion.button
                 onClick={() => handleNavClick("contact")}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeSection === "contact"
@@ -694,6 +702,17 @@ export default function Navigation() {
                     whileHover={{ scale: 1.02 }}
                   >
                     Values
+                  </motion.button>
+
+                  <motion.button
+                    onClick={() => {
+                      router.push("/blog");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors text-gray-700 hover:text-green-900 hover:bg-green-50"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    Blog
                   </motion.button>
 
                   <motion.button

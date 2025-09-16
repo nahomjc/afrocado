@@ -13,6 +13,7 @@ import ChatBot from "./components/ChatBot";
 import LoadingScreen from "./components/LoadingScreen";
 import TestimonialSection from "./components/TestimonialSection";
 import TeamSection from "./components/TeamSection";
+import StickyFAQButton from "./components/StickyFAQButton";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -120,6 +121,7 @@ export default function Home() {
           </main>
           <Footer />
           <ChatBot />
+          <StickyFAQButton />
         </>
       )}
     </div>
