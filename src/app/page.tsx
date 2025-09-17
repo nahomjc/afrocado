@@ -14,6 +14,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import TestimonialSection from "./components/TestimonialSection";
 import TeamSection from "./components/TeamSection";
 import StickyFAQButton from "./components/StickyFAQButton";
+import SocialPromoModal from "./components/SocialPromoModal";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -122,6 +123,7 @@ export default function Home() {
           <Footer />
           <ChatBot />
           <StickyFAQButton />
+          <SocialPromoModal />
         </>
       )}
     </div>
