@@ -1,13 +1,12 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import {
   IconX,
   IconBrandTiktok,
   IconBrandInstagram,
   IconBrandFacebook,
-  IconBrandTwitter,
   IconBrandYoutube,
   IconHeart,
   IconShare,
@@ -17,7 +16,6 @@ import Image from "next/image";
 
 export default function SocialPromoModal() {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
 
   useEffect(() => {
     // Check if modal has been shown before (localStorage)
@@ -27,69 +25,75 @@ export default function SocialPromoModal() {
       // Show modal after 10 seconds
       const timer = setTimeout(() => {
         setIsVisible(true);
-        setHasShown(true);
       }, 10000);
 
       return () => clearTimeout(timer);
     }
   }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsVisible(false);
     // Mark as shown so it doesn't appear again for this session
     localStorage.setItem("socialPromoShown", "true");
-  };
+  }, []);
 
-  const handleSocialClick = (platform: string) => {
-    // Track social media clicks (you can add analytics here)
-    console.log(`Social click: ${platform}`);
-
-    // Open social media links
-    const links = {
+  const socialLinks = useMemo(
+    () => ({
       tiktok: "https://tiktok.com/@afrocado",
       instagram: "https://instagram.com/afrocado",
       facebook: "https://facebook.com/afrocado",
       twitter: "https://twitter.com/afrocado",
       youtube: "https://youtube.com/@afrocado",
-    };
+    }),
+    []
+  );
 
-    window.open(links[platform as keyof typeof links], "_blank");
-  };
+  const handleSocialClick = useCallback(
+    (platform: string) => {
+      // Track social media clicks (you can add analytics here)
+      console.log(`Social click: ${platform}`);
+      window.open(socialLinks[platform as keyof typeof socialLinks], "_blank");
+    },
+    [socialLinks]
+  );
 
-  const socialPlatforms = [
-    {
-      name: "TikTok",
-      icon: IconBrandTiktok,
-      color: "from-black to-gray-800",
-      hoverColor: "hover:from-gray-800 hover:to-black",
-      platform: "tiktok",
-      followers: "50K+",
-    },
-    {
-      name: "Instagram",
-      icon: IconBrandInstagram,
-      color: "from-purple-500 to-pink-500",
-      hoverColor: "hover:from-purple-600 hover:to-pink-600",
-      platform: "instagram",
-      followers: "25K+",
-    },
-    {
-      name: "Facebook",
-      icon: IconBrandFacebook,
-      color: "from-blue-600 to-blue-700",
-      hoverColor: "hover:from-blue-700 hover:to-blue-800",
-      platform: "facebook",
-      followers: "15K+",
-    },
-    {
-      name: "YouTube",
-      icon: IconBrandYoutube,
-      color: "from-red-600 to-red-700",
-      hoverColor: "hover:from-red-700 hover:to-red-800",
-      platform: "youtube",
-      followers: "10K+",
-    },
-  ];
+  const socialPlatforms = useMemo(
+    () => [
+      {
+        name: "TikTok",
+        icon: IconBrandTiktok,
+        color: "from-black to-gray-800",
+        hoverColor: "hover:from-gray-800 hover:to-black",
+        platform: "tiktok",
+        followers: "50K+",
+      },
+      {
+        name: "Instagram",
+        icon: IconBrandInstagram,
+        color: "from-purple-500 to-pink-500",
+        hoverColor: "hover:from-purple-600 hover:to-pink-600",
+        platform: "instagram",
+        followers: "25K+",
+      },
+      {
+        name: "Facebook",
+        icon: IconBrandFacebook,
+        color: "from-blue-600 to-blue-700",
+        hoverColor: "hover:from-blue-700 hover:to-blue-800",
+        platform: "facebook",
+        followers: "15K+",
+      },
+      {
+        name: "YouTube",
+        icon: IconBrandYoutube,
+        color: "from-red-600 to-red-700",
+        hoverColor: "hover:from-red-700 hover:to-red-800",
+        platform: "youtube",
+        followers: "10K+",
+      },
+    ],
+    []
+  );
 
   return (
     <AnimatePresence>
@@ -135,58 +139,50 @@ export default function SocialPromoModal() {
                 priority
               />
 
-              {/* Floating Elements */}
+              {/* Optimized Floating Elements - Reduced animations */}
               <div className="absolute inset-0 z-20 pointer-events-none">
-                {/* Floating Hearts */}
-                {[...Array(5)].map((_, i) => (
+                {/* Optimized Floating Hearts - Reduced from 5 to 2 */}
+                {[...Array(2)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="absolute text-white/60"
+                    className="absolute text-white/50 will-change-transform"
                     animate={{
-                      y: [0, -20, 0],
-                      x: [0, Math.random() * 10 - 5, 0],
-                      opacity: [0.3, 0.8, 0.3],
-                      scale: [0.8, 1.2, 0.8],
+                      y: [0, -15, 0],
+                      opacity: [0.3, 0.7, 0.3],
                     }}
                     transition={{
-                      duration: 3 + Math.random() * 2,
+                      duration: 4,
                       repeat: Infinity,
-                      delay: i * 0.5,
+                      delay: i * 1.5,
                       ease: "easeInOut",
                     }}
                     style={{
-                      left: `${20 + Math.random() * 60}%`,
-                      top: `${20 + Math.random() * 60}%`,
+                      left: `${30 + i * 40}%`,
+                      top: `${40 + i * 20}%`,
                     }}
                   >
-                    <IconHeart size={16 + Math.random() * 8} />
+                    <IconHeart size={18} />
                   </motion.div>
                 ))}
 
-                {/* Floating Stars */}
-                {[...Array(3)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute text-yellow-300"
-                    animate={{
-                      rotate: [0, 360],
-                      scale: [0.8, 1.2, 0.8],
-                      opacity: [0.4, 1, 0.4],
-                    }}
-                    transition={{
-                      duration: 4 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: i * 0.8,
-                      ease: "easeInOut",
-                    }}
-                    style={{
-                      right: `${10 + Math.random() * 30}%`,
-                      top: `${30 + Math.random() * 40}%`,
-                    }}
-                  >
-                    <IconStar size={12 + Math.random() * 6} />
-                  </motion.div>
-                ))}
+                {/* Simplified Single Star Animation */}
+                <motion.div
+                  className="absolute text-yellow-300 will-change-transform"
+                  animate={{
+                    opacity: [0.4, 0.8, 0.4],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    right: "20%",
+                    top: "35%",
+                  }}
+                >
+                  <IconStar size={16} />
+                </motion.div>
               </div>
 
               {/* Header Content */}
@@ -253,16 +249,8 @@ export default function SocialPromoModal() {
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <motion.div
-                      animate={{ rotate: [0, 5, -5, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2,
-                      }}
-                    >
-                      <social.icon size={24} />
-                    </motion.div>
+                    {/* Removed continuous rotation for better performance */}
+                    <social.icon size={24} />
                     <div className="text-center">
                       <div className="font-semibold text-sm">{social.name}</div>
                       <div className="text-xs opacity-80">

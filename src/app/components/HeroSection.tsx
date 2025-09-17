@@ -4,42 +4,44 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Variants } from "framer-motion";
+import { useCallback, useMemo } from "react";
 
 export default function HeroSection() {
   const router = useRouter();
 
-  const floatingVariants = {
-    float: {
-      y: [-15, 15, -15],
-      x: [-5, 5, -5],
-      rotate: [-2, 2, -2],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut",
+  // Optimized floating variants - simplified animations, longer durations
+  const floatingVariants = useMemo(
+    () => ({
+      float: {
+        y: [-12, 12, -12],
+        opacity: [0.6, 1, 0.6],
+        transition: {
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
       },
-    },
-    floatReverse: {
-      y: [15, -15, 15],
-      x: [5, -5, 5],
-      rotate: [2, -2, 2],
-      transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
+      floatSlow: {
+        y: [-8, 8, -8],
+        opacity: [0.5, 0.9, 0.5],
+        transition: {
+          duration: 13,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
       },
-    },
-    floatSlow: {
-      y: [-10, 10, -10],
-      x: [-3, 3, -3],
-      rotate: [-1, 1, -1],
-      transition: {
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
+      floatGentle: {
+        y: [-6, 6, -6],
+        opacity: [0.4, 0.8, 0.4],
+        transition: {
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
       },
-    },
-  };
+    }),
+    []
+  );
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -57,11 +59,11 @@ export default function HeroSection() {
 
   return (
     <section className="relative bg-white text-gray-900 overflow-hidden min-h-screen flex items-center">
-      {/* Floating Fruits Across Hero Section - Random Positions */}
+      {/* Optimized Floating Fruits - Reduced from 14 to 6 elements */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Randomly positioned fruits */}
+        {/* Primary fruits - always visible */}
         <motion.div
-          className="absolute top-24 left-1/4 transform -translate-x-4 -translate-y-2 text-4xl"
+          className="absolute top-24 left-1/4 text-4xl will-change-transform"
           variants={floatingVariants as Variants}
           animate="float"
         >
@@ -69,7 +71,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="absolute top-1/4 right-1/5 transform translate-x-6 -translate-y-4 text-3xl hidden sm:block"
+          className="absolute top-1/3 right-1/4 text-3xl will-change-transform"
           variants={floatingVariants as Variants}
           animate="floatSlow"
         >
@@ -77,15 +79,16 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="absolute top-1/3 left-1/4 transform -translate-x-8 -translate-y-4 text-3xl"
+          className="absolute bottom-1/3 left-1/3 text-3xl will-change-transform"
           variants={floatingVariants as Variants}
-          animate="floatReverse"
+          animate="floatGentle"
         >
           🍊
         </motion.div>
 
+        {/* Secondary fruits - hidden on mobile for better performance */}
         <motion.div
-          className="absolute top-2/3 left-1/3 transform translate-x-6 -translate-y-2 text-2xl"
+          className="absolute top-1/2 right-1/5 text-2xl hidden md:block will-change-transform"
           variants={floatingVariants as Variants}
           animate="float"
         >
@@ -93,86 +96,19 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="absolute top-1/2 right-1/4 transform -translate-x-4 translate-y-8 text-2xl hidden md:block"
+          className="absolute bottom-1/4 right-1/3 text-3xl hidden lg:block will-change-transform"
           variants={floatingVariants as Variants}
           animate="floatSlow"
-        >
-          🍋
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-1/4 left-1/3 transform -translate-x-8 translate-y-6 text-3xl"
-          variants={floatingVariants as Variants}
-          animate="floatReverse"
         >
           🍇
         </motion.div>
 
         <motion.div
-          className="absolute bottom-1/3 right-1/4 transform translate-x-4 translate-y-2 text-3xl hidden sm:block"
+          className="absolute top-1/6 left-1/6 text-2xl hidden sm:block will-change-transform"
           variants={floatingVariants as Variants}
-          animate="float"
-        >
-          🫑
-        </motion.div>
-
-        {/* Additional random fruits for more natural look */}
-        <motion.div
-          className="absolute top-1/4 right-1/3 transform translate-x-8 -translate-y-6 text-2xl hidden lg:block"
-          variants={floatingVariants as Variants}
-          animate="floatReverse"
-        >
-          🍓
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-1/3 left-1/5 transform -translate-x-4 translate-y-4 text-2xl"
-          variants={floatingVariants as Variants}
-          animate="floatSlow"
-        >
-          🥝
-        </motion.div>
-
-        {/* Additional left-side fruits for better balance */}
-        <motion.div
-          className="absolute top-1/6 left-1/6 transform -translate-x-2 -translate-y-1 text-2xl"
-          variants={floatingVariants as Variants}
-          animate="float"
+          animate="floatGentle"
         >
           🍎
-        </motion.div>
-
-        <motion.div
-          className="absolute top-2/3 left-1/6 transform translate-x-2 translate-y-3 text-3xl"
-          variants={floatingVariants as Variants}
-          animate="floatReverse"
-        >
-          🍐
-        </motion.div>
-
-        {/* Reduced floating fruits on the right side - mobile responsive */}
-        <motion.div
-          className="absolute top-16 right-1/4 transform translate-x-2 -translate-y-1 text-3xl hidden sm:block"
-          variants={floatingVariants as Variants}
-          animate="float"
-        >
-          🍌
-        </motion.div>
-
-        <motion.div
-          className="absolute top-1/2 right-1/5 transform -translate-x-2 translate-y-4 text-4xl hidden md:block"
-          variants={floatingVariants as Variants}
-          animate="floatSlow"
-        >
-          🥥
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-1/4 right-1/3 transform -translate-x-1 translate-y-3 text-3xl hidden lg:block"
-          variants={floatingVariants as Variants}
-          animate="floatReverse"
-        >
-          🍉
         </motion.div>
       </div>
 
@@ -328,29 +264,14 @@ export default function HeroSection() {
               >
                 <button
                   className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log(
-                      "Button clicked - attempting navigation to /products-view"
-                    );
-
-                    // Try multiple navigation methods
-                    try {
-                      console.log("Trying router.push...");
+                  onClick={useCallback(
+                    (e: React.MouseEvent) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       router.push("/products-view");
-                    } catch (error) {
-                      console.error("Router.push failed:", error);
-                      try {
-                        console.log("Trying window.location...");
-                        window.location.href = "/products-view";
-                      } catch (windowError) {
-                        console.error("Window.location failed:", windowError);
-                        // Last resort - direct navigation
-                        window.open("/products-view", "_self");
-                      }
-                    }
-                  }}
+                    },
+                    [router]
+                  )}
                 >
                   View Exported Products
                 </button>

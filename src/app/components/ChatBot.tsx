@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import {
   IconMessageCircle,
   IconX,
@@ -36,15 +36,15 @@ export default function ChatBot() {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  const getBotResponse = (userMessage: string): string => {
+  const getBotResponse = useCallback((userMessage: string): string => {
     const message = userMessage.toLowerCase();
 
     // Company Information
@@ -145,9 +145,9 @@ export default function ChatBot() {
 
     // Fallback response
     return "That's a great question! While I can provide general information about Afrocado's services, for specific details or personalized assistance, I'd recommend contacting our sales team directly. They can provide more detailed information tailored to your needs.";
-  };
+  }, []);
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = useCallback(async () => {
     if (!inputValue.trim()) return;
 
     const userMessage: Message = {
@@ -157,6 +157,7 @@ export default function ChatBot() {
       timestamp: new Date(),
     };
 
+    const currentInput = inputValue;
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
     setIsTyping(true);
@@ -165,28 +166,34 @@ export default function ChatBot() {
     setTimeout(() => {
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: getBotResponse(inputValue),
+        text: getBotResponse(currentInput),
         isUser: false,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botResponse]);
       setIsTyping(false);
     }, 1000 + Math.random() * 1000);
-  };
+  }, [inputValue, getBotResponse]);
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
-  };
+  const handleKeyPress = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        handleSendMessage();
+      }
+    },
+    [handleSendMessage]
+  );
 
-  const quickQuestions = [
-    "What products do you export?",
-    "Which countries do you export to?",
-    "What are your quality standards?",
-    "How can I get a quote?",
-  ];
+  const quickQuestions = useMemo(
+    () => [
+      "What products do you export?",
+      "Which countries do you export to?",
+      "What are your quality standards?",
+      "How can I get a quote?",
+    ],
+    []
+  );
 
   return (
     <>
@@ -247,29 +254,24 @@ export default function ChatBot() {
           />
         </motion.button>
 
-        {/* Floating particles for call button */}
+        {/* Optimized single particle for call button */}
         <div className="absolute inset-0 pointer-events-none">
-          {[...Array(2)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400 rounded-full"
-              animate={{
-                y: [0, -15, 0],
-                x: [0, Math.random() * 8 - 4, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                delay: i * 0.6,
-                ease: "easeInOut",
-              }}
-              style={{
-                left: `${30 + i * 40}%`,
-                top: `${70 + i * 15}%`,
-              }}
-            />
-          ))}
+          <motion.div
+            className="absolute w-1 h-1 bg-blue-400 rounded-full will-change-transform"
+            animate={{
+              y: [0, -12, 0],
+              opacity: [0, 0.8, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              left: "50%",
+              top: "75%",
+            }}
+          />
         </div>
       </motion.div>
 
@@ -350,29 +352,24 @@ export default function ChatBot() {
           </motion.div>
         </motion.button>
 
-        {/* Floating particles effect */}
+        {/* Optimized single particle effect */}
         <div className="absolute inset-0 pointer-events-none">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-yellow-400 rounded-full"
-              animate={{
-                y: [0, -20, 0],
-                x: [0, Math.random() * 10 - 5, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: i * 0.5,
-                ease: "easeInOut",
-              }}
-              style={{
-                left: `${20 + i * 30}%`,
-                top: `${80 + i * 10}%`,
-              }}
-            />
-          ))}
+          <motion.div
+            className="absolute w-1 h-1 bg-yellow-400 rounded-full will-change-transform"
+            animate={{
+              y: [0, -15, 0],
+              opacity: [0, 0.9, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              left: "35%",
+              top: "85%",
+            }}
+          />
         </div>
       </motion.div>
 
@@ -548,7 +545,10 @@ export default function ChatBot() {
                   {quickQuestions.map((question, index) => (
                     <button
                       key={index}
-                      onClick={() => setInputValue(question)}
+                      onClick={useCallback(
+                        () => setInputValue(question),
+                        [question]
+                      )}
                       className="text-xs bg-green-50 text-green-700 px-2 sm:px-3 py-1 rounded-full hover:bg-green-100 transition-colors break-words"
                     >
                       {question}

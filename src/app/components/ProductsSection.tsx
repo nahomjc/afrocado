@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
+import Image from "next/image";
 import {
   IconX,
   IconEye,
@@ -34,117 +35,120 @@ export default function ProductsSection() {
     },
   };
 
-  const handleViewDetails = (product: (typeof products)[0]) => {
+  const handleViewDetails = useCallback((product: (typeof products)[0]) => {
     setSelectedProduct(product);
     setIsDetailModalOpen(true);
     setShowPhoneNumber(false);
-  };
+  }, []);
 
-  const handleRequestSample = () => {
+  const handleRequestSample = useCallback(() => {
     setShowPhoneNumber(true);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsDetailModalOpen(false);
     setSelectedProduct(null);
     setShowPhoneNumber(false);
-  };
-  const products = [
-    {
-      id: 1,
-      name: "Premium Avocados",
-      emoji: "🥑",
-      image:
-        "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=800&h=600&fit=crop&crop=center",
-      description:
-        "Hass and Fuerte varieties with perfect ripeness and exceptional taste",
-      details:
-        "Sourced from high-altitude farms in Kenya and Tanzania. Our avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
-      varieties: ["Hass", "Fuerte", "Pinkerton", "Reed"],
-      season: "Year-round",
-      color: "from-green-400 to-green-600",
-    },
-    {
-      id: 2,
-      name: "Citrus Fruits",
-      emoji: "🍊",
-      image:
-        "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=800&h=600&fit=crop&crop=center",
-      description:
-        "Fresh oranges, lemons, and grapefruits bursting with natural flavor",
-      details:
-        "Premium citrus varieties grown in optimal conditions. Our fruits are carefully selected for size, color, and sugar content to meet international standards.",
-      varieties: [
-        "Valencia Oranges",
-        "Eureka Lemons",
-        "Ruby Grapefruit",
-        "Tangerines",
-      ],
-      season: "March - October",
-      color: "from-orange-400 to-orange-600",
-    },
-    {
-      id: 3,
-      name: "Fresh Tomatoes",
-      emoji: "🍅",
-      image:
-        "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&h=600&fit=crop&crop=center",
-      description:
-        "Vine-ripened tomatoes perfect for fresh consumption and processing",
-      details:
-        "High-quality tomatoes grown in controlled environments. Available in various sizes and colors, perfect for both retail and food service industries.",
-      varieties: ["Cherry", "Roma", "Beefsteak", "Plum"],
-      season: "Year-round",
-      color: "from-red-400 to-red-600",
-    },
-    {
-      id: 4,
-      name: "Spices & Herbs",
-      emoji: "🌶️",
-      image:
-        "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&h=600&fit=crop&crop=center",
-      description:
-        "Aromatic spices and fresh herbs to enhance your culinary creations",
-      details:
-        "Premium quality spices and herbs sourced from traditional growing regions. Dried and processed using traditional methods to preserve flavor and aroma.",
-      varieties: ["Black Pepper", "Cardamom", "Cinnamon", "Turmeric"],
-      season: "Year-round",
-      color: "from-yellow-400 to-yellow-600",
-    },
-    {
-      id: 5,
-      name: "Tropical Fruits",
-      emoji: "🥭",
-      image:
-        "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=800&h=600&fit=crop&crop=center",
-      description:
-        "Exotic tropical fruits including mangoes, pineapples, and passion fruits",
-      details:
-        "Premium tropical fruits grown in ideal climatic conditions. Each fruit is carefully selected for optimal sweetness and texture.",
-      varieties: [
-        "Alphonso Mango",
-        "Smooth Cayenne Pineapple",
-        "Purple Passion Fruit",
-        "Papaya",
-      ],
-      season: "Seasonal",
-      color: "from-yellow-400 to-orange-500",
-    },
-    {
-      id: 6,
-      name: "Leafy Greens",
-      emoji: "🥬",
-      image:
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
-      description:
-        "Fresh leafy vegetables including kale, spinach, and lettuce varieties",
-      details:
-        "Crisp, fresh leafy greens grown in controlled environments. Packed immediately after harvest to maintain maximum freshness and nutritional value.",
-      varieties: ["Baby Spinach", "Kale", "Romaine Lettuce", "Arugula"],
-      season: "Year-round",
-      color: "from-green-400 to-emerald-500",
-    },
-  ];
+  }, []);
+  const products = useMemo(
+    () => [
+      {
+        id: 1,
+        name: "Premium Avocados",
+        emoji: "🥑",
+        image:
+          "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=800&h=600&fit=crop&crop=center",
+        description:
+          "Hass and Fuerte varieties with perfect ripeness and exceptional taste",
+        details:
+          "Sourced from high-altitude farms in Kenya and Tanzania. Our avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
+        varieties: ["Hass", "Fuerte", "Pinkerton", "Reed"],
+        season: "Year-round",
+        color: "from-green-400 to-green-600",
+      },
+      {
+        id: 2,
+        name: "Citrus Fruits",
+        emoji: "🍊",
+        image:
+          "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=800&h=600&fit=crop&crop=center",
+        description:
+          "Fresh oranges, lemons, and grapefruits bursting with natural flavor",
+        details:
+          "Premium citrus varieties grown in optimal conditions. Our fruits are carefully selected for size, color, and sugar content to meet international standards.",
+        varieties: [
+          "Valencia Oranges",
+          "Eureka Lemons",
+          "Ruby Grapefruit",
+          "Tangerines",
+        ],
+        season: "March - October",
+        color: "from-orange-400 to-orange-600",
+      },
+      {
+        id: 3,
+        name: "Fresh Tomatoes",
+        emoji: "🍅",
+        image:
+          "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&h=600&fit=crop&crop=center",
+        description:
+          "Vine-ripened tomatoes perfect for fresh consumption and processing",
+        details:
+          "High-quality tomatoes grown in controlled environments. Available in various sizes and colors, perfect for both retail and food service industries.",
+        varieties: ["Cherry", "Roma", "Beefsteak", "Plum"],
+        season: "Year-round",
+        color: "from-red-400 to-red-600",
+      },
+      {
+        id: 4,
+        name: "Spices & Herbs",
+        emoji: "🌶️",
+        image:
+          "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&h=600&fit=crop&crop=center",
+        description:
+          "Aromatic spices and fresh herbs to enhance your culinary creations",
+        details:
+          "Premium quality spices and herbs sourced from traditional growing regions. Dried and processed using traditional methods to preserve flavor and aroma.",
+        varieties: ["Black Pepper", "Cardamom", "Cinnamon", "Turmeric"],
+        season: "Year-round",
+        color: "from-yellow-400 to-yellow-600",
+      },
+      {
+        id: 5,
+        name: "Tropical Fruits",
+        emoji: "🥭",
+        image:
+          "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=800&h=600&fit=crop&crop=center",
+        description:
+          "Exotic tropical fruits including mangoes, pineapples, and passion fruits",
+        details:
+          "Premium tropical fruits grown in ideal climatic conditions. Each fruit is carefully selected for optimal sweetness and texture.",
+        varieties: [
+          "Alphonso Mango",
+          "Smooth Cayenne Pineapple",
+          "Purple Passion Fruit",
+          "Papaya",
+        ],
+        season: "Seasonal",
+        color: "from-yellow-400 to-orange-500",
+      },
+      {
+        id: 6,
+        name: "Leafy Greens",
+        emoji: "🥬",
+        image:
+          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
+        description:
+          "Fresh leafy vegetables including kale, spinach, and lettuce varieties",
+        details:
+          "Crisp, fresh leafy greens grown in controlled environments. Packed immediately after harvest to maintain maximum freshness and nutritional value.",
+        varieties: ["Baby Spinach", "Kale", "Romaine Lettuce", "Arugula"],
+        season: "Year-round",
+        color: "from-green-400 to-emerald-500",
+      },
+    ],
+    []
+  );
 
   return (
     <section className="py-20 bg-gradient-to-br from-green-50 to-emerald-100">
@@ -175,20 +179,20 @@ export default function ProductsSection() {
           {products.map((product) => (
             <motion.div
               key={product.id}
-              className="group bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100"
+              className="group bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100"
               variants={fadeInUp}
-              whileHover={{ y: -12, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 400 }}
             >
               {/* Image Section */}
               <div className="h-56 relative overflow-hidden">
-                <img
+                <Image
                   src={product.image}
                   alt={`Premium ${product.name} - High quality African produce for export`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  loading="lazy"
-                  width="400"
-                  height="224"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 will-change-transform"
+                  width={400}
+                  height={224}
+                  priority={false}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 
@@ -239,10 +243,10 @@ export default function ProductsSection() {
                 {/* View Details Button */}
                 <motion.button
                   onClick={() => handleViewDetails(product)}
-                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 shadow-lg hover:shadow-lg flex items-center justify-center space-x-2"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  transition={{ type: "spring", stiffness: 400 }}
                 >
                   <IconEye size={18} />
                   <span>View Details</span>
@@ -261,8 +265,8 @@ export default function ProductsSection() {
         >
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
             >
               <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
               <div className="text-gray-700 font-medium">Organic Certified</div>
@@ -271,8 +275,8 @@ export default function ProductsSection() {
               </div>
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
             >
               <div className="text-3xl font-bold text-green-600 mb-2">
                 48hrs
@@ -283,8 +287,8 @@ export default function ProductsSection() {
               </div>
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
             >
               <div className="text-3xl font-bold text-green-600 mb-2">
                 ISO 22000
@@ -324,13 +328,13 @@ export default function ProductsSection() {
             >
               {/* Modal Header */}
               <div className="relative h-64 overflow-hidden rounded-t-3xl">
-                <img
+                <Image
                   src={selectedProduct.image}
                   alt={`Premium ${selectedProduct.name} - Detailed view of high quality African produce`}
                   className="w-full h-full object-cover"
-                  loading="lazy"
-                  width="600"
-                  height="256"
+                  width={600}
+                  height={256}
+                  priority={false}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
