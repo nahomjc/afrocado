@@ -189,17 +189,95 @@ export default function HeroSection() {
             variants={fadeInUp}
           >
             <div className="relative">
-              {/* Main Image with Border */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-green-200">
-                <Image
-                  src="/unnamed (13).png"
-                  alt="Beautiful woman with fresh African produce"
-                  width={600}
-                  height={700}
-                  className="object-cover w-full h-auto"
-                  priority
-                />
-              </div>
+              {/* Professional Border Container */}
+              <motion.div className="relative group">
+                {/* Green Border Background */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-green-600 rounded-3xl blur-sm opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+
+                {/* Main Image Container */}
+                <div className="relative">
+                  {/* Inner Border with Shadow */}
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white p-2">
+                    {/* Image with Professional Frame */}
+                    <div className="relative rounded-xl overflow-hidden shadow-lg">
+                      <Image
+                        src="/unnamed (13).png"
+                        alt="Beautiful woman with fresh African produce"
+                        width={600}
+                        height={700}
+                        className="object-cover w-full h-auto"
+                        priority
+                      />
+
+                      {/* Professional Badge */}
+                      <div className="absolute top-4 right-4">
+                        <motion.div
+                          className="relative"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{
+                            delay: 0.5,
+                            type: "spring",
+                            stiffness: 200,
+                          }}
+                        >
+                          {/* Badge Background */}
+                          <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg px-3 py-2 shadow-lg border-2 border-yellow-300">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-lg">🏆</span>
+                              <div className="flex flex-col">
+                                <span className="text-xs font-bold text-gray-800 leading-tight">
+                                  PREMIUM
+                                </span>
+                                <span className="text-xs font-semibold text-yellow-800 leading-tight">
+                                  QUALITY
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+
+                      {/* Quality Certification Badge */}
+                      <div className="absolute bottom-4 left-4">
+                        <motion.div
+                          className="relative"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{
+                            delay: 0.7,
+                            type: "spring",
+                            stiffness: 200,
+                          }}
+                        >
+                          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg px-3 py-2 shadow-lg border-2 border-green-400">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-white text-sm">✓</span>
+                              <div className="flex flex-col">
+                                <span className="text-xs font-bold text-white leading-tight">
+                                  CERTIFIED
+                                </span>
+                                <span className="text-xs text-green-100 leading-tight">
+                                  ORGANIC
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+
+                      {/* Subtle Overlay for Premium Look */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-white/5 pointer-events-none"></div>
+                    </div>
+                  </div>
+
+                  {/* Professional Corner Accents */}
+                  <div className="absolute -top-2 -left-2 w-6 h-6 border-l-4 border-t-4 border-green-500 rounded-tl-lg"></div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 border-r-4 border-t-4 border-green-500 rounded-tr-lg"></div>
+                  <div className="absolute -bottom-2 -left-2 w-6 h-6 border-l-4 border-b-4 border-green-500 rounded-bl-lg"></div>
+                  <div className="absolute -bottom-2 -right-2 w-6 h-6 border-r-4 border-b-4 border-green-500 rounded-br-lg"></div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
 

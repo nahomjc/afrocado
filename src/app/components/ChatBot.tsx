@@ -22,6 +22,8 @@ interface Message {
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullSize, setIsFullSize] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isCallHovered, setIsCallHovered] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -188,38 +190,191 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Call Button */}
-      <motion.button
-        className="fixed bottom-24 right-4 sm:right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg z-40"
-        onClick={() => window.open("tel:+1234567890", "_self")}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ scale: 0, y: 20 }}
-        animate={{ scale: 1, y: 0 }}
-        transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
-        title="Call us now"
+      {/* Call Button Container */}
+      <motion.div
+        className="fixed bottom-24 right-4 sm:right-6 z-40"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          delay: 2.2,
+          type: "spring",
+          stiffness: 300,
+          damping: 20,
+        }}
       >
-        <IconPhone size={20} />
-      </motion.button>
-
-      {/* Chat Button */}
-      <motion.button
-        className="fixed bottom-6 right-4 sm:right-6 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg z-40"
-        onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 200, damping: 15 }}
-        title="Chat with us"
-      >
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
+        <motion.button
+          className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full shadow-2xl transition-all duration-300 overflow-hidden"
+          onClick={() => window.open("tel:+1234567890", "_self")}
+          onMouseEnter={() => setIsCallHovered(true)}
+          onMouseLeave={() => setIsCallHovered(false)}
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          title="Call us now"
         >
-          {isOpen ? <IconX size={24} /> : <IconMessageCircle size={24} />}
-        </motion.div>
-      </motion.button>
+          {/* Background animation */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            animate={{
+              scale: isCallHovered ? [1, 1.2, 1] : 1,
+              opacity: isCallHovered ? 0.1 : 0,
+            }}
+            transition={{ duration: 0.6, repeat: isCallHovered ? Infinity : 0 }}
+          />
+
+          {/* Main button content */}
+          <div className="relative p-3">
+            <motion.div
+              animate={{ rotate: isCallHovered ? 360 : 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <IconPhone size={20} />
+            </motion.div>
+          </div>
+
+          {/* Pulse effect */}
+          <motion.div
+            className="absolute inset-0 rounded-full border-2 border-white/30"
+            animate={{
+              scale: [1, 1.4, 1],
+              opacity: [0.7, 0, 0.7],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.button>
+
+        {/* Floating particles for call button */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(2)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400 rounded-full"
+              animate={{
+                y: [0, -15, 0],
+                x: [0, Math.random() * 8 - 4, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                delay: i * 0.6,
+                ease: "easeInOut",
+              }}
+              style={{
+                left: `${30 + i * 40}%`,
+                top: `${70 + i * 15}%`,
+              }}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Chat Button Container */}
+      <motion.div
+        className="fixed bottom-6 right-4 sm:right-6 z-40"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          delay: 2,
+          type: "spring",
+          stiffness: 300,
+          damping: 20,
+        }}
+      >
+        <motion.button
+          className="group relative bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-full shadow-2xl transition-all duration-300 overflow-hidden"
+          onClick={() => setIsOpen(!isOpen)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          title="Chat with us"
+        >
+          {/* Background animation */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            animate={{
+              scale: isHovered ? [1, 1.2, 1] : 1,
+              opacity: isHovered ? 0.1 : 0,
+            }}
+            transition={{ duration: 0.6, repeat: isHovered ? Infinity : 0 }}
+          />
+
+          {/* Main button content */}
+          <div className="relative p-4">
+            <motion.div
+              animate={{
+                rotate: isOpen ? 180 : 0,
+                scale: isHovered ? [1, 1.1, 1] : 1,
+              }}
+              transition={{
+                rotate: { duration: 0.3 },
+                scale: { duration: 0.6, repeat: isHovered ? Infinity : 0 },
+              }}
+            >
+              {isOpen ? <IconX size={24} /> : <IconMessageCircle size={24} />}
+            </motion.div>
+          </div>
+
+          {/* Pulse effect */}
+          <motion.div
+            className="absolute inset-0 rounded-full border-2 border-white/30"
+            animate={{
+              scale: [1, 1.4, 1],
+              opacity: [0.7, 0, 0.7],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Tooltip */}
+          <motion.div
+            className="absolute right-full mr-4 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+            initial={{ x: 10, opacity: 0 }}
+            animate={{
+              x: isHovered ? 0 : 10,
+              opacity: isHovered ? 1 : 0,
+            }}
+            transition={{ duration: 0.2 }}
+          >
+            <span>{isOpen ? "Close Chat" : "Chat with us"}</span>
+            <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-gray-900"></div>
+          </motion.div>
+        </motion.button>
+
+        {/* Floating particles effect */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-yellow-400 rounded-full"
+              animate={{
+                y: [0, -20, 0],
+                x: [0, Math.random() * 10 - 5, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: i * 0.5,
+                ease: "easeInOut",
+              }}
+              style={{
+                left: `${20 + i * 30}%`,
+                top: `${80 + i * 10}%`,
+              }}
+            />
+          ))}
+        </div>
+      </motion.div>
 
       {/* Chat Window */}
       <AnimatePresence>
@@ -236,26 +391,76 @@ export default function ChatBot() {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-3 sm:p-4 flex items-center justify-between">
-              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <IconRobot size={16} className="sm:w-5 sm:h-5" />
-                </div>
+            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-3 sm:p-4 flex items-center justify-between relative overflow-hidden">
+              {/* Background animation */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 opacity-20"
+                animate={{
+                  x: [-100, 100, -100],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1 relative z-10">
+                <motion.div
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  >
+                    <IconRobot size={16} className="sm:w-5 sm:h-5" />
+                  </motion.div>
+                </motion.div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-semibold text-sm sm:text-lg truncate">
+                  <motion.h3
+                    className="font-semibold text-sm sm:text-lg truncate"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
                     Afrocado Assistant
-                  </h3>
-                  <p className="text-xs text-green-100 truncate">
+                  </motion.h3>
+                  <motion.p
+                    className="text-xs text-green-100 truncate flex items-center"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <motion.span
+                      className="inline-block w-2 h-2 bg-green-300 rounded-full mr-2"
+                      animate={{
+                        opacity: [1, 0.3, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
                     Online now • Ready to help
-                  </p>
+                  </motion.p>
                 </div>
               </div>
-              <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
+              <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0 relative z-10">
                 <motion.button
                   onClick={() => setIsFullSize(!isFullSize)}
-                  className="text-white hover:text-green-200 transition-colors p-1"
-                  whileHover={{ scale: 1.1 }}
+                  className="text-white hover:text-green-200 transition-colors p-1 rounded-full hover:bg-white/10"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                   title={isFullSize ? "Minimize" : "Maximize"}
                 >
                   {isFullSize ? (
@@ -266,9 +471,10 @@ export default function ChatBot() {
                 </motion.button>
                 <motion.button
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:text-green-200 transition-colors p-1"
-                  whileHover={{ scale: 1.1 }}
+                  className="text-white hover:text-green-200 transition-colors p-1 rounded-full hover:bg-white/10"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                   title="Close chat"
                 >
                   <IconX size={18} className="sm:w-5 sm:h-5" />
