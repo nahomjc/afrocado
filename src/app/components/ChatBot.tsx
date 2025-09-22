@@ -42,7 +42,7 @@ export default function ChatBot() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, scrollToBottom]);
 
   const getBotResponse = useCallback((userMessage: string): string => {
     const message = userMessage.toLowerCase();
@@ -542,18 +542,18 @@ export default function ChatBot() {
               <div className="p-3 sm:p-4 border-t">
                 <p className="text-xs text-gray-500 mb-2">Quick questions:</p>
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {quickQuestions.map((question, index) => (
-                    <button
-                      key={index}
-                      onClick={useCallback(
-                        () => setInputValue(question),
-                        [question]
-                      )}
-                      className="text-xs bg-green-50 text-green-700 px-2 sm:px-3 py-1 rounded-full hover:bg-green-100 transition-colors break-words"
-                    >
-                      {question}
-                    </button>
-                  ))}
+                  {quickQuestions.map((question, index) => {
+                    const handleQuestionClick = () => setInputValue(question);
+                    return (
+                      <button
+                        key={index}
+                        onClick={handleQuestionClick}
+                        className="text-xs bg-green-50 text-green-700 px-2 sm:px-3 py-1 rounded-full hover:bg-green-100 transition-colors break-words"
+                      >
+                        {question}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             )}
