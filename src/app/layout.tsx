@@ -42,14 +42,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://afrocado.com"),
+  metadataBase: new URL("https://afrocadoexports.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://afrocado.com",
+    url: "https://afrocadoexports.com",
     title: "Afrocado - Premium African Fruit & Vegetable Export Company",
     description:
       "Leading African fruit and vegetable export company specializing in premium avocados, citrus fruits, fresh tomatoes, and tropical produce. ISO 22000 certified with global shipping to 25+ countries.",
@@ -99,13 +99,13 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://afrocado.com/#organization",
+        "@id": "https://afrocadoexports.com/#organization",
         name: "Afrocado Export Company",
         alternateName: "Afrocado",
-        url: "https://afrocado.com",
+        url: "https://afrocadoexports.com",
         logo: {
           "@type": "ImageObject",
-          url: "https://afrocado.com/logo.png",
+          url: "https://afrocadoexports.com/logo.png",
           width: 200,
           height: 200,
         },
@@ -124,7 +124,7 @@ export default function RootLayout({
           "@type": "ContactPoint",
           telephone: "+254-20-123-4567",
           contactType: "customer service",
-          email: "info@afrocado.com",
+          email: "info@afrocadoexports.com",
           availableLanguage: ["English", "Swahili"],
         },
         sameAs: [
@@ -152,19 +152,20 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://afrocado.com/#website",
-        url: "https://afrocado.com",
+        "@id": "https://afrocadoexports.com/#website",
+        url: "https://afrocadoexports.com",
         name: "Afrocado - Premium African Produce Export",
         description: "Leading African fruit and vegetable export company",
         publisher: {
-          "@id": "https://afrocado.com/#organization",
+          "@id": "https://afrocadoexports.com/#organization",
         },
         potentialAction: [
           {
             "@type": "SearchAction",
             target: {
               "@type": "EntryPoint",
-              urlTemplate: "https://afrocado.com/search?q={search_term_string}",
+              urlTemplate:
+                "https://afrocadoexports.com/search?q={search_term_string}",
             },
             "query-input": "required name=search_term_string",
           },
@@ -172,17 +173,61 @@ export default function RootLayout({
       },
       {
         "@type": "WebPage",
-        "@id": "https://afrocado.com/#webpage",
-        url: "https://afrocado.com",
+        "@id": "https://afrocadoexports.com/#webpage",
+        url: "https://afrocadoexports.com",
         name: "Afrocado - Premium African Fruit & Vegetable Export Company",
         isPartOf: {
-          "@id": "https://afrocado.com/#website",
+          "@id": "https://afrocadoexports.com/#website",
         },
         about: {
-          "@id": "https://afrocado.com/#organization",
+          "@id": "https://afrocadoexports.com/#organization",
         },
         description:
           "Leading African fruit and vegetable export company specializing in premium avocados, citrus fruits, fresh tomatoes, and tropical produce.",
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://afrocadoexports.com/#localbusiness",
+        name: "Afrocado Export Company",
+        image: "https://afrocadoexports.com/og-image.jpg",
+        telephone: "+254-20-123-4567",
+        email: "info@afrocadoexports.com",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Afrocado Export House",
+          addressLocality: "Westlands Business District",
+          addressRegion: "Nairobi",
+          addressCountry: "Kenya",
+          postalCode: "00100",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: -1.2921,
+          longitude: 36.8219,
+        },
+        url: "https://afrocadoexports.com",
+        priceRange: "$$",
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "08:00",
+          closes: "17:00",
+        },
+        areaServed: [
+          {
+            "@type": "Country",
+            name: "Kenya",
+          },
+          {
+            "@type": "Country",
+            name: "Uganda",
+          },
+          {
+            "@type": "Country",
+            name: "Tanzania",
+          },
+        ],
+        serviceType: "Agricultural Export Services",
       },
     ],
   };
@@ -196,11 +241,39 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
-        <link rel="canonical" href="https://afrocado.com" />
+        <link rel="canonical" href="https://afrocadoexports.com" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#16a34a" />
         <meta name="msapplication-TileColor" content="#16a34a" />
+        <meta name="geo.region" content="KE" />
+        <meta name="geo.placename" content="Nairobi, Kenya" />
+        <meta name="geo.position" content="-1.2921;36.8219" />
+        <meta name="ICBM" content="-1.2921, 36.8219" />
+        <meta
+          name="DC.title"
+          content="Afrocado - Premium African Fruit & Vegetable Export Company"
+        />
+        <meta
+          name="DC.description"
+          content="Leading African fruit and vegetable export company specializing in premium avocados, citrus fruits, fresh tomatoes, and tropical produce. ISO 22000 certified with global shipping to 25+ countries."
+        />
+        <meta
+          name="DC.subject"
+          content="African produce export, premium avocados, citrus fruits, fresh vegetables, tropical fruits, organic produce"
+        />
+        <meta name="DC.language" content="en" />
+        <meta name="DC.coverage" content="Kenya, East Africa, Global" />
+        <meta name="DC.type" content="Business" />
+        <meta name="DC.format" content="text/html" />
+        <meta name="DC.identifier" content="https://afrocadoexports.com" />
+        <meta name="DC.publisher" content="Afrocado Export Company" />
+        <meta
+          name="DC.rights"
+          content="Copyright 2024 Afrocado Export Company"
+        />
+        <meta name="DC.date.created" content="2024-01-01" />
+        <meta name="DC.date.modified" content="2025-01-15" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

@@ -2,48 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://afrocado.com/</loc>
+    <loc>https://afrocadoexports.com/</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://afrocado.com/og-image.jpg</image:loc>
+      <image:loc>https://afrocadoexports.com/og-image.jpg</image:loc>
       <image:title>Afrocado - Premium African Produce Export</image:title>
       <image:caption>Leading African fruit and vegetable export company</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://afrocado.com/#about</loc>
+    <loc>https://afrocadoexports.com/#about</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://afrocado.com/#products</loc>
+    <loc>https://afrocadoexports.com/#products</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://afrocado.com/#contact</loc>
+    <loc>https://afrocadoexports.com/#contact</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://afrocado.com/#team</loc>
+    <loc>https://afrocadoexports.com/#team</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://afrocado.com/#testimonials</loc>
+    <loc>https://afrocadoexports.com/#testimonials</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://afrocado.com/404</loc>
+    <loc>https://afrocadoexports.com/blog</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://afrocadoexports.com/faq</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://afrocadoexports.com/products-view</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://afrocadoexports.com/404</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>

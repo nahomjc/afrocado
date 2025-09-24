@@ -17,6 +17,50 @@ import {
 import { useRouter } from "next/navigation";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Frequently Asked Questions | Afrocado Export Company",
+  description:
+    "Find comprehensive answers to all your questions about our African produce export services, shipping, quality standards, certifications, and partnership opportunities. Expert support for international buyers.",
+  keywords: [
+    "African produce export FAQ",
+    "export shipping questions",
+    "quality certification FAQ",
+    "minimum order quantities",
+    "cold chain logistics FAQ",
+    "organic certification questions",
+    "export documentation help",
+    "international shipping FAQ",
+    "Kenya export company questions",
+    "fresh produce export support",
+  ],
+  openGraph: {
+    title: "Frequently Asked Questions | Afrocado Export Company",
+    description:
+      "Find comprehensive answers to all your questions about our African produce export services, shipping, quality standards, and partnership opportunities.",
+    url: "https://afrocadoexports.com/faq",
+    type: "website",
+    images: [
+      {
+        url: "https://afrocadoexports.com/faq-og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Afrocado FAQ - Frequently Asked Questions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frequently Asked Questions | Afrocado Export Company",
+    description:
+      "Find comprehensive answers to all your questions about our African produce export services, shipping, quality standards, and partnership opportunities.",
+    images: ["https://afrocadoexports.com/faq-twitter-image.jpg"],
+  },
+  alternates: {
+    canonical: "https://afrocadoexports.com/faq",
+  },
+};
 
 export default function FAQPage() {
   const router = useRouter();
@@ -195,8 +239,30 @@ export default function FAQPage() {
     },
   };
 
+  // Generate FAQ structured data
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: filteredData.flatMap((category) =>
+      category.questions.map((qa) => ({
+        "@type": "Question",
+        name: qa.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: qa.answer,
+        },
+      }))
+    ),
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData),
+        }}
+      />
       <Navigation />
 
       {/* Hero Section */}
@@ -416,7 +482,7 @@ export default function FAQPage() {
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   onClick={() =>
-                    window.open("mailto:info@afrocado.com", "_blank")
+                    window.open("mailto:info@afrocadoexports.com", "_blank")
                   }
                 >
                   Send Email
