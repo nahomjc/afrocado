@@ -1,5 +1,3 @@
-"use client";
-
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import {
@@ -61,6 +59,8 @@ export const metadata: Metadata = {
     canonical: "https://afrocadoexports.com/faq",
   },
 };
+
+("use client");
 
 export default function FAQPage() {
   const router = useRouter();

@@ -1,12 +1,9 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
   IconArrowLeft,
   IconCalendar,
   IconUser,
-  IconTag,
   IconSearch,
   IconClock,
   IconEye,
@@ -59,6 +56,8 @@ export const metadata: Metadata = {
     canonical: "https://afrocadoexports.com/blog",
   },
 };
+
+("use client");
 
 export default function BlogPage() {
   const router = useRouter();
