@@ -242,7 +242,7 @@ export default function RootLayout({
           }}
         />
         <link rel="canonical" href="https://afrocadoexports.com" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/about-img/logo1-removebg-preview.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#16a34a" />
         <meta name="msapplication-TileColor" content="#16a34a" />
