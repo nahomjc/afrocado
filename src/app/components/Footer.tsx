@@ -14,6 +14,7 @@ import {
   IconCheck,
   IconArrowRight,
 } from "@tabler/icons-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -40,8 +41,13 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-3 shadow-lg">
-                <span className="text-xl">🥑</span>
+              <div className="relative w-28 h-28 mr-3">
+                <Image
+                  src="/about-img/logo1-removebg-preview.png"
+                  alt="AFROCADDO Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
@@ -102,7 +108,7 @@ export default function Footer() {
                 <div>
                   <p className="text-xs text-gray-400">Location</p>
                   <p className="text-white font-medium text-sm">
-                    Nairobi, Kenya
+                    Addis Ababa, Ethiopia
                   </p>
                 </div>
               </div>
@@ -355,7 +361,7 @@ export default function Footer() {
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
               <p className="text-gray-400 text-sm">
-                &copy; 2024 Afrocado Fruit and Vegetable Export Company. All
+                &copy; 2025 Afrocado Fruit and Vegetable Export Company. All
                 rights reserved.
               </p>
               <p className="text-gray-500 text-xs mt-1">

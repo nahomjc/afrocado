@@ -61,7 +61,7 @@ export default function ProductsSection() {
         description:
           "Hass and Fuerte varieties with perfect ripeness and exceptional taste",
         details:
-          "Sourced from high-altitude farms in Kenya and Tanzania. Our avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
+          "Sourced from high-altitude farms in Ethiopia and Tanzania. Our avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
         varieties: ["Hass", "Fuerte", "Pinkerton", "Reed"],
         season: "Year-round",
         color: "from-green-400 to-green-600",
@@ -497,7 +497,7 @@ export default function ProductsSection() {
                           Premium African Farms
                         </p>
                         <p className="text-orange-600 text-sm">
-                          Sourced from certified partner farms across Kenya,
+                          Sourced from certified partner farms across Ethiopia,
                           Tanzania, and Uganda. Each farm follows sustainable
                           farming practices and maintains the highest quality
                           standards.

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { IconSearch, IconX, IconChevronDown } from "@tabler/icons-react";
+import Image from "next/image";
 
 interface SearchResult {
   id: number;
@@ -339,18 +340,21 @@ export default function Navigation() {
             <div className="flex-shrink-0 cursor-pointer">
               <motion.button
                 onClick={handleLogoClick}
-                className="text-left"
+                className="text-left flex items-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <h1 className="text-3xl font-bold text-green-800 flex items-center">
-                  <span className="text-4xl mr-2">🥑</span>
-                  Afrocado
-                </h1>
-                <p className="text-sm text-gray-600 -mt-1">
-                  Premium Export Company
-                </p>
+                <div className="relative w-28 h-28 mr-3">
+                  <Image
+                    src="/about-img/logo1-removebg-preview.png"
+                    alt="AFROCADDO Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <div></div>
               </motion.button>
             </div>
           </div>

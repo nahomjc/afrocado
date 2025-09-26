@@ -33,7 +33,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&h=400&fit=crop&crop=center",
     emoji: "🥑",
     availability: "Year-round",
-    origin: "Kenya, South Africa",
+    origin: "Ethiopia, South Africa",
     certifications: ["Organic", "Fair Trade", "GlobalGAP"],
   },
   {
@@ -46,7 +46,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&h=400&fit=crop&crop=center",
     emoji: "🥑",
     availability: "Seasonal",
-    origin: "Kenya, Tanzania",
+    origin: "Ethiopia, Tanzania",
     certifications: ["Organic", "GlobalGAP"],
   },
 
@@ -61,7 +61,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1605027990121-0fe4486c442f?w=600&h=400&fit=crop&crop=center",
     emoji: "🥭",
     availability: "Seasonal",
-    origin: "Kenya, Ghana",
+    origin: "Ethiopia, Ghana",
     certifications: ["Organic", "Fair Trade"],
   },
   {
@@ -74,7 +74,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
     emoji: "🥭",
     availability: "Seasonal",
-    origin: "Kenya, South Africa",
+    origin: "Ethiopia, South Africa",
     certifications: ["Organic", "GlobalGAP"],
   },
   {
@@ -87,7 +87,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1605027990121-0fe4486c442f?w=600&h=400&fit=crop&crop=center",
     emoji: "🥭",
     availability: "Seasonal",
-    origin: "Kenya, Ghana",
+    origin: "Ethiopia, Ghana",
     certifications: ["GlobalGAP"],
   },
 
@@ -143,7 +143,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&h=400&fit=crop&crop=center",
     emoji: "🍅",
     availability: "Year-round",
-    origin: "Kenya, Morocco",
+    origin: "Ethiopia, Morocco",
     certifications: ["Organic", "GlobalGAP"],
   },
   {
@@ -156,7 +156,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&h=400&fit=crop&crop=center",
     emoji: "🫑",
     availability: "Year-round",
-    origin: "Kenya, South Africa",
+    origin: "Ethiopia, South Africa",
     certifications: ["Organic", "GlobalGAP"],
   },
   {
@@ -184,7 +184,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
     emoji: "🥝",
     availability: "Seasonal",
-    origin: "Kenya, Uganda",
+    origin: "Ethiopia, Uganda",
     certifications: ["Organic", "Fair Trade"],
   },
   {
@@ -197,7 +197,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
     emoji: "🐉",
     availability: "Seasonal",
-    origin: "Kenya, South Africa",
+    origin: "Ethiopia, South Africa",
     certifications: ["Organic"],
   },
   {
@@ -210,7 +210,7 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
     emoji: "🥭",
     availability: "Year-round",
-    origin: "Kenya, Ghana",
+    origin: "Ethiopia, Ghana",
     certifications: ["Organic", "GlobalGAP"],
   },
 ];

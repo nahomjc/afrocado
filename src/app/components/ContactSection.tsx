@@ -144,7 +144,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
-                    <p className="text-gray-600">+254 20 123 4567 (Kenya)</p>
+                    <p className="text-gray-600">+251 11 123 4567 (Ethiopia)</p>
                     <p className="text-gray-600">+1 (555) 123-4567 (USA)</p>
                   </div>
                 </motion.div>
@@ -163,7 +163,7 @@ export default function ContactSection() {
                     </h4>
                     <p className="text-gray-600">Afrocado Export House</p>
                     <p className="text-gray-600">Westlands Business District</p>
-                    <p className="text-gray-600">Nairobi, Kenya 00100</p>
+                    <p className="text-gray-600">Addis Ababa, Ethiopia 1000</p>
                   </div>
                 </motion.div>
 
@@ -350,7 +350,7 @@ export default function ContactSection() {
               Find Us on the Map
             </h3>
             <p className="text-gray-600">
-              Visit our headquarters in Nairobi, Kenya
+              Visit our headquarters in Addis Ababa, Ethiopia
             </p>
           </div>
 
@@ -358,7 +358,7 @@ export default function ContactSection() {
             <div className="relative h-96 rounded-xl overflow-hidden border border-gray-200">
               {/* Google Maps Embed */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31911.017!2d36.7827847!3d-1.3028617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sWestlands%2C%20Nairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1234567890123!5m2!1sen!2ske"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31911.017!2d38.7827847!3d9.0028617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sBole%2C%20Addis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2set!4v1234567890123!5m2!1sen!2set"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -387,7 +387,9 @@ export default function ContactSection() {
                     <p className="text-xs text-gray-600 mt-1">
                       Westlands Business District
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">Nairobi, Kenya</p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Addis Ababa, Ethiopia
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -487,7 +489,7 @@ export default function ContactSection() {
                       Airport Access
                     </h5>
                     <p className="text-sm text-gray-600">
-                      15 minutes from Jomo Kenyatta
+                      15 minutes from Bole International Airport
                     </p>
                   </div>
                 </div>

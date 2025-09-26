@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "organic certification",
     "market trends analysis",
     "agricultural export news",
-    "Kenya farming insights",
+    "Ethiopia farming insights",
     "tropical fruit export",
     "fresh produce logistics",
   ],

@@ -112,7 +112,7 @@
 - Title templates for different pages
 - Comprehensive keyword list for African produce export
 - Open Graph and Twitter Card setup
-- Geographic meta tags for Kenya location
+- Geographic meta tags for Ethiopia location
 - Dublin Core metadata for better indexing
 - Updated domain to afrocadoexports.com
 
@@ -177,23 +177,23 @@
 ### Primary Keywords
 - African produce export
 - Premium avocados export
-- Citrus fruits export Kenya
+- Citrus fruits export Ethiopia
 - Fresh vegetables export
 - Organic produce export
 
 ### Long-tail Keywords
 - ISO 22000 certified fruit export company
 - Cold chain logistics for fresh produce
-- Sustainable agriculture export Kenya
+- Sustainable agriculture export Ethiopia
 - Premium quality African fruits
 - International shipping fresh vegetables
 
 ### Local Keywords
-- Kenya fruit export company
-- Nairobi produce exporter
+- Ethiopia fruit export company
+- Addis Ababa produce exporter
 - East Africa agriculture export
 - African tropical fruits export
-- Kenya organic certification
+- Ethiopia organic certification
 
 ## 📈 Expected Results
 
@@ -254,7 +254,7 @@
 - Blog page with industry-focused content and SEO metadata
 - FAQ page with comprehensive Q&A and structured data
 - Target keywords optimized for African produce export industry
-- Geographic targeting for Kenya and East Africa
+- Geographic targeting for Ethiopia and East Africa
 
 ### ✅ **Technical SEO**
 - Performance optimizations for fast loading

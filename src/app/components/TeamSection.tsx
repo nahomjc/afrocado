@@ -69,7 +69,7 @@ export default function TeamSection() {
       bio: "Leading Afrocado's vision to become the world's premier African produce exporter with over two decades of experience in international trade.",
       detailedBio:
         "Kwame Asante is a visionary leader with over 20 years of experience in international trade and agricultural exports. He holds an MBA in International Business from the University of Cape Town and has previously worked with major global trading companies. Under his leadership, Afrocado has expanded to 25+ countries and established partnerships with over 500 farms across Africa. Kwame is passionate about sustainable agriculture and fair trade practices, ensuring that local farmers benefit from global market access. He speaks five languages and has been recognized as 'Export Leader of the Year' by the African Export Council.",
-      location: "Nairobi, Kenya",
+      location: "Addis Ababa, Ethiopia",
       joinDate: "2008",
       achievements: [
         "Export Leader of the Year 2023",
@@ -118,7 +118,7 @@ export default function TeamSection() {
       expertise: "Sustainable Farming & Certification",
       bio: "Overseeing our network of 500+ partner farms, ensuring sustainable practices and premium quality standards across all produce.",
       detailedBio:
-        "Dr. David Kimani is a renowned agricultural scientist with a PhD in Agricultural Sciences from the University of Nairobi. With 18+ years of experience, he has transformed traditional farming practices across Africa, introducing sustainable methods that increase yield while protecting the environment. David has developed innovative farming techniques that have helped over 500 partner farms achieve organic certification. He is a published researcher with 25+ papers on sustainable agriculture and has been instrumental in developing our proprietary quality standards. David speaks Swahili, English, and French, and regularly conducts training programs for farmers across East Africa.",
+        "Dr. David Kimani is a renowned agricultural scientist with a PhD in Agricultural Sciences from Addis Ababa University. With 18+ years of experience, he has transformed traditional farming practices across Africa, introducing sustainable methods that increase yield while protecting the environment. David has developed innovative farming techniques that have helped over 500 partner farms achieve organic certification. He is a published researcher with 25+ papers on sustainable agriculture and has been instrumental in developing our proprietary quality standards. David speaks Amharic, English, and French, and regularly conducts training programs for farmers across East Africa.",
       location: "Kampala, Uganda",
       joinDate: "2010",
       achievements: [

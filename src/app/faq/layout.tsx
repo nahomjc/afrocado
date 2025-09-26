@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "organic certification questions",
     "export documentation help",
     "international shipping FAQ",
-    "Kenya export company questions",
+    "Ethiopia export company questions",
     "fresh produce export support",
   ],
   openGraph: {

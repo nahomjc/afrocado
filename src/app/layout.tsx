@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     "organic produce",
     "ISO 22000 certified",
     "cold chain logistics",
-    "Kenya export company",
+    "Ethiopia export company",
     "international shipping",
     "quality control",
     "sustainable agriculture",
@@ -116,8 +116,8 @@ export default function RootLayout({
           "@type": "PostalAddress",
           streetAddress: "Afrocado Export House",
           addressLocality: "Westlands Business District",
-          addressRegion: "Nairobi",
-          addressCountry: "Kenya",
+          addressRegion: "Addis Ababa",
+          addressCountry: "Ethiopia",
           postalCode: "00100",
         },
         contactPoint: {
@@ -196,8 +196,8 @@ export default function RootLayout({
           "@type": "PostalAddress",
           streetAddress: "Afrocado Export House",
           addressLocality: "Westlands Business District",
-          addressRegion: "Nairobi",
-          addressCountry: "Kenya",
+          addressRegion: "Addis Ababa",
+          addressCountry: "Ethiopia",
           postalCode: "00100",
         },
         geo: {
@@ -216,7 +216,7 @@ export default function RootLayout({
         areaServed: [
           {
             "@type": "Country",
-            name: "Kenya",
+            name: "Ethiopia",
           },
           {
             "@type": "Country",
@@ -247,7 +247,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#16a34a" />
         <meta name="msapplication-TileColor" content="#16a34a" />
         <meta name="geo.region" content="KE" />
-        <meta name="geo.placename" content="Nairobi, Kenya" />
+        <meta name="geo.placename" content="Addis Ababa, Ethiopia" />
         <meta name="geo.position" content="-1.2921;36.8219" />
         <meta name="ICBM" content="-1.2921, 36.8219" />
         <meta
@@ -263,7 +263,7 @@ export default function RootLayout({
           content="African produce export, premium avocados, citrus fruits, fresh vegetables, tropical fruits, organic produce"
         />
         <meta name="DC.language" content="en" />
-        <meta name="DC.coverage" content="Kenya, East Africa, Global" />
+        <meta name="DC.coverage" content="Ethiopia, East Africa, Global" />
         <meta name="DC.type" content="Business" />
         <meta name="DC.format" content="text/html" />
         <meta name="DC.identifier" content="https://afrocadoexports.com" />
