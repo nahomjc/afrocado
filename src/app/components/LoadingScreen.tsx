@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -160,8 +161,16 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           initial="initial"
           animate="animate"
         >
-          <div className="text-8xl mb-4">🥑</div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+          <div className="relative w-96 h-96 mx-auto mb-4">
+            <Image
+              src="/about-img/logo1-removebg-preview.png"
+              alt="AFROCADDO Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 hidden">
             Afrocado
           </h1>
           <p className="text-green-300 text-lg font-medium">
