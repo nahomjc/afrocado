@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { IconSearch, IconX, IconChevronDown } from "@tabler/icons-react";
 import Image from "next/image";
 
@@ -15,6 +15,7 @@ interface SearchResult {
 
 export default function Navigation() {
   const router = useRouter();
+  const pathname = usePathname();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,6 +23,19 @@ export default function Navigation() {
   const [isSearching, setIsSearching] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Set active section based on current route
+  useEffect(() => {
+    if (pathname === "/") {
+      setActiveSection("home");
+    } else if (pathname.startsWith("/blog")) {
+      setActiveSection("blog");
+    } else if (pathname.startsWith("/products-view")) {
+      setActiveSection("products");
+    } else if (pathname.startsWith("/faq")) {
+      setActiveSection("contact");
+    }
+  }, [pathname]);
 
   // Website content for search
   const websiteContent = [
@@ -254,6 +268,13 @@ export default function Navigation() {
 
   const handleNavClick = (section: string) => {
     setActiveSection(section);
+
+    // If we're not on the homepage, navigate to homepage first
+    if (window.location.pathname !== "/") {
+      router.push(`/#${section}`);
+      return;
+    }
+
     const element = document.querySelector(`#${section}`);
     if (element) {
       // Dispatch highlight event
@@ -422,7 +443,11 @@ export default function Navigation() {
               </motion.button>
               <motion.button
                 onClick={() => router.push("/blog")}
-                className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeSection === "blog"
+                    ? "text-green-700 border-b-2 border-green-700"
+                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -713,7 +738,11 @@ export default function Navigation() {
                       router.push("/blog");
                       setIsMobileMenuOpen(false);
                     }}
-                    className="block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors text-gray-700 hover:text-green-900 hover:bg-green-50"
+                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      activeSection === "blog"
+                        ? "text-green-700 bg-green-50"
+                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
+                    }`}
                     whileHover={{ scale: 1.02 }}
                   >
                     Blog

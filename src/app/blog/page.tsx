@@ -12,6 +12,7 @@ import {
   IconChevronRight,
 } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
@@ -23,6 +24,7 @@ export default function BlogPage() {
   const blogPosts = [
     {
       id: 1,
+      slug: "future-african-agriculture-sustainable-export-practices",
       title: "The Future of African Agriculture: Sustainable Export Practices",
       excerpt:
         "Exploring how sustainable farming practices are revolutionizing African agriculture and creating new opportunities for international export markets.",
@@ -38,6 +40,7 @@ export default function BlogPage() {
     },
     {
       id: 2,
+      slug: "cold-chain-logistics-ensuring-freshness-farm-to-table",
       title: "Cold Chain Logistics: Ensuring Freshness from Farm to Table",
       excerpt:
         "A deep dive into our state-of-the-art cold chain logistics system that maintains product quality throughout the entire export journey.",
@@ -53,6 +56,7 @@ export default function BlogPage() {
     },
     {
       id: 3,
+      slug: "organic-certification-meeting-international-standards",
       title: "Organic Certification: Meeting International Standards",
       excerpt:
         "Understanding the rigorous process of organic certification and how it opens doors to premium international markets.",
@@ -68,6 +72,7 @@ export default function BlogPage() {
     },
     {
       id: 4,
+      slug: "market-trends-african-produce-global-demand",
       title: "Market Trends: African Produce in Global Demand",
       excerpt:
         "Analyzing current market trends and the growing global demand for premium African fruits and vegetables.",
@@ -83,6 +88,7 @@ export default function BlogPage() {
     },
     {
       id: 5,
+      slug: "partner-farm-spotlight-success-stories-field",
       title: "Partner Farm Spotlight: Success Stories from the Field",
       excerpt:
         "Celebrating our partner farms and sharing inspiring success stories from farmers across Africa.",
@@ -98,6 +104,7 @@ export default function BlogPage() {
     },
     {
       id: 6,
+      slug: "quality-control-multi-stage-inspection-process",
       title: "Quality Control: Our Multi-Stage Inspection Process",
       excerpt:
         "A behind-the-scenes look at our comprehensive quality control process that ensures only the best products reach our customers.",
@@ -249,9 +256,11 @@ export default function BlogPage() {
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
                 <div className="md:flex">
                   <div className="md:w-1/2">
-                    <img
+                    <Image
                       src={featuredPost.image}
                       alt={featuredPost.title}
+                      width={600}
+                      height={400}
                       className="w-full h-64 md:h-full object-cover"
                     />
                   </div>
@@ -288,6 +297,7 @@ export default function BlogPage() {
                       ))}
                     </div>
                     <motion.button
+                      onClick={() => router.push(`/blog/${featuredPost.slug}`)}
                       className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -315,9 +325,11 @@ export default function BlogPage() {
                 variants={fadeInUp}
                 whileHover={{ y: -5 }}
               >
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
+                  width={400}
+                  height={200}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -357,6 +369,7 @@ export default function BlogPage() {
                     ))}
                   </div>
                   <motion.button
+                    onClick={() => router.push(`/blog/${post.slug}`)}
                     className="text-green-600 hover:text-green-700 font-semibold flex items-center"
                     whileHover={{ x: 5 }}
                   >

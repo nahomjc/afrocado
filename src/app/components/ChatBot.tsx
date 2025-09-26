@@ -10,7 +10,11 @@ import {
   IconMaximize,
   IconMinimize,
   IconRobot,
+  IconSparkles,
+  IconHeadset,
+  IconChevronDown,
 } from "@tabler/icons-react";
+import Image from "next/image";
 
 interface Message {
   id: string;
@@ -377,7 +381,7 @@ export default function ChatBot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className={`fixed bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden ${
+            className={`fixed bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden border border-white/20 ${
               isFullSize
                 ? "top-4 left-4 right-4 bottom-4"
                 : "bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 max-w-sm h-[500px]"
@@ -388,10 +392,10 @@ export default function ChatBot() {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-3 sm:p-4 flex items-center justify-between relative overflow-hidden">
-              {/* Background animation */}
+            <div className="bg-gradient-to-br from-emerald-600 via-green-600 to-emerald-700 text-white p-4 flex items-center justify-between relative overflow-hidden">
+              {/* Animated background pattern */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 opacity-20"
+                className="absolute inset-0 bg-gradient-to-r from-emerald-400/30 to-green-500/30"
                 animate={{
                   x: [-100, 100, -100],
                 }}
@@ -402,44 +406,49 @@ export default function ChatBot() {
                 }}
               />
 
-              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1 relative z-10">
+              {/* Logo and company info */}
+              <div className="flex items-center space-x-3 min-w-0 flex-1 relative z-10">
                 <motion.div
-                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0"
+                  className="relative w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0 backdrop-blur-sm"
                   animate={{
-                    scale: [1, 1.1, 1],
+                    scale: [1, 1.05, 1],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
                 >
-                  <motion.div
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                  >
-                    <IconRobot size={16} className="sm:w-5 sm:h-5" />
-                  </motion.div>
+                  <div className="relative w-6 h-6">
+                    <Image
+                      src="/about-img/logo1-removebg-preview.png"
+                      alt="AFROCADDO Logo"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </motion.div>
                 <div className="min-w-0 flex-1">
                   <motion.h3
-                    className="font-semibold text-sm sm:text-lg truncate"
+                    className="font-bold text-lg truncate flex items-center"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    Afrocado Assistant
+                    <IconSparkles size={16} className="mr-2 text-yellow-300" />
+                    Afrocado Support
                   </motion.h3>
-                  <motion.p
-                    className="text-xs text-green-100 truncate flex items-center"
+                  <motion.div
+                    className="flex items-center space-x-2"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
                     <motion.span
-                      className="inline-block w-2 h-2 bg-green-300 rounded-full mr-2"
+                      className="inline-block w-2 h-2 bg-green-300 rounded-full"
                       animate={{
                         opacity: [1, 0.3, 1],
+                        scale: [1, 1.2, 1],
                       }}
                       transition={{
                         duration: 2,
@@ -447,40 +456,44 @@ export default function ChatBot() {
                         ease: "easeInOut",
                       }}
                     />
-                    Online now • Ready to help
-                  </motion.p>
+                    <span className="text-sm text-green-100 font-medium">
+                      Online • Expert Support
+                    </span>
+                  </motion.div>
                 </div>
               </div>
-              <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0 relative z-10">
+
+              {/* Action buttons */}
+              <div className="flex items-center space-x-2 flex-shrink-0 relative z-10">
                 <motion.button
                   onClick={() => setIsFullSize(!isFullSize)}
-                  className="text-white hover:text-green-200 transition-colors p-1 rounded-full hover:bg-white/10"
+                  className="text-white/80 hover:text-white transition-colors p-2 rounded-xl hover:bg-white/10 backdrop-blur-sm"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   title={isFullSize ? "Minimize" : "Maximize"}
                 >
                   {isFullSize ? (
-                    <IconMinimize size={18} className="sm:w-5 sm:h-5" />
+                    <IconMinimize size={18} />
                   ) : (
-                    <IconMaximize size={18} className="sm:w-5 sm:h-5" />
+                    <IconMaximize size={18} />
                   )}
                 </motion.button>
                 <motion.button
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:text-green-200 transition-colors p-1 rounded-full hover:bg-white/10"
+                  className="text-white/80 hover:text-white transition-colors p-2 rounded-xl hover:bg-white/10 backdrop-blur-sm"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   title="Close chat"
                 >
-                  <IconX size={18} className="sm:w-5 sm:h-5" />
+                  <IconX size={18} />
                 </motion.button>
               </div>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
+            <div className="flex-1 overflow-y-auto bg-gradient-to-b from-gray-50/50 to-white p-4 space-y-4">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -492,21 +505,30 @@ export default function ChatBot() {
                   transition={{ duration: 0.3 }}
                 >
                   <div
-                    className={`max-w-[85%] sm:max-w-[80%] p-2.5 sm:p-3 rounded-2xl ${
+                    className={`max-w-[85%] sm:max-w-[80%] p-4 rounded-2xl shadow-sm border ${
                       message.isUser
-                        ? "bg-green-600 text-white"
-                        : "bg-gray-100 text-gray-800"
+                        ? "bg-gradient-to-br from-emerald-500 to-green-600 text-white border-emerald-200"
+                        : "bg-white text-gray-800 border-gray-200"
                     }`}
                   >
-                    <p className="text-xs sm:text-sm leading-relaxed">
+                    <p className="text-sm leading-relaxed mb-2">
                       {message.text}
                     </p>
-                    <p className="text-xs opacity-70 mt-1">
-                      {message.timestamp.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs opacity-70">
+                        {message.timestamp.toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </p>
+                      {message.isUser && (
+                        <div className="flex items-center space-x-1">
+                          <div className="w-1.5 h-1.5 bg-white/60 rounded-full"></div>
+                          <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
+                          <div className="w-1.5 h-1.5 bg-white/20 rounded-full"></div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -518,17 +540,51 @@ export default function ChatBot() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  <div className="bg-gray-100 text-gray-800 p-3 rounded-2xl">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div
-                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
-                        style={{ animationDelay: "0.1s" }}
-                      ></div>
-                      <div
-                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
-                        style={{ animationDelay: "0.2s" }}
-                      ></div>
+                  <div className="bg-white text-gray-800 p-4 rounded-2xl shadow-sm border border-gray-200">
+                    <div className="flex items-center space-x-2">
+                      <div className="flex space-x-1">
+                        <motion.div
+                          className="w-2 h-2 bg-emerald-400 rounded-full"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        />
+                        <motion.div
+                          className="w-2 h-2 bg-emerald-400 rounded-full"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 0.2,
+                          }}
+                        />
+                        <motion.div
+                          className="w-2 h-2 bg-emerald-400 rounded-full"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 0.4,
+                          }}
+                        />
+                      </div>
+                      <span className="text-sm text-gray-600 font-medium">
+                        Afrocado is typing...
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -538,20 +594,27 @@ export default function ChatBot() {
             </div>
 
             {/* Quick Questions */}
-            {messages.length === 1 && (
-              <div className="p-3 sm:p-4 border-t">
-                <p className="text-xs text-gray-500 mb-2">Quick questions:</p>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+            {messages.length <= 2 && (
+              <div className="p-3 border-t bg-gradient-to-r from-gray-50 to-white">
+                <div className="flex items-center space-x-2 mb-3">
+                  <IconChevronDown size={16} className="text-gray-500" />
+                  <p className="text-xs font-medium text-gray-600">
+                    Quick questions:
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
                   {quickQuestions.map((question, index) => {
                     const handleQuestionClick = () => setInputValue(question);
                     return (
-                      <button
+                      <motion.button
                         key={index}
                         onClick={handleQuestionClick}
-                        className="text-xs bg-green-50 text-green-700 px-2 sm:px-3 py-1 rounded-full hover:bg-green-100 transition-colors break-words"
+                        className="text-xs bg-gradient-to-r from-emerald-50 to-green-50 text-emerald-700 px-3 py-1.5 rounded-lg hover:from-emerald-100 hover:to-green-100 transition-all duration-200 border border-emerald-200 hover:border-emerald-300 break-words font-medium"
+                        whileHover={{ scale: 1.02, y: -1 }}
+                        whileTap={{ scale: 0.98 }}
                       >
                         {question}
-                      </button>
+                      </motion.button>
                     );
                   })}
                 </div>
@@ -559,26 +622,38 @@ export default function ChatBot() {
             )}
 
             {/* Input */}
-            <div className="p-3 sm:p-4 border-t">
-              <div className="flex space-x-2">
-                <input
-                  type="text"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Ask about our services..."
-                  className="flex-1 p-2.5 sm:p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm sm:text-base"
-                />
+            <div className="p-4 border-t bg-gradient-to-r from-gray-50 to-white">
+              <div className="flex space-x-3">
+                <div className="relative flex-1">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <IconHeadset size={18} className="text-gray-400" />
+                  </div>
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Ask about our services..."
+                    className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-white shadow-sm transition-all duration-200"
+                  />
+                </div>
                 <motion.button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim()}
-                  className="bg-green-600 text-white p-2.5 sm:p-3 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex-shrink-0"
-                  whileHover={{ scale: 1.05 }}
+                  className="bg-gradient-to-r from-emerald-500 to-green-600 text-white p-4 rounded-2xl hover:from-emerald-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex-shrink-0 shadow-lg hover:shadow-xl"
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   title="Send message"
                 >
-                  <IconSend size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <IconSend size={18} />
                 </motion.button>
+              </div>
+              <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
+                <span>Press Enter to send</span>
+                <span className="flex items-center space-x-1">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>Expert support available</span>
+                </span>
               </div>
             </div>
           </motion.div>
