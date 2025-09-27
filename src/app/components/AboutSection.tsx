@@ -11,7 +11,7 @@ export default function AboutSection() {
   const aboutImages = [
     {
       id: 1,
-      src: "/about-img/image-1.png",
+      src: "/about-img/unnamed23.png",
       alt: "Afrocado team with cargo plane and fresh produce",
       title: "Global Export Excellence",
       description:
@@ -19,7 +19,7 @@ export default function AboutSection() {
     },
     {
       id: 2,
-      src: "/about-img/image-2 (2).png",
+      src: "/about-img/unnamed.png",
       alt: "Afrocado team members with fresh fruits and vegetables",
       title: "Quality Team, Quality Produce",
       description:
@@ -27,6 +27,14 @@ export default function AboutSection() {
     },
     {
       id: 3,
+      src: "/about-img/image-2 (2).png",
+      alt: "Afrocado team members with fresh fruits and vegetables",
+      title: "Quality Team, Quality Produce",
+      description:
+        "Meet our passionate team members who ensure the highest standards in every shipment",
+    },
+    {
+      id: 4,
       src: "/about-img/unnamed (17).png",
       alt: "Afrocado team with diverse fresh produce",
       title: "Diverse & Fresh Selection",
@@ -34,7 +42,7 @@ export default function AboutSection() {
         "From traditional Ethiopian attire to modern export standards - celebrating our heritage",
     },
     {
-      id: 4,
+      id: 5,
       src: "/about-img/unnamed (18).png",
       alt: "Afrocado team showcasing fresh produce baskets",
       title: "Heritage Meets Innovation",
@@ -42,7 +50,7 @@ export default function AboutSection() {
         "Bridging traditional farming practices with modern export excellence",
     },
     {
-      id: 5,
+      id: 6,
       src: "/about-img/unnamed (20).png",
       alt: "Afrocado team with fresh produce",
       title: "Premium Quality Produce",
@@ -184,7 +192,7 @@ export default function AboutSection() {
               >
                 {aboutImages.map((image, index) => (
                   <div key={image.id} className="flex-shrink-0 w-full relative">
-                    <div className="relative h-[500px] md:h-[600px]">
+                    <div className="relative h-[500px] md:h-[700px]">
                       <Image
                         src={image.src}
                         alt={image.alt}
