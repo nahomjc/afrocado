@@ -58,7 +58,7 @@ const products: Product[] = [
     description:
       "Sweet, juicy Kent mangoes with vibrant orange flesh. Harvested at peak ripeness for optimal flavor and nutrition.",
     image:
-      "https://images.unsplash.com/photo-1605027990121-0fe4486c442f?w=600&h=400&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
     emoji: "🥭",
     availability: "Seasonal",
     origin: "Ethiopia, Ghana",
@@ -84,7 +84,7 @@ const products: Product[] = [
     description:
       "Classic Tommy Atkins mangoes with firm texture and sweet taste. Popular choice for global distribution.",
     image:
-      "https://images.unsplash.com/photo-1605027990121-0fe4486c442f?w=600&h=400&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&h=400&fit=crop&crop=center",
     emoji: "🥭",
     availability: "Seasonal",
     origin: "Ethiopia, Ghana",
@@ -99,7 +99,7 @@ const products: Product[] = [
     description:
       "Juicy Valencia oranges rich in vitamin C. Perfect for fresh consumption and juice production.",
     image:
-      "https://images.unsplash.com/photo-1557800634-7bf3c73bfab8?w=600&h=400&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=600&h=400&fit=crop&crop=center",
     emoji: "🍊",
     availability: "Year-round",
     origin: "South Africa, Morocco",
