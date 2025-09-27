@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import ProductsSection from "./components/ProductsSection";
-
+import VideoSection from "./components/VideoSection";
 import ValuesSection from "./components/ValuesSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
@@ -64,6 +64,15 @@ export default function Home() {
               aria-label="Hero Section"
             >
               <HeroSection />
+            </section>
+            <section
+              id="video"
+              className={
+                highlightedSection === "video" ? "section-highlight" : ""
+              }
+              aria-label="Our Story Video"
+            >
+              <VideoSection />
             </section>
             <section
               id="about"
