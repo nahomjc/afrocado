@@ -7,7 +7,15 @@ import Image from "next/image";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import ChatBot from "../components/ChatBot";
-import { IconArrowLeft, IconFilter, IconSearch } from "@tabler/icons-react";
+import {
+  IconArrowLeft,
+  IconFilter,
+  IconSearch,
+  IconX,
+  IconMail,
+  IconPhone,
+  IconMapPin,
+} from "@tabler/icons-react";
 
 interface Product {
   id: string;
@@ -229,6 +237,8 @@ export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
+  const [showQuoteModal, setShowQuoteModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
@@ -238,6 +248,16 @@ export default function ProductsPage() {
       product.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const handleQuoteRequest = (product: Product) => {
+    setSelectedProduct(product);
+    setShowQuoteModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowQuoteModal(false);
+    setSelectedProduct(null);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -411,7 +431,10 @@ export default function ProductsPage() {
                     ))}
                   </div>
 
-                  <button className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors font-medium">
+                  <button
+                    onClick={() => handleQuoteRequest(product)}
+                    className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors font-medium"
+                  >
                     Request Quote
                   </button>
                 </div>
@@ -439,6 +462,124 @@ export default function ProductsPage() {
 
       <Footer />
       <ChatBot />
+
+      {/* Quote Request Modal */}
+      <AnimatePresence>
+        {showQuoteModal && selectedProduct && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0  bg-opacity-50 flex items-center justify-center p-4 z-50"
+            onClick={handleCloseModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-6 rounded-t-2xl">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="text-4xl">{selectedProduct.emoji}</div>
+                    <div>
+                      <h2 className="text-2xl font-bold">Request Quote</h2>
+                      <p className="text-green-100">
+                        for {selectedProduct.name}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleCloseModal}
+                    className="text-white hover:text-green-200 transition-colors"
+                  >
+                    <IconX size={24} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="p-6">
+                <div className="max-w-2xl mx-auto">
+                  {/* Product Details */}
+                  <div className="text-center mb-8">
+                    <div className="flex items-center justify-center space-x-3 mb-4">
+                      <span className="text-4xl">{selectedProduct.emoji}</span>
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {selectedProduct.name}
+                      </h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">
+                      {selectedProduct.description}
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {selectedProduct.certifications.map((cert, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full"
+                        >
+                          {cert}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Contact Information */}
+                  <div className="bg-gray-50 rounded-2xl p-6">
+                    <h4 className="text-xl font-bold text-gray-900 mb-6 text-center">
+                      Get Your Quote
+                    </h4>
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                        <div className="flex-shrink-0">
+                          <IconMail className="text-green-600" size={24} />
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-900">Email Us</p>
+                          <p className="text-gray-600">info@afrocado.com</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                        <div className="flex-shrink-0">
+                          <IconPhone className="text-green-600" size={24} />
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-900">Call Us</p>
+                          <p className="text-gray-600">+254 20 123 4567</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                        <div className="flex-shrink-0">
+                          <IconMapPin className="text-green-600" size={24} />
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-900">Visit Us</p>
+                          <p className="text-gray-600">Addis Ababa, Ethiopia</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 text-center">
+                      <p className="text-gray-600 text-sm mb-4">
+                        Contact us for pricing, availability, and shipping
+                        information for {selectedProduct.name}
+                      </p>
+                      <button
+                        onClick={handleCloseModal}
+                        className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition-colors font-medium"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
