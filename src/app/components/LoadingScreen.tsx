@@ -3,6 +3,16 @@
 import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import {
+  IconLeaf,
+  IconWorld,
+  IconTruck,
+  IconAward,
+  IconApple,
+  IconCherry,
+  IconCircle,
+  IconCarrot,
+} from "@tabler/icons-react";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -12,15 +22,15 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [currentText, setCurrentText] = useState("Initializing...");
 
-  const loadingTexts = [
-    "Initializing...",
-    "Loading Premium Products...",
-    "Connecting to Global Markets...",
-    "Preparing Export Solutions...",
-    "Almost Ready...",
-  ];
-
   useEffect(() => {
+    const loadingTexts = [
+      "Initializing Systems...",
+      "Loading Premium Products...",
+      "Connecting to Global Markets...",
+      "Preparing Export Solutions...",
+      "Finalizing Setup...",
+    ];
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -153,97 +163,190 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       />
 
       {/* Main Content */}
-      <div className="relative z-10 text-center">
-        {/* Logo */}
-        <motion.div
-          className="mb-8"
-          variants={logoVariants as Variants}
-          initial="initial"
-          animate="animate"
-        >
-          <div className="relative w-96 h-96 mx-auto mb-4">
-            <Image
-              src="/about-img/logo1-removebg-preview.png"
-              alt="AFROCADDO Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 hidden">
-            Afrocado
-          </h1>
-          <p className="text-green-300 text-lg font-medium">
-            Premium Export Company
-          </p>
-        </motion.div>
-
-        {/* Loading Text */}
-        <motion.div
-          className="mb-8"
-          variants={textVariants as Variants}
-          initial="initial"
-          animate="animate"
-        >
-          <motion.p
-            key={currentText}
-            className="text-xl text-green-100 mb-6"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-8">
+        <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen gap-12 lg:gap-16">
+          {/* Left Side - Logo and Brand */}
+          <motion.div
+            className="flex-shrink-0"
+            variants={logoVariants as Variants}
+            initial="initial"
+            animate="animate"
           >
-            {currentText}
-          </motion.p>
-        </motion.div>
+            <div className="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto">
+              <Image
+                src="/about-img/logo1-removebg-preview.png"
+                alt="AFROCADDO Logo"
+                fill
+                className="object-contain drop-shadow-2xl"
+                priority
+              />
+            </div>
 
-        {/* Progress Bar */}
-        <motion.div
-          className="w-80 mx-auto"
-          variants={textVariants}
-          initial="initial"
-          animate="animate"
-        >
-          <div className="bg-white bg-opacity-20 rounded-full h-2 mb-4 overflow-hidden">
-            <motion.div
-              className="bg-gradient-to-r from-green-400 to-emerald-400 h-full rounded-full"
-              variants={progressVariants}
-              initial="initial"
-              animate="animate"
-            />
-          </div>
-          <p className="text-green-200 text-sm">{progress}% Complete</p>
-        </motion.div>
+            {/* Brand Text */}
+            <div className="text-center mt-6">
+              <motion.h1
+                className="text-5xl lg:text-6xl font-bold text-white mb-3 tracking-tight"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                Afrocado
+              </motion.h1>
+              <motion.p
+                className="text-xl lg:text-2xl text-green-200 font-light tracking-wide"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+              >
+                Premium Export Company
+              </motion.p>
+              <motion.div
+                className="w-24 h-1 bg-gradient-to-r from-green-400 to-emerald-400 mx-auto mt-4 rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: "6rem" }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+              />
+            </div>
+          </motion.div>
 
-        {/* Loading Dots */}
-        <motion.div
-          className="flex justify-center space-x-2 mt-6"
-          variants={textVariants}
-          initial="initial"
-          animate="animate"
-        >
-          {[0, 1, 2].map((index) => (
-            <motion.div
-              key={index}
-              className="w-2 h-2 bg-green-400 rounded-full"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                delay: index * 0.2,
-              }}
-            />
-          ))}
-        </motion.div>
+          {/* Right Side - Loading Content */}
+          <motion.div
+            className="flex-1 max-w-md w-full"
+            variants={textVariants as Variants}
+            initial="initial"
+            animate="animate"
+          >
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-10 border border-white/20 shadow-2xl">
+              {/* Loading Status */}
+              <div className="text-center mb-8">
+                <motion.div
+                  className="inline-flex items-center justify-center w-16 h-16 bg-green-500/20 rounded-2xl mb-6"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                >
+                  <IconLeaf className="w-8 h-8 text-green-300" />
+                </motion.div>
+
+                <motion.p
+                  key={currentText}
+                  className="text-2xl lg:text-3xl font-semibold text-white mb-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {currentText}
+                </motion.p>
+
+                <p className="text-green-200/80 text-lg">
+                  Please wait while we prepare your experience
+                </p>
+              </div>
+
+              {/* Progress Section */}
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-green-200 text-sm font-medium">
+                      Loading Progress
+                    </span>
+                    <span className="text-white text-sm font-semibold">
+                      {progress}%
+                    </span>
+                  </div>
+
+                  <div className="bg-white/20 rounded-full h-3 overflow-hidden backdrop-blur-sm">
+                    <motion.div
+                      className="bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 h-full rounded-full shadow-lg"
+                      variants={progressVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                  </div>
+                </div>
+
+                {/* Feature Icons */}
+                <div className="grid grid-cols-2 gap-4 pt-4">
+                  <motion.div
+                    className="flex items-center space-x-3 p-3 bg-white/5 rounded-xl"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <IconWorld className="w-5 h-5 text-green-400" />
+                    <span className="text-green-200 text-sm">Global Reach</span>
+                  </motion.div>
+
+                  <motion.div
+                    className="flex items-center space-x-3 p-3 bg-white/5 rounded-xl"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.7 }}
+                  >
+                    <IconAward className="w-5 h-5 text-green-400" />
+                    <span className="text-green-200 text-sm">
+                      Premium Quality
+                    </span>
+                  </motion.div>
+
+                  <motion.div
+                    className="flex items-center space-x-3 p-3 bg-white/5 rounded-xl"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.9 }}
+                  >
+                    <IconTruck className="w-5 h-5 text-green-400" />
+                    <span className="text-green-200 text-sm">
+                      Fast Delivery
+                    </span>
+                  </motion.div>
+
+                  <motion.div
+                    className="flex items-center space-x-3 p-3 bg-white/5 rounded-xl"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 2.1 }}
+                  >
+                    <IconLeaf className="w-5 h-5 text-green-400" />
+                    <span className="text-green-200 text-sm">
+                      Fresh Products
+                    </span>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Loading Indicator */}
+              <motion.div
+                className="flex justify-center space-x-2 mt-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2.5 }}
+              >
+                {[0, 1, 2].map((index) => (
+                  <motion.div
+                    key={index}
+                    className="w-2 h-2 bg-green-400 rounded-full"
+                    animate={{
+                      scale: [1, 1.3, 1],
+                      opacity: [0.4, 1, 0.4],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      delay: index * 0.2,
+                    }}
+                  />
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Floating Fruits */}
+      {/* Floating Product Icons */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          className="absolute top-20 left-20 text-4xl"
+          className="absolute top-20 left-20 w-12 h-12 bg-green-500/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
           animate={{
             y: [-15, 15, -15],
             x: [-5, 5, -5],
@@ -255,10 +358,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             ease: "easeInOut",
           }}
         >
-          🥑
+          <IconApple className="w-6 h-6 text-green-300" />
         </motion.div>
         <motion.div
-          className="absolute top-24 right-32 text-4xl"
+          className="absolute top-24 right-32 w-12 h-12 bg-yellow-500/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
           animate={{
             y: [15, -15, 15],
             x: [5, -5, 5],
@@ -270,10 +373,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             ease: "easeInOut",
           }}
         >
-          🥭
+          <IconCherry className="w-6 h-6 text-yellow-300" />
         </motion.div>
         <motion.div
-          className="absolute bottom-32 left-24 text-3xl"
+          className="absolute bottom-32 left-24 w-12 h-12 bg-purple-500/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
           animate={{
             y: [-10, 10, -10],
             x: [-3, 3, -3],
@@ -285,10 +388,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             ease: "easeInOut",
           }}
         >
-          🍇
+          <IconCircle className="w-6 h-6 text-purple-300" />
         </motion.div>
         <motion.div
-          className="absolute bottom-28 right-24 text-3xl"
+          className="absolute bottom-28 right-24 w-12 h-12 bg-orange-500/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
           animate={{
             y: [10, -10, 10],
             x: [3, -3, 3],
@@ -300,7 +403,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             ease: "easeInOut",
           }}
         >
-          🫑
+          <IconCarrot className="w-6 h-6 text-orange-300" />
         </motion.div>
       </div>
     </motion.div>

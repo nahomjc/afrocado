@@ -12,6 +12,7 @@ import {
   IconPackage,
   IconSend,
   IconCheck,
+  IconX,
 } from "@tabler/icons-react";
 
 export default function ContactSection() {
@@ -23,11 +24,85 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Quick Actions Modal States
+  const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [quickActionForm, setQuickActionForm] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    message: "",
+    preferredDate: "",
+    preferredTime: "",
+    productInterest: "",
+    sampleQuantity: "",
+    shippingAddress: "",
+  });
+  const [isQuickActionSubmitting, setIsQuickActionSubmitting] = useState(false);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleQuickActionInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setQuickActionForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const openModal = (modalType: string) => {
+    setActiveModal(modalType);
+    // Reset form when opening modal
+    setQuickActionForm({
+      name: "",
+      email: "",
+      company: "",
+      phone: "",
+      message: "",
+      preferredDate: "",
+      preferredTime: "",
+      productInterest: "",
+      sampleQuantity: "",
+      shippingAddress: "",
+    });
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
+    setIsQuickActionSubmitting(false);
+  };
+
+  const handleQuickActionSubmit = async (
+    e: React.FormEvent,
+    actionType: string
+  ) => {
+    e.preventDefault();
+    setIsQuickActionSubmitting(true);
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // Here you would typically send the data to your backend
+    console.log(`${actionType} request:`, quickActionForm);
+
+    setIsQuickActionSubmitting(false);
+
+    // Show success message and close modal
+    alert(
+      `${actionType} request submitted successfully! We'll contact you soon.`
+    );
+    closeModal();
+  };
+
+  const handleCatalogRequest = () => {
+    // Open modal for catalog information request
+    openModal("catalog");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -193,6 +268,7 @@ export default function ContactSection() {
               </h4>
               <div className="grid grid-cols-1 gap-3">
                 <motion.button
+                  onClick={handleCatalogRequest}
                   className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left flex items-center space-x-3"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -202,6 +278,7 @@ export default function ContactSection() {
                   <span>Request Product Catalog</span>
                 </motion.button>
                 <motion.button
+                  onClick={() => openModal("schedule")}
                   className="w-full border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left flex items-center space-x-3"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -211,6 +288,7 @@ export default function ContactSection() {
                   <span>Schedule a Call</span>
                 </motion.button>
                 <motion.button
+                  onClick={() => openModal("samples")}
                   className="w-full border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors text-left flex items-center space-x-3"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -497,6 +575,255 @@ export default function ContactSection() {
             </div>
           </div>
         </motion.div>
+
+        {/* Modal Dialogs */}
+        {activeModal && (
+          <motion.div
+            className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal}
+          >
+            <motion.div
+              className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  {activeModal === "catalog" && (
+                    <IconFileText size={24} className="text-green-600" />
+                  )}
+                  {activeModal === "schedule" && (
+                    <IconCalendar size={24} className="text-green-600" />
+                  )}
+                  {activeModal === "samples" && (
+                    <IconPackage size={24} className="text-green-600" />
+                  )}
+                  <h3 className="text-2xl font-bold text-gray-900">
+                    {activeModal === "catalog" && "Product Catalog Information"}
+                    {activeModal === "schedule" && "Schedule a Call"}
+                    {activeModal === "samples" && "Request Samples"}
+                  </h3>
+                </div>
+                <button
+                  onClick={closeModal}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <IconX size={20} className="text-gray-500" />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <form
+                onSubmit={(e) => handleQuickActionSubmit(e, activeModal)}
+                className="space-y-6"
+              >
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={quickActionForm.name}
+                      onChange={handleQuickActionInputChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={quickActionForm.email}
+                      onChange={handleQuickActionInputChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      placeholder="your.email@company.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={quickActionForm.company}
+                      onChange={handleQuickActionInputChange}
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      placeholder="Your company name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={quickActionForm.phone}
+                      onChange={handleQuickActionInputChange}
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                  </div>
+                </div>
+
+                {/* Conditional fields based on modal type */}
+                {activeModal === "schedule" && (
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Preferred Date
+                      </label>
+                      <input
+                        type="date"
+                        name="preferredDate"
+                        value={quickActionForm.preferredDate}
+                        onChange={handleQuickActionInputChange}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Preferred Time
+                      </label>
+                      <select
+                        name="preferredTime"
+                        value={quickActionForm.preferredTime}
+                        onChange={handleQuickActionInputChange}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      >
+                        <option value="">Select time</option>
+                        <option value="9:00 AM">9:00 AM</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="11:00 AM">11:00 AM</option>
+                        <option value="1:00 PM">1:00 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="3:00 PM">3:00 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                      </select>
+                    </div>
+                  </div>
+                )}
+
+                {activeModal === "samples" && (
+                  <>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Product Interest
+                      </label>
+                      <select
+                        name="productInterest"
+                        value={quickActionForm.productInterest}
+                        onChange={handleQuickActionInputChange}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      >
+                        <option value="">Select products</option>
+                        <option value="avocados">Avocados</option>
+                        <option value="mangoes">Mangoes</option>
+                        <option value="citrus">Citrus Fruits</option>
+                        <option value="vegetables">Fresh Vegetables</option>
+                        <option value="herbs">Herbs & Spices</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Sample Quantity
+                      </label>
+                      <select
+                        name="sampleQuantity"
+                        value={quickActionForm.sampleQuantity}
+                        onChange={handleQuickActionInputChange}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                      >
+                        <option value="">Select quantity</option>
+                        <option value="small">Small (1-2 kg)</option>
+                        <option value="medium">Medium (5-10 kg)</option>
+                        <option value="large">Large (20+ kg)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Shipping Address
+                      </label>
+                      <textarea
+                        name="shippingAddress"
+                        value={quickActionForm.shippingAddress}
+                        onChange={handleQuickActionInputChange}
+                        rows={3}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white"
+                        placeholder="Enter complete shipping address..."
+                      />
+                    </div>
+                  </>
+                )}
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    value={quickActionForm.message}
+                    onChange={handleQuickActionInputChange}
+                    rows={4}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white"
+                    placeholder={
+                      activeModal === "catalog"
+                        ? "Tell us about your business and product interests..."
+                        : activeModal === "schedule"
+                        ? "What would you like to discuss in our call?"
+                        : "Any specific requirements or questions about the samples?"
+                    }
+                  />
+                </div>
+
+                <div className="flex justify-end space-x-4">
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-semibold"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isQuickActionSubmitting}
+                    className="px-6 py-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white rounded-xl transition-colors font-semibold flex items-center space-x-2"
+                  >
+                    {isQuickActionSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <IconSend size={16} />
+                        <span>Submit Request</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
