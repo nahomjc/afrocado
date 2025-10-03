@@ -14,6 +14,7 @@ import {
   IconCheck,
   IconX,
 } from "@tabler/icons-react";
+import { FORMPREE_ENDPOINTS } from "../config/forms";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -39,6 +40,8 @@ export default function ContactSection() {
     shippingAddress: "",
   });
   const [isQuickActionSubmitting, setIsQuickActionSubmitting] = useState(false);
+  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -78,6 +81,16 @@ export default function ContactSection() {
     setIsQuickActionSubmitting(false);
   };
 
+  const showNotification = (message: string) => {
+    setSuccessMessage(message);
+    setShowSuccessNotification(true);
+
+    // Auto-hide notification after 4 seconds
+    setTimeout(() => {
+      setShowSuccessNotification(false);
+    }, 4000);
+  };
+
   const handleQuickActionSubmit = async (
     e: React.FormEvent,
     actionType: string
@@ -85,19 +98,57 @@ export default function ContactSection() {
     e.preventDefault();
     setIsQuickActionSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Using Formspree for email handling
+      const endpoint =
+        actionType === "catalog"
+          ? FORMPREE_ENDPOINTS.CATALOG
+          : actionType === "schedule"
+          ? FORMPREE_ENDPOINTS.SCHEDULE
+          : FORMPREE_ENDPOINTS.SAMPLES;
 
-    // Here you would typically send the data to your backend
-    console.log(`${actionType} request:`, quickActionForm);
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...quickActionForm,
+          _subject: `🌱 ${
+            actionType.charAt(0).toUpperCase() + actionType.slice(1)
+          } Request - Afrocado Export`,
+          _replyto: quickActionForm.email,
+          actionType: actionType,
+          timestamp: new Date().toISOString(),
+          _date: new Date().toLocaleDateString(),
+          _time: new Date().toLocaleTimeString(),
+          companyName: "Afrocado Export Company",
+        }),
+      });
 
-    setIsQuickActionSubmitting(false);
+      if (response.ok) {
+        setIsQuickActionSubmitting(false);
 
-    // Show success message and close modal
-    alert(
-      `${actionType} request submitted successfully! We'll contact you soon.`
-    );
-    closeModal();
+        // Show success notification
+        const successMsg =
+          actionType === "catalog"
+            ? "Product catalog request submitted successfully! We'll send you our catalog within 24 hours."
+            : actionType === "schedule"
+            ? "Call scheduling request submitted successfully! We'll contact you soon to arrange a meeting."
+            : "Sample request submitted successfully! We'll prepare your samples and contact you for shipping details.";
+
+        showNotification(successMsg);
+        closeModal();
+      } else {
+        throw new Error("Failed to send request");
+      }
+    } catch (error) {
+      console.error("Error sending request:", error);
+      alert(
+        "Sorry, there was an error sending your request. Please try again or contact us directly."
+      );
+      setIsQuickActionSubmitting(false);
+    }
   };
 
   const handleCatalogRequest = () => {
@@ -109,17 +160,50 @@ export default function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Using Formspree for email handling
+      const response = await fetch(FORMPREE_ENDPOINTS.CONTACT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: "🌱 New Customer Inquiry - Afrocado Export",
+          _replyto: formData.email,
+          _date: new Date().toLocaleDateString(),
+          _time: new Date().toLocaleTimeString(),
+          companyName: "Afrocado Export Company",
+          formType: "General Contact",
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      if (response.ok) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 3000);
+        // Show success notification
+        showNotification(
+          "Your message has been sent successfully! We'll get back to you within 24 hours."
+        );
+
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: "", email: "", message: "" });
+        }, 3000);
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert(
+        "Sorry, there was an error sending your message. Please try again or contact us directly."
+      );
+      setIsSubmitting(false);
+    }
   };
 
   const fadeInUp = {
@@ -822,6 +906,47 @@ export default function ContactSection() {
                 </div>
               </form>
             </motion.div>
+          </motion.div>
+        )}
+
+        {/* Success Notification */}
+        {showSuccessNotification && (
+          <motion.div
+            className="fixed top-4 right-4 z-50 bg-white rounded-2xl shadow-2xl border border-green-200 p-6 max-w-md"
+            initial={{ opacity: 0, x: 100, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 100, scale: 0.9 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                  <IconCheck className="w-6 h-6 text-green-600" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h4 className="text-lg font-semibold text-gray-900 mb-1">
+                  Success!
+                </h4>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {successMessage}
+                </p>
+              </div>
+              <button
+                onClick={() => setShowSuccessNotification(false)}
+                className="flex-shrink-0 p-1 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <IconX className="w-4 h-4 text-gray-400" />
+              </button>
+            </div>
+
+            {/* Progress bar */}
+            <motion.div
+              className="absolute bottom-0 left-0 h-1 bg-green-500 rounded-b-2xl"
+              initial={{ width: "100%" }}
+              animate={{ width: "0%" }}
+              transition={{ duration: 4, ease: "linear" }}
+            />
           </motion.div>
         )}
       </div>
