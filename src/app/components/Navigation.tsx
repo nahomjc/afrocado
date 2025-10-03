@@ -13,6 +13,10 @@ import {
   IconHeart,
   IconBook,
   IconMail,
+  IconPhone,
+  IconMail as IconEmail,
+  IconWorld,
+  IconMenu2,
 } from "@tabler/icons-react";
 import Image from "next/image";
 
@@ -309,6 +313,18 @@ export default function Navigation() {
     }
   };
 
+  const handlePhoneCall = () => {
+    window.open("tel:+251937287140", "_self");
+  };
+
+  const handleEmailContact = () => {
+    window.open("mailto:info@afrocado.com", "_self");
+  };
+
+  const handleWebsiteVisit = () => {
+    window.open("https://afrocadoexports.com", "_blank");
+  };
+
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
       searchInputRef.current.focus();
@@ -452,8 +468,8 @@ export default function Navigation() {
                 { id: "about", label: "About", icon: IconInfoCircle },
                 { id: "products", label: "Products", icon: IconLeaf },
                 { id: "values", label: "Values", icon: IconHeart },
-                { id: "blog", label: "Blog", icon: IconBook },
                 { id: "contact", label: "Contact", icon: IconMail },
+                { id: "blog", label: "Blog", icon: IconBook },
               ].map(({ id, label, icon: Icon }) => (
                 <motion.button
                   key={id}
@@ -507,32 +523,12 @@ export default function Navigation() {
             </motion.button>
             <motion.button
               onClick={toggleMobileMenu}
-              className="text-gray-700 hover:text-green-900 focus:outline-none focus:text-green-900"
+              className="text-gray-700 hover:text-green-900 focus:outline-none focus:text-green-900 p-2"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Toggle mobile menu"
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
+              {isMobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
             </motion.button>
           </div>
         </div>
@@ -935,25 +931,31 @@ export default function Navigation() {
                       </p>
                       <div className="flex justify-center space-x-4">
                         <motion.button
-                          className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg"
+                          onClick={handlePhoneCall}
+                          className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-green-600 transition-colors"
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           whileTap={{ scale: 0.9 }}
+                          title="Call us"
                         >
-                          📞
+                          <IconPhone size={18} />
                         </motion.button>
                         <motion.button
-                          className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg"
+                          onClick={handleEmailContact}
+                          className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-emerald-600 transition-colors"
                           whileHover={{ scale: 1.1, rotate: -5 }}
                           whileTap={{ scale: 0.9 }}
+                          title="Email us"
                         >
-                          ✉️
+                          <IconEmail size={18} />
                         </motion.button>
                         <motion.button
-                          className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white shadow-lg"
+                          onClick={handleWebsiteVisit}
+                          className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-teal-600 transition-colors"
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           whileTap={{ scale: 0.9 }}
+                          title="Visit our website"
                         >
-                          🌍
+                          <IconWorld size={18} />
                         </motion.button>
                       </div>
                     </div>

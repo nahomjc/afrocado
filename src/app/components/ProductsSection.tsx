@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback, useMemo } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   IconX,
   IconEye,
@@ -12,9 +13,11 @@ import {
   IconCalendar,
   IconTruck,
   IconShield,
+  IconArrowRight,
 } from "@tabler/icons-react";
 
 export default function ProductsSection() {
+  const router = useRouter();
   const [selectedProduct, setSelectedProduct] = useState<
     (typeof products)[0] | null
   >(null);
@@ -50,6 +53,10 @@ export default function ProductsSection() {
     setSelectedProduct(null);
     setShowPhoneNumber(false);
   }, []);
+
+  const handleViewAllProducts = useCallback(() => {
+    router.push("/products-view");
+  }, [router]);
   const products = useMemo(
     () => [
       {
@@ -254,6 +261,25 @@ export default function ProductsSection() {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* View All Products Button */}
+        <motion.div
+          className="mt-12 text-center"
+          variants={fadeInUp}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.button
+            onClick={handleViewAllProducts}
+            className="inline-flex items-center space-x-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
+            <span className="text-lg">View All Products</span>
+            <IconArrowRight size={20} />
+          </motion.button>
         </motion.div>
 
         {/* Additional Information */}
