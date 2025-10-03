@@ -1,9 +1,19 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { IconSearch, IconX, IconChevronDown } from "@tabler/icons-react";
+import {
+  IconSearch,
+  IconX,
+  IconChevronDown,
+  IconHome,
+  IconInfoCircle,
+  IconLeaf,
+  IconHeart,
+  IconBook,
+  IconMail,
+} from "@tabler/icons-react";
 import Image from "next/image";
 
 interface SearchResult {
@@ -354,117 +364,134 @@ export default function Navigation() {
   }, [isSearchOpen, isMobileMenuOpen]);
 
   return (
-    <nav className="bg-white/90 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-white/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      {/* Creative gradient background with organic shapes */}
+      <div className="absolute inset-0 bg-gradient-to-r from-green-50 via-emerald-50 to-green-50 backdrop-blur-xl border-b border-green-200/30 shadow-lg shadow-green-500/10" />
+
+      {/* Floating organic shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-2 left-10 w-16 h-16 bg-green-400/20 rounded-full blur-sm animate-pulse"></div>
+        <div className="absolute top-4 right-20 w-12 h-12 bg-emerald-400/20 rounded-full blur-sm animate-pulse delay-1000"></div>
+        <div className="absolute bottom-2 left-1/4 w-8 h-8 bg-teal-400/20 rounded-full blur-sm animate-pulse delay-2000"></div>
+        <div className="absolute top-6 right-1/3 w-10 h-10 bg-green-300/20 rounded-full blur-sm animate-pulse delay-3000"></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
+          {/* Creative Logo Section */}
           <div className="flex items-center">
-            <div className="flex-shrink-0 cursor-pointer">
-              <motion.button
-                onClick={handleLogoClick}
-                className="text-left flex items-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="relative w-28 h-28 mr-3">
+            <motion.button
+              onClick={handleLogoClick}
+              className="group flex items-center space-x-4"
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="relative">
+                {/* Organic glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-all duration-500 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-br from-green-300 to-emerald-400 rounded-2xl blur-md opacity-20 group-hover:opacity-30 transition-all duration-500" />
+
+                {/* Main logo container */}
+                <div className="relative w-20 h-20 bg-gradient-to-br from-white/90 to-green-50/90 backdrop-blur-sm rounded-2xl p-2 shadow-xl border border-green-200/50 group-hover:border-green-300/70 transition-all duration-300">
                   <Image
                     src="/about-img/logo1-removebg-preview.png"
                     alt="AFROCADDO Logo"
-                    fill
-                    className="object-contain"
+                    width={64}
+                    height={64}
+                    className="object-contain group-hover:scale-110 transition-transform duration-300"
                     priority
                   />
                 </div>
-                <div></div>
-              </motion.button>
-            </div>
+
+                {/* Floating elements */}
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-emerald-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              <div className="hidden sm:block">
+                <motion.h1
+                  className="text-2xl font-bold bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  AFROCADO
+                </motion.h1>
+                <motion.p
+                  className="text-sm text-green-600 font-medium flex items-center gap-1"
+                  whileHover={{ x: 2 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <span className="text-xs">🌱</span>
+                  Premium African Produce
+                </motion.p>
+              </div>
+            </motion.button>
           </div>
 
-          <div className="hidden md:flex items-center space-x-6">
-            {/* Search Button */}
+          {/* Enhanced Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Enhanced Search Button */}
             <motion.button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2 text-gray-600 hover:text-green-600 transition-colors"
-              whileHover={{ scale: 1.1 }}
+              className="group relative p-3 rounded-full bg-white/60 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
             >
-              <IconSearch size={20} />
+              <IconSearch
+                size={20}
+                className="text-gray-600 group-hover:text-green-600 transition-colors"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
             </motion.button>
 
-            {/* Navigation Links */}
-            <div className="flex items-baseline space-x-6">
-              <motion.button
-                onClick={() => handleNavClick("home")}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeSection === "home"
-                    ? "text-green-700 border-b-2 border-green-700"
-                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Home
-              </motion.button>
-              <motion.button
-                onClick={() => handleNavClick("about")}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeSection === "about"
-                    ? "text-green-700 border-b-2 border-green-700"
-                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                About
-              </motion.button>
-              <motion.button
-                onClick={() => handleNavClick("products")}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeSection === "products"
-                    ? "text-green-700 border-b-2 border-green-700"
-                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Products
-              </motion.button>
-              <motion.button
-                onClick={() => handleNavClick("values")}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeSection === "values"
-                    ? "text-green-700 border-b-2 border-green-700"
-                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Values
-              </motion.button>
-              <motion.button
-                onClick={() => router.push("/blog")}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeSection === "blog"
-                    ? "text-green-700 border-b-2 border-green-700"
-                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Blog
-              </motion.button>
-              <motion.button
-                onClick={() => handleNavClick("contact")}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeSection === "contact"
-                    ? "text-green-700 border-b-2 border-green-700"
-                    : "text-gray-700 hover:text-green-900 hover:border-b-2 hover:border-green-700"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Contact
-              </motion.button>
+            {/* Floating Navigation Pills */}
+            <div className="flex items-center space-x-2 bg-white/40 backdrop-blur-lg rounded-full px-4 py-2 border border-white/30 shadow-lg">
+              {[
+                { id: "home", label: "Home", icon: IconHome },
+                { id: "about", label: "About", icon: IconInfoCircle },
+                { id: "products", label: "Products", icon: IconLeaf },
+                { id: "values", label: "Values", icon: IconHeart },
+                { id: "blog", label: "Blog", icon: IconBook },
+                { id: "contact", label: "Contact", icon: IconMail },
+              ].map(({ id, label, icon: Icon }) => (
+                <motion.button
+                  key={id}
+                  onClick={() =>
+                    id === "blog" ? router.push("/blog") : handleNavClick(id)
+                  }
+                  className={`group relative flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    activeSection === id
+                      ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg"
+                      : "text-gray-700 hover:text-green-600 hover:bg-white/60"
+                  }`}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Icon
+                    size={16}
+                    className="transition-transform group-hover:rotate-12"
+                  />
+                  <span className="hidden lg:inline">{label}</span>
+
+                  {/* Active indicator */}
+                  {activeSection === id && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full -z-10"
+                      layoutId="activeTab"
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+
+                  {/* Hover effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10" />
+                </motion.button>
+              ))}
             </div>
           </div>
 
@@ -510,258 +537,427 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* Search Dropdown */}
+        {/* Enhanced Search Modal */}
         <AnimatePresence>
           {isSearchOpen && (
             <>
-              {/* Backdrop */}
+              {/* Enhanced Backdrop */}
               <motion.div
-                className="fixed inset-0  bg-opacity-20 z-40"
+                className="fixed inset-0 bg-gradient-to-br from-green-500/10 via-emerald-500/5 to-teal-500/10 backdrop-blur-sm z-40"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
               />
 
-              {/* Search Modal */}
+              {/* Enhanced Search Modal */}
               <motion.div
-                className="search-modal absolute top-full left-1/2 transform -translate-x-1/2 w-[28rem] max-w-[calc(100vw-2rem)] bg-white shadow-2xl border border-gray-200 rounded-2xl z-50 mt-2"
-                initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="search-modal absolute top-full left-1/2 transform -translate-x-1/2 w-[32rem] max-w-[calc(100vw-2rem)] bg-white/95 backdrop-blur-xl shadow-2xl border border-white/30 rounded-3xl z-50 mt-4 overflow-hidden"
+                initial={{ opacity: 0, y: -20, scale: 0.9, rotateX: -15 }}
+                animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+                exit={{ opacity: 0, y: -20, scale: 0.9, rotateX: -15 }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
               >
-                <div className="p-4">
-                  {/* Search Input */}
-                  <div className="relative mb-3">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <IconSearch className="h-4 w-4 text-gray-400" />
-                    </div>
-                    <input
-                      ref={searchInputRef}
-                      type="text"
-                      value={searchQuery}
-                      onChange={handleSearchChange}
-                      placeholder="Search everything..."
-                      className="block w-full pl-9 pr-10 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm bg-gray-50 focus:bg-white transition-colors"
-                    />
-                    <button
-                      onClick={clearSearch}
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-gray-100 rounded-r-xl transition-colors"
-                    >
-                      <IconX className="h-4 w-4 text-gray-400 hover:text-gray-600" />
-                    </button>
-                  </div>
-
-                  {/* Search Results */}
-                  {searchQuery && (
-                    <div className="max-h-80 overflow-y-auto">
-                      {isSearching ? (
-                        <div className="flex items-center justify-center py-6">
-                          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600"></div>
-                          <span className="ml-2 text-gray-600 text-sm">
-                            Searching...
-                          </span>
+                {/* Gradient Header */}
+                <div className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 p-1">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-t-3xl">
+                    <div className="p-6">
+                      {/* Enhanced Search Input */}
+                      <div className="relative mb-4">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                          <motion.div
+                            animate={{ rotate: searchQuery ? 360 : 0 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <IconSearch className="h-5 w-5 text-gray-400" />
+                          </motion.div>
                         </div>
-                      ) : searchResults.length > 0 ? (
-                        <div className="space-y-1">
-                          {searchResults.slice(0, 5).map((result) => (
+                        <input
+                          ref={searchInputRef}
+                          type="text"
+                          value={searchQuery}
+                          onChange={handleSearchChange}
+                          placeholder="Search our premium African produce..."
+                          className="block w-full pl-12 pr-12 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/20 focus:border-green-500 text-base bg-white/80 backdrop-blur-sm transition-all duration-300 shadow-lg focus:shadow-xl"
+                        />
+                        <motion.button
+                          onClick={clearSearch}
+                          className="absolute inset-y-0 right-0 pr-4 flex items-center hover:bg-gray-100 rounded-r-2xl transition-all duration-300"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <IconX className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                        </motion.button>
+                      </div>
+
+                      {/* Enhanced Search Results */}
+                      {searchQuery && (
+                        <div className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-green-200 scrollbar-track-transparent">
+                          {isSearching ? (
                             <motion.div
-                              key={result.id}
-                              className="p-3 rounded-lg hover:bg-green-50 cursor-pointer transition-colors group"
-                              onClick={() => scrollToSection(result.section)}
-                              whileHover={{ scale: 1.01 }}
-                              initial={{ opacity: 0, y: 5 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.15 }}
+                              className="flex items-center justify-center py-8"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
                             >
-                              <div className="flex items-start justify-between">
-                                <div className="flex-1 min-w-0">
-                                  <h4 className="font-medium text-gray-900 text-sm mb-1 truncate">
-                                    {result.title}
-                                  </h4>
-                                  <p className="text-xs text-gray-600 mb-2 line-clamp-2">
-                                    {result.content.length > 80
-                                      ? `${result.content.substring(0, 80)}...`
-                                      : result.content}
-                                  </p>
-                                  <span className="inline-block px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full font-medium">
-                                    {result.section}
-                                  </span>
-                                </div>
-                                <IconChevronDown className="h-4 w-4 text-gray-400 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                              <div className="flex items-center space-x-3">
+                                <div className="animate-spin rounded-full h-8 w-8 border-4 border-green-200 border-t-green-600"></div>
+                                <span className="text-gray-600 font-medium">
+                                  Searching our premium produce...
+                                </span>
                               </div>
                             </motion.div>
-                          ))}
-                          {searchResults.length > 5 && (
-                            <div className="text-center py-2">
-                              <span className="text-xs text-gray-500">
-                                +{searchResults.length - 5} more results
-                              </span>
+                          ) : searchResults.length > 0 ? (
+                            <div className="space-y-2">
+                              {searchResults
+                                .slice(0, 5)
+                                .map((result, index) => (
+                                  <motion.div
+                                    key={result.id}
+                                    className="group p-4 rounded-2xl hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 cursor-pointer transition-all duration-300 border border-transparent hover:border-green-200 hover:shadow-lg"
+                                    onClick={() =>
+                                      scrollToSection(result.section)
+                                    }
+                                    whileHover={{ scale: 1.02, y: -2 }}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                      duration: 0.2,
+                                      delay: index * 0.05,
+                                    }}
+                                  >
+                                    <div className="flex items-start justify-between">
+                                      <div className="flex-1 min-w-0">
+                                        <h4 className="font-semibold text-gray-900 text-base mb-2 line-clamp-1">
+                                          {result.title}
+                                        </h4>
+                                        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                                          {result.content.length > 100
+                                            ? `${result.content.substring(
+                                                0,
+                                                100
+                                              )}...`
+                                            : result.content}
+                                        </p>
+                                        <div className="flex items-center space-x-2">
+                                          <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-xs rounded-full font-semibold">
+                                            {result.section}
+                                          </span>
+                                          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                                        </div>
+                                      </div>
+                                      <motion.div
+                                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                        whileHover={{ x: 5 }}
+                                      >
+                                        <IconChevronDown className="h-5 w-5 text-green-500" />
+                                      </motion.div>
+                                    </div>
+                                  </motion.div>
+                                ))}
+                              {searchResults.length > 5 && (
+                                <motion.div
+                                  className="text-center py-4"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.3 }}
+                                >
+                                  <span className="text-sm text-gray-500 font-medium">
+                                    +{searchResults.length - 5} more results
+                                    available
+                                  </span>
+                                </motion.div>
+                              )}
                             </div>
+                          ) : (
+                            <motion.div
+                              className="text-center py-8"
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <div className="text-6xl mb-4">🔍</div>
+                              <p className="text-gray-600 font-medium text-lg mb-2">
+                                No results for &ldquo;{searchQuery}&rdquo;
+                              </p>
+                              <p className="text-sm text-gray-400">
+                                Try searching for &quot;avocados&quot;,
+                                &quot;mangoes&quot;, or &quot;export
+                                services&quot;
+                              </p>
+                            </motion.div>
                           )}
                         </div>
-                      ) : (
-                        <div className="text-center py-6">
-                          <div className="text-gray-400 mb-2">🔍</div>
-                          <p className="text-gray-500 text-sm">
-                            No results for &ldquo;{searchQuery}&rdquo;
-                          </p>
-                          <p className="text-xs text-gray-400 mt-1">
-                            Try different keywords
-                          </p>
-                        </div>
+                      )}
+
+                      {/* Enhanced Popular Searches */}
+                      {!searchQuery && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3, delay: 0.2 }}
+                        >
+                          <h4 className="text-sm font-bold text-gray-700 mb-4 flex items-center">
+                            <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            Popular Searches
+                          </h4>
+                          <div className="grid grid-cols-2 gap-3">
+                            {[
+                              {
+                                term: "Avocados",
+                                icon: "🥑",
+                                color: "from-green-400 to-emerald-500",
+                              },
+                              {
+                                term: "Mangoes",
+                                icon: "🥭",
+                                color: "from-yellow-400 to-orange-500",
+                              },
+                              {
+                                term: "Export Services",
+                                icon: "🚢",
+                                color: "from-blue-400 to-cyan-500",
+                              },
+                              {
+                                term: "Quality Control",
+                                icon: "✅",
+                                color: "from-purple-400 to-pink-500",
+                              },
+                              {
+                                term: "Our Team",
+                                icon: "👥",
+                                color: "from-indigo-400 to-purple-500",
+                              },
+                              {
+                                term: "Contact",
+                                icon: "📞",
+                                color: "from-teal-400 to-green-500",
+                              },
+                            ].map(({ term, icon, color }) => (
+                              <motion.button
+                                key={term}
+                                onClick={() => {
+                                  setSearchQuery(term);
+                                  handleSearch(term);
+                                }}
+                                className="group flex items-center space-x-3 p-3 bg-white/60 hover:bg-white border border-gray-200 hover:border-green-300 rounded-xl transition-all duration-300 hover:shadow-lg"
+                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                              >
+                                <div
+                                  className={`w-8 h-8 rounded-full bg-gradient-to-r ${color} flex items-center justify-center text-white text-sm font-bold`}
+                                >
+                                  {icon}
+                                </div>
+                                <span className="text-sm font-medium text-gray-700 group-hover:text-green-700">
+                                  {term}
+                                </span>
+                              </motion.button>
+                            ))}
+                          </div>
+                        </motion.div>
                       )}
                     </div>
-                  )}
-
-                  {/* Popular Searches */}
-                  {!searchQuery && (
-                    <div>
-                      <h4 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">
-                        Popular Searches
-                      </h4>
-                      <div className="flex flex-wrap gap-1.5">
-                        {[
-                          "Avocados",
-                          "Mangoes",
-                          "Export Services",
-                          "Quality Control",
-                          "Our Team",
-                          "Contact",
-                        ].map((term) => (
-                          <button
-                            key={term}
-                            onClick={() => {
-                              setSearchQuery(term);
-                              handleSearch(term);
-                            }}
-                            className="px-2.5 py-1 bg-gray-100 hover:bg-green-100 text-gray-700 hover:text-green-700 rounded-lg text-xs transition-colors font-medium"
-                          >
-                            {term}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
               </motion.div>
             </>
           )}
         </AnimatePresence>
 
-        {/* Mobile Menu Dropdown */}
+        {/* Enhanced Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <>
-              {/* Backdrop */}
+              {/* Enhanced Backdrop */}
               <motion.div
-                className="fixed inset-0  bg-opacity-20 z-40"
+                className="fixed inset-0 bg-gradient-to-br from-green-500/20 via-emerald-500/10 to-teal-500/20 backdrop-blur-sm z-40"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setIsMobileMenuOpen(false)}
               />
 
-              {/* Mobile Menu */}
+              {/* Enhanced Mobile Menu */}
               <motion.div
-                className="mobile-menu absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-200 z-50"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
+                className="mobile-menu fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white/95 backdrop-blur-xl shadow-2xl border-l border-white/30 z-50"
+                initial={{ opacity: 0, x: 300, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 300, scale: 0.9 }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
               >
-                <div className="px-4 py-6 space-y-4">
-                  {/* Navigation Links */}
-                  <motion.button
-                    onClick={() => {
-                      handleNavClick("home");
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      activeSection === "home"
-                        ? "text-green-700 bg-green-50"
-                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    Home
-                  </motion.button>
+                {/* Mobile Menu Header */}
+                <div className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                        <Image
+                          src="/about-img/logo1-removebg-preview.png"
+                          alt="AFROCADDO Logo"
+                          width={24}
+                          height={24}
+                          className="object-contain"
+                        />
+                      </div>
+                      <div>
+                        <h2 className="text-white font-bold text-lg">
+                          AFROCADO
+                        </h2>
+                        <p className="text-white/80 text-xs">
+                          Premium African Produce
+                        </p>
+                      </div>
+                    </div>
+                    <motion.button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+                      whileHover={{ scale: 1.1, rotate: 90 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <IconX size={20} className="text-white" />
+                    </motion.button>
+                  </div>
+                </div>
+                {/* Enhanced Mobile Navigation */}
+                <div className="flex-1 overflow-y-auto">
+                  <div className="p-6 space-y-2">
+                    {[
+                      {
+                        id: "home",
+                        label: "Home",
+                        icon: IconHome,
+                        description: "Welcome to Afrocado",
+                      },
+                      {
+                        id: "about",
+                        label: "About",
+                        icon: IconInfoCircle,
+                        description: "Our story & mission",
+                      },
+                      {
+                        id: "products",
+                        label: "Products",
+                        icon: IconLeaf,
+                        description: "Premium African produce",
+                      },
+                      {
+                        id: "values",
+                        label: "Values",
+                        icon: IconHeart,
+                        description: "Our principles",
+                      },
+                      {
+                        id: "blog",
+                        label: "Blog",
+                        icon: IconBook,
+                        description: "Latest news & insights",
+                      },
+                      {
+                        id: "contact",
+                        label: "Contact",
+                        icon: IconMail,
+                        description: "Get in touch",
+                      },
+                    ].map(({ id, label, icon: Icon, description }, index) => (
+                      <motion.button
+                        key={id}
+                        onClick={() => {
+                          if (id === "blog") {
+                            router.push("/blog");
+                          } else {
+                            handleNavClick(id);
+                          }
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className={`group w-full flex items-center space-x-4 p-4 rounded-2xl transition-all duration-300 ${
+                          activeSection === id
+                            ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg"
+                            : "bg-white/60 hover:bg-white border border-gray-200 hover:border-green-300 hover:shadow-lg"
+                        }`}
+                        whileHover={{ scale: 1.02, x: 5 }}
+                        whileTap={{ scale: 0.98 }}
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                      >
+                        <div
+                          className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                            activeSection === id
+                              ? "bg-white/20"
+                              : "bg-gradient-to-r from-green-100 to-emerald-100 group-hover:from-green-200 group-hover:to-emerald-200"
+                          }`}
+                        >
+                          <Icon
+                            size={24}
+                            className={
+                              activeSection === id
+                                ? "text-white"
+                                : "text-green-600"
+                            }
+                          />
+                        </div>
+                        <div className="flex-1 text-left">
+                          <h3
+                            className={`font-semibold text-lg ${
+                              activeSection === id
+                                ? "text-white"
+                                : "text-gray-800"
+                            }`}
+                          >
+                            {label}
+                          </h3>
+                          <p
+                            className={`text-sm ${
+                              activeSection === id
+                                ? "text-white/80"
+                                : "text-gray-500"
+                            }`}
+                          >
+                            {description}
+                          </p>
+                        </div>
+                        <motion.div
+                          className={`w-2 h-2 rounded-full ${
+                            activeSection === id ? "bg-white" : "bg-green-400"
+                          }`}
+                          animate={{ scale: activeSection === id ? 1.5 : 1 }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      </motion.button>
+                    ))}
+                  </div>
 
-                  <motion.button
-                    onClick={() => {
-                      handleNavClick("about");
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      activeSection === "about"
-                        ? "text-green-700 bg-green-50"
-                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    About
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => {
-                      handleNavClick("products");
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      activeSection === "products"
-                        ? "text-green-700 bg-green-50"
-                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    Products
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => {
-                      handleNavClick("values");
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      activeSection === "values"
-                        ? "text-green-700 bg-green-50"
-                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    Values
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => {
-                      router.push("/blog");
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      activeSection === "blog"
-                        ? "text-green-700 bg-green-50"
-                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    Blog
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => {
-                      handleNavClick("contact");
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      activeSection === "contact"
-                        ? "text-green-700 bg-green-50"
-                        : "text-gray-700 hover:text-green-900 hover:bg-green-50"
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    Contact
-                  </motion.button>
+                  {/* Mobile Menu Footer */}
+                  <div className="p-6 border-t border-gray-200 bg-gradient-to-r from-green-50 to-emerald-50">
+                    <div className="text-center">
+                      <p className="text-sm text-gray-600 mb-3">
+                        Premium African Produce Export
+                      </p>
+                      <div className="flex justify-center space-x-4">
+                        <motion.button
+                          className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          📞
+                        </motion.button>
+                        <motion.button
+                          className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg"
+                          whileHover={{ scale: 1.1, rotate: -5 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          ✉️
+                        </motion.button>
+                        <motion.button
+                          className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white shadow-lg"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          🌍
+                        </motion.button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </>
