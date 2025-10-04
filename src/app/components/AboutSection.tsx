@@ -260,7 +260,7 @@ export default function AboutSection() {
             </motion.button>
 
             {/* Carousel Container */}
-            <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-sm sm:shadow-lg">
+            <div className="overflow-hidden rounded-2xl sm:rounded-3xl">
               <motion.div
                 className="flex"
                 animate={{ x: -currentImageIndex * 100 + "%" }}
