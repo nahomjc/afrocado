@@ -635,7 +635,7 @@ export default function ChatBot() {
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Ask about our services..."
-                    className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-white shadow-sm transition-all duration-200 text-black placeholder:text-black placeholder:font-medium"
+                    className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-white shadow-sm transition-all duration-200 text-black placeholder:text-gray-300 placeholder:font-medium"
                   />
                 </div>
                 <motion.button
