@@ -407,7 +407,6 @@ export default function Navigation() {
             <motion.button
               onClick={handleLogoClick}
               className="group flex items-center space-x-4"
-              whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -423,7 +422,7 @@ export default function Navigation() {
                     alt="AFROCADDO Logo"
                     width={80}
                     height={80}
-                    className="object-contain group-hover:scale-110 transition-transform duration-300"
+                    className="object-contain"
                     priority
                   />
                 </div>
@@ -436,14 +435,12 @@ export default function Navigation() {
               <div className="hidden sm:block">
                 <motion.h1
                   className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent"
-                  whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   AFROCADO
                 </motion.h1>
                 <motion.p
                   className="text-sm sm:text-base text-green-600 font-medium flex items-center gap-1"
-                  whileHover={{ x: 2 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <span className="text-xs sm:text-sm">🌱</span>
