@@ -72,10 +72,10 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Globe on the left */}
           <div className="relative flex justify-center lg:justify-start py-6 sm:py-8 lg:py-0 mt-4 sm:mt-0">
-            <div className="relative w-full max-w-md h-96 sm:h-[28rem] lg:h-[500px] bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="relative w-full max-w-md h-96 sm:h-[28rem] lg:h-[500px] bg-white overflow-hidden">
               <canvas
                 ref={canvasRef}
-                className="w-full h-full rounded-2xl bg-white"
+                className="w-full h-full bg-white"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -83,7 +83,7 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
                   background: "white",
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
 
