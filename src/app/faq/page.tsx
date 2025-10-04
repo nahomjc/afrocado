@@ -278,7 +278,7 @@ export default function FAQPage() {
                   placeholder="Search questions..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-white text-gray-900 placeholder-white focus:ring-4 focus:ring-white/30 focus:outline-none text-lg font-medium"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-white text-black placeholder:text-black placeholder:font-medium focus:ring-4 focus:ring-white/30 focus:outline-none text-lg font-medium"
                 />
               </div>
             </motion.div>

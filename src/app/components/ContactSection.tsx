@@ -433,7 +433,7 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                       placeholder="Your full name"
                     />
                   </motion.div>
@@ -451,7 +451,7 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                       placeholder="your.email@company.com"
                     />
                   </motion.div>
@@ -469,7 +469,7 @@ export default function ContactSection() {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                       placeholder="Tell us about your requirements, expected volumes, and any specific needs..."
                     ></textarea>
                   </motion.div>
@@ -722,7 +722,7 @@ export default function ContactSection() {
                       value={quickActionForm.name}
                       onChange={handleQuickActionInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                       placeholder="Your full name"
                     />
                   </div>
@@ -736,7 +736,7 @@ export default function ContactSection() {
                       value={quickActionForm.email}
                       onChange={handleQuickActionInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                       placeholder="your.email@company.com"
                     />
                   </div>
@@ -752,7 +752,7 @@ export default function ContactSection() {
                       name="company"
                       value={quickActionForm.company}
                       onChange={handleQuickActionInputChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                       placeholder="Your company name"
                     />
                   </div>
@@ -765,7 +765,7 @@ export default function ContactSection() {
                       name="phone"
                       value={quickActionForm.phone}
                       onChange={handleQuickActionInputChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
@@ -855,7 +855,7 @@ export default function ContactSection() {
                         value={quickActionForm.shippingAddress}
                         onChange={handleQuickActionInputChange}
                         rows={3}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                         placeholder="Enter complete shipping address..."
                       />
                     </div>
@@ -871,7 +871,7 @@ export default function ContactSection() {
                     value={quickActionForm.message}
                     onChange={handleQuickActionInputChange}
                     rows={4}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white placeholder:text-gray-700 placeholder:font-medium"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none bg-gray-50 focus:bg-white placeholder:text-black placeholder:font-medium text-black"
                     placeholder={
                       activeModal === "catalog"
                         ? "Tell us about your business and product interests..."

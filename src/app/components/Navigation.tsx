@@ -577,7 +577,7 @@ export default function Navigation() {
                           value={searchQuery}
                           onChange={handleSearchChange}
                           placeholder="Search our premium African produce..."
-                          className="block w-full pl-12 pr-12 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/20 focus:border-green-500 text-base bg-white/80 backdrop-blur-sm transition-all duration-300 shadow-lg focus:shadow-xl"
+                          className="block w-full pl-12 pr-12 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/20 focus:border-green-500 text-base bg-white/80 backdrop-blur-sm transition-all duration-300 shadow-lg focus:shadow-xl text-black placeholder:text-black placeholder:font-medium"
                         />
                         <motion.button
                           onClick={clearSearch}
