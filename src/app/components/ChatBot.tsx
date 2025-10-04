@@ -222,6 +222,7 @@ export default function ChatBot() {
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 300 }}
           title="Call us now"
+          aria-label="Call us now"
         >
           {/* Background animation */}
           <motion.div

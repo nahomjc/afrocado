@@ -33,6 +33,7 @@ export default function StickyFAQButton() {
         whileHover={{ scale: 1.1, y: -2 }}
         whileTap={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 300 }}
+        aria-label="Open FAQ section"
       >
         {/* Background animation */}
         <motion.div

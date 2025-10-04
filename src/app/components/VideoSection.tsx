@@ -134,12 +134,18 @@ export default function VideoSection() {
                     >
                       <iframe
                         className="absolute top-0 left-0 w-full h-full"
-                        src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3&cc_load_policy=0&fs=1&disablekb=1&playsinline=1&autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}`}
+                        src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3&cc_load_policy=0&fs=1&disablekb=1&playsinline=1&autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&enablejsapi=0&origin=${
+                          typeof window !== "undefined"
+                            ? window.location.origin
+                            : ""
+                        }`}
                         title="Afrocado - Premium African Produce Export Presentation"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                         onLoad={() => setIsVideoLoaded(true)}
+                        sandbox="allow-scripts allow-same-origin allow-presentation"
+                        referrerPolicy="no-referrer"
                       />
                     </div>
 

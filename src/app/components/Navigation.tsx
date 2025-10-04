@@ -453,6 +453,7 @@ export default function Navigation() {
               className="group relative p-3 rounded-full bg-white/60 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Open search"
             >
               <IconSearch
                 size={20}
@@ -484,6 +485,7 @@ export default function Navigation() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}
+                  aria-label={`Navigate to ${label} section`}
                 >
                   <Icon
                     size={16}
@@ -518,6 +520,7 @@ export default function Navigation() {
               className="p-2 text-gray-700 hover:text-green-900 focus:outline-none focus:text-green-900"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Open search"
             >
               <IconSearch size={20} />
             </motion.button>
@@ -876,6 +879,7 @@ export default function Navigation() {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
+                        aria-label={`Navigate to ${label} section`}
                       >
                         <div
                           className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${

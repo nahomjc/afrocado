@@ -274,9 +274,9 @@ export default function ContactSection() {
           {/* Contact Information */}
           <motion.div className="space-y-8" variants={fadeInUp}>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Contact Information
-              </h3>
+              </h2>
               <div className="space-y-6">
                 <motion.div
                   className="flex items-start"
@@ -287,7 +287,7 @@ export default function ContactSection() {
                     <IconMail size={24} className="text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
+                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                     <p className="text-gray-600">info@afrocado.com</p>
                     <p className="text-gray-600">sales@afrocado.com</p>
                   </div>
@@ -302,7 +302,7 @@ export default function ContactSection() {
                     <IconPhone size={24} className="text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
+                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
                     <p className="text-gray-600">+251 11 123 4567 (Ethiopia)</p>
                     <p className="text-gray-600">+1 (555) 123-4567 (USA)</p>
                   </div>
@@ -317,9 +317,9 @@ export default function ContactSection() {
                     <IconMapPin size={24} className="text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">
+                    <h3 className="font-semibold text-gray-900 mb-1">
                       Address
-                    </h4>
+                    </h3>
                     <p className="text-gray-600">Afrocado Export House</p>
                     <p className="text-gray-600">Westlands Business District</p>
                     <p className="text-gray-600">Addis Ababa, Ethiopia 1000</p>
@@ -335,7 +335,7 @@ export default function ContactSection() {
                     <IconClock size={24} className="text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Hours</h4>
+                    <h3 className="font-semibold text-gray-900 mb-1">Hours</h3>
                     <p className="text-gray-600">
                       Mon - Fri: 8:00 AM - 6:00 PM
                     </p>
@@ -347,9 +347,9 @@ export default function ContactSection() {
 
             {/* Quick Contact Buttons */}
             <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-gray-900">
                 Quick Actions
-              </h4>
+              </h3>
               <div className="grid grid-cols-1 gap-3">
                 <motion.button
                   onClick={handleCatalogRequest}
@@ -357,6 +357,7 @@ export default function ContactSection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 300 }}
+                  aria-label="Request product catalog"
                 >
                   <IconFileText size={20} />
                   <span>Request Product Catalog</span>
@@ -367,6 +368,7 @@ export default function ContactSection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 300 }}
+                  aria-label="Schedule a call"
                 >
                   <IconCalendar size={20} />
                   <span>Schedule a Call</span>
@@ -377,6 +379,7 @@ export default function ContactSection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 300 }}
+                  aria-label="Request samples"
                 >
                   <IconPackage size={20} />
                   <span>Request Samples</span>
@@ -526,9 +529,10 @@ export default function ContactSection() {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer"
                 className="rounded-xl"
                 title="Afrocado Export House Location"
+                sandbox="allow-scripts allow-same-origin"
               ></iframe>
 
               {/* Overlay with Location Info */}

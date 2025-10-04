@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ["@tabler/icons-react", "framer-motion"],
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
   },
 
   // Image optimization
@@ -24,6 +32,8 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    loader: "default",
+    unoptimized: false,
   },
 
   // Compression
@@ -112,9 +122,29 @@ const nextConfig: NextConfig = {
             name: "vendors",
             chunks: "all",
           },
+          framerMotion: {
+            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            name: "framer-motion",
+            chunks: "all",
+          },
+          tablerIcons: {
+            test: /[\\/]node_modules[\\/]@tabler[\\/]/,
+            name: "tabler-icons",
+            chunks: "all",
+          },
         },
       };
+
+      // Enable tree shaking
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = false;
     }
+
+    // Optimize for production
+    if (!dev) {
+      config.optimization.minimize = true;
+    }
+
     return config;
   },
 };

@@ -651,6 +651,7 @@ export default function HeroSection() {
                   whileHover={{
                     boxShadow: "0 12px 35px rgba(34, 197, 94, 0.6)",
                   }}
+                  aria-label="View our exported products and services"
                 >
                   {/* Animated background effect */}
                   <motion.div
