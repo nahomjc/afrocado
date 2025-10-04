@@ -224,9 +224,9 @@ export default function FAQPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-600 via-green-700 to-green-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header with Back button and FAQ badge - Equal alignment */}
+          {/* Header with Back button and FAQ badge - Responsive layout */}
           <motion.div
-            className="flex justify-between items-center mb-16 pt-8"
+            className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-16 pt-8 gap-4 sm:gap-0"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
@@ -234,23 +234,26 @@ export default function FAQPage() {
             {/* Back to Home Button - Left aligned */}
             <motion.button
               onClick={() => router.back()}
-              className="inline-flex items-center text-green-100 hover:text-white transition-colors"
+              className="inline-flex items-center text-green-100 hover:text-white transition-colors text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <IconArrowLeft className="w-5 h-5 mr-2" />
+              <IconArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
               Back to Home
             </motion.button>
 
-            {/* FAQ Badge - Right aligned */}
+            {/* FAQ Badge - Right aligned on desktop, left aligned on mobile */}
             <motion.div
-              className="inline-flex items-center bg-white/20 rounded-full px-6 py-3"
+              className="inline-flex items-center bg-white/20 rounded-full px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <IconHelp className="w-6 h-6 mr-3" />
-              <span className="text-lg font-medium">
-                Frequently Asked Questions
+              <IconHelp className="w-4 h-4 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
+              <span className="font-medium">
+                <span className="hidden sm:inline">
+                  Frequently Asked Questions
+                </span>
+                <span className="sm:hidden">FAQ</span>
               </span>
             </motion.div>
           </motion.div>
