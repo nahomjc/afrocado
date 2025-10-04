@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import createGlobe from "cobe";
 
 interface GlobeSectionProps {
@@ -9,9 +9,12 @@ interface GlobeSectionProps {
 
 export default function GlobeSection({ className = "" }: GlobeSectionProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
+  const [phi, setPhi] = useState(0);
+  const [theta, setTheta] = useState(0.3);
 
   useEffect(() => {
-    let phi = 0;
     let width = 0;
     const onResize = () =>
       canvasRef.current && (width = canvasRef.current.offsetWidth);
@@ -22,8 +25,8 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
       devicePixelRatio: 2,
       width: width * 2,
       height: width * 2,
-      phi: 0,
-      theta: 0.3,
+      phi: phi,
+      theta: theta,
       dark: 0,
       diffuse: 2,
       mapSamples: 16000,
@@ -45,7 +48,10 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
       ],
       onRender: (state) => {
         state.phi = phi;
-        phi += 0.01;
+        state.theta = theta;
+        if (!isDragging) {
+          setPhi((prev) => prev + 0.01);
+        }
       },
     });
 
@@ -62,7 +68,53 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };
+  }, [isDragging, phi, theta]);
+
+  // Memoized mouse handlers to prevent unnecessary re-renders
+  const handleMouseDown = useCallback((e: MouseEvent) => {
+    setIsDragging(true);
+    setLastMousePosition({ x: e.clientX, y: e.clientY });
   }, []);
+
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (!isDragging) return;
+
+      const deltaX = e.clientX - lastMousePosition.x;
+      const deltaY = e.clientY - lastMousePosition.y;
+
+      setPhi((prev) => prev + deltaX * 0.01);
+      setTheta((prev) => Math.max(0.1, Math.min(1.5, prev + deltaY * 0.01)));
+
+      setLastMousePosition({ x: e.clientX, y: e.clientY });
+    },
+    [isDragging, lastMousePosition]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  // Separate effect for mouse events to prevent globe recreation
+  useEffect(() => {
+    // Add event listeners
+    const canvas = canvasRef.current;
+    if (canvas) {
+      canvas.addEventListener("mousedown", handleMouseDown);
+      canvas.addEventListener("mousemove", handleMouseMove);
+      canvas.addEventListener("mouseup", handleMouseUp);
+      canvas.addEventListener("mouseleave", handleMouseUp);
+    }
+
+    return () => {
+      if (canvas) {
+        canvas.removeEventListener("mousedown", handleMouseDown);
+        canvas.removeEventListener("mousemove", handleMouseMove);
+        canvas.removeEventListener("mouseup", handleMouseUp);
+        canvas.removeEventListener("mouseleave", handleMouseUp);
+      }
+    };
+  }, [handleMouseDown, handleMouseMove, handleMouseUp]);
 
   return (
     <section
@@ -75,7 +127,7 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
             <div className="relative w-full max-w-md h-96 sm:h-[28rem] lg:h-[500px] bg-white overflow-hidden">
               <canvas
                 ref={canvasRef}
-                className="w-full h-full bg-white"
+                className="w-full h-full bg-white cursor-grab active:cursor-grabbing"
                 style={{
                   width: "100%",
                   height: "100%",
