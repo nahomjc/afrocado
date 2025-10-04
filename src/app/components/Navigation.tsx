@@ -331,28 +331,36 @@ export default function Navigation() {
     }
   }, [isSearchOpen]);
 
-  // Listen for scroll events to update active section
+  // Optimized scroll listener with throttling
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["home", "about", "products", "values", "contact"];
-      const scrollPosition = window.scrollY + 100; // Offset for better UX
+    let ticking = false;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-            break;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const sections = ["home", "about", "products", "values", "contact"];
+          const scrollPosition = window.scrollY + 100; // Offset for better UX
+
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const { offsetTop, offsetHeight } = element;
+              if (
+                scrollPosition >= offsetTop &&
+                scrollPosition < offsetTop + offsetHeight
+              ) {
+                setActiveSection(section);
+                break;
+              }
+            }
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
