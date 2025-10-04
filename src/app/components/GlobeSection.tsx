@@ -88,65 +88,65 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
           </div>
 
           {/* Content on the right */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-3 sm:space-y-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black">
                 Connecting the World
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-black leading-relaxed">
                 Our global presence spans across continents, bringing innovative
                 solutions and sustainable practices to communities worldwide.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-3">
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-base sm:text-lg font-semibold text-black">
                     Global Reach
                   </h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-sm sm:text-base text-black">
                   Operating in over 50 countries with local expertise and global
                   standards.
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-base sm:text-lg font-semibold text-black">
                     Sustainable Impact
                   </h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-sm sm:text-base text-black">
                   Committed to environmental responsibility and positive social
                   impact.
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-base sm:text-lg font-semibold text-black">
                     Innovation Hub
                   </h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-sm sm:text-base text-black">
                   Cutting-edge technology and research driving the future of
                   agriculture.
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-base sm:text-lg font-semibold text-black">
                     Community Focus
                   </h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-sm sm:text-base text-black">
                   Empowering local communities through education and sustainable
                   practices.
                 </p>
