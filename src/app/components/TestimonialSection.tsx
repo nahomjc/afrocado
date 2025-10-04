@@ -2,7 +2,16 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import {
+  IconChevronLeft,
+  IconChevronRight,
+  IconHeart,
+  IconRepeat,
+  IconMessageCircle,
+  IconShare,
+  IconDots,
+  IconCheck,
+} from "@tabler/icons-react";
 
 export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,35 +20,53 @@ export default function TestimonialSection() {
     {
       id: 1,
       name: "Sarah Johnson",
+      handle: "@sarahjohnson_fme",
       company: "Fresh Market Europe",
       role: "Procurement Director",
       image:
         "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "Afrocado has been our trusted partner for over 3 years. Their premium quality fruits and vegetables consistently exceed our expectations. The cold chain logistics ensure our customers receive the freshest produce possible.",
+      text: "Afrocado has been our trusted partner for over 3 years. Their premium quality fruits and vegetables consistently exceed our expectations. The cold chain logistics ensure our customers receive the freshest produce possible. #FreshProduce #ExportQuality",
       country: "🇩🇪 Germany",
+      timestamp: "2h",
+      likes: 47,
+      retweets: 12,
+      replies: 8,
+      verified: true,
     },
     {
       id: 2,
       name: "Ahmed Hassan",
+      handle: "@ahmedhassan_mei",
       company: "Middle East Imports",
       role: "CEO",
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "The quality and reliability of Afrocado's export services are unmatched. Their attention to detail in packaging and shipping has helped us build a strong reputation in the Middle Eastern market.",
+      text: "The quality and reliability of Afrocado's export services are unmatched. Their attention to detail in packaging and shipping has helped us build a strong reputation in the Middle Eastern market. #ExportExcellence #QualityFirst",
       country: "🇦🇪 UAE",
+      timestamp: "4h",
+      likes: 89,
+      retweets: 23,
+      replies: 15,
+      verified: true,
     },
     {
       id: 3,
       name: "Maria Rodriguez",
+      handle: "@mariarodriguez_tfi",
       company: "Tropical Foods Inc.",
       role: "Quality Manager",
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "Working with Afrocado has transformed our business. Their certified organic produce and sustainable farming practices align perfectly with our company values. Highly recommended!",
+      text: "Working with Afrocado has transformed our business. Their certified organic produce and sustainable farming practices align perfectly with our company values. Highly recommended! #OrganicProduce #SustainableFarming",
       country: "🇺🇸 USA",
+      timestamp: "6h",
+      likes: 156,
+      retweets: 34,
+      replies: 22,
+      verified: true,
     },
   ];
 
@@ -94,26 +121,26 @@ export default function TestimonialSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="inline-flex items-center bg-green-100 rounded-full px-4 py-2 mb-6"
+            className="inline-flex items-center bg-blue-100 rounded-full px-4 py-2 mb-6"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <span className="text-green-700 text-sm font-medium">
-              💬 Customer Testimonials
+            <span className="text-blue-700 text-sm font-medium">
+              🐦 Social Proof
             </span>
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            What Our <span className="text-green-600">Global Partners</span> Say
+            What Our <span className="text-blue-600">Partners</span> Are Saying
           </h2>
 
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover why leading companies worldwide trust Afrocado for their
-            premium fruit and vegetable export needs.
+            See what industry leaders are sharing about their experience with
+            Afrocado&apos;s premium export services.
           </p>
         </motion.div>
 
-        {/* Desktop Grid View */}
+        {/* Desktop Grid View - Tweet Cards */}
         <motion.div
           className="hidden md:grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
           variants={containerVariants}
@@ -124,54 +151,81 @@ export default function TestimonialSection() {
           {testimonials.map((testimonial) => (
             <motion.div
               key={testimonial.id}
-              className="bg-white rounded-3xl p-10 shadow-2xl hover:shadow-3xl transition-all duration-500 border border-gray-100 group relative overflow-hidden"
+              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group relative overflow-hidden"
               variants={cardVariants}
               whileHover={{
-                y: -12,
+                y: -4,
                 transition: { type: "spring", stiffness: 300 },
               }}
             >
-              {/* Background Gradient on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              <div className="relative z-10">
-                {/* Rating */}
-                <div className="flex items-center mb-8">
-                  {renderStars(testimonial.rating)}
-                </div>
-
-                {/* Quote Icon */}
-                <div className="absolute top-6 right-6 text-green-200 text-6xl font-serif">
-                  &ldquo;
-                </div>
-
-                {/* Testimonial Text */}
-                <blockquote className="text-gray-700 mb-10 leading-relaxed italic text-lg font-medium pr-8">
-                  {testimonial.text}
-                </blockquote>
-
-                {/* Customer Info */}
-                <div className="flex items-center space-x-5">
-                  <div className="w-20 h-20 rounded-full overflow-hidden shadow-xl group-hover:scale-110 transition-transform duration-300">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-full h-full object-cover"
-                    />
+              <div className="p-6">
+                {/* Tweet Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 rounded-full overflow-hidden">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-2">
+                        <h4 className="font-bold text-gray-900 text-sm">
+                          {testimonial.name}
+                        </h4>
+                        {testimonial.verified && (
+                          <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                            <IconCheck size={10} className="text-white" />
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-gray-500 text-sm">
+                        {testimonial.handle}
+                      </p>
+                      <p className="text-gray-500 text-xs">
+                        {testimonial.timestamp}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-gray-900 text-xl mb-1">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-gray-600 font-semibold mb-1">
-                      {testimonial.role}
-                    </p>
-                    <p className="text-sm font-bold text-green-600 mb-1">
-                      {testimonial.company}
-                    </p>
-                    <p className="text-sm text-gray-500 font-medium">
-                      {testimonial.country}
-                    </p>
+                  <button className="text-gray-400 hover:text-gray-600 transition-colors">
+                    <IconDots size={16} />
+                  </button>
+                </div>
+
+                {/* Tweet Content */}
+                <div className="mb-4">
+                  <p className="text-gray-900 text-sm leading-relaxed">
+                    {testimonial.text}
+                  </p>
+                </div>
+
+                {/* Company Info */}
+                <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                  <p className="text-xs text-gray-600 font-medium">
+                    {testimonial.role} at {testimonial.company}
+                  </p>
+                  <p className="text-xs text-gray-500">{testimonial.country}</p>
+                </div>
+
+                {/* Engagement Metrics */}
+                <div className="flex items-center justify-between text-gray-500 text-sm">
+                  <div className="flex items-center space-x-6">
+                    <button className="flex items-center space-x-2 hover:text-blue-500 transition-colors">
+                      <IconMessageCircle size={16} />
+                      <span>{testimonial.replies}</span>
+                    </button>
+                    <button className="flex items-center space-x-2 hover:text-green-500 transition-colors">
+                      <IconRepeat size={16} />
+                      <span>{testimonial.retweets}</span>
+                    </button>
+                    <button className="flex items-center space-x-2 hover:text-red-500 transition-colors">
+                      <IconHeart size={16} />
+                      <span>{testimonial.likes}</span>
+                    </button>
+                    <button className="flex items-center space-x-2 hover:text-blue-500 transition-colors">
+                      <IconShare size={16} />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -215,39 +269,76 @@ export default function TestimonialSection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="bg-white rounded-3xl p-6 shadow-xl border border-gray-100 min-h-[320px] flex flex-col">
-                    {/* Rating */}
-                    <div className="flex items-center mb-4">
-                      {renderStars(testimonial.rating)}
+                  <div className="bg-white rounded-2xl p-4 shadow-lg border border-gray-200 min-h-[280px] flex flex-col">
+                    {/* Tweet Header */}
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 rounded-full overflow-hidden">
+                          <img
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-1">
+                            <h4 className="font-bold text-gray-900 text-xs">
+                              {testimonial.name}
+                            </h4>
+                            {testimonial.verified && (
+                              <div className="w-3 h-3 bg-blue-500 rounded-full flex items-center justify-center">
+                                <IconCheck size={8} className="text-white" />
+                              </div>
+                            )}
+                          </div>
+                          <p className="text-gray-500 text-xs">
+                            {testimonial.handle}
+                          </p>
+                          <p className="text-gray-500 text-xs">
+                            {testimonial.timestamp}
+                          </p>
+                        </div>
+                      </div>
+                      <button className="text-gray-400 hover:text-gray-600 transition-colors">
+                        <IconDots size={14} />
+                      </button>
                     </div>
 
-                    {/* Testimonial Text */}
-                    <blockquote className="text-gray-700 mb-6 leading-relaxed italic flex-1 text-sm">
-                      &ldquo;{testimonial.text}&rdquo;
-                    </blockquote>
+                    {/* Tweet Content */}
+                    <div className="mb-3 flex-1">
+                      <p className="text-gray-900 text-xs leading-relaxed">
+                        {testimonial.text}
+                      </p>
+                    </div>
 
-                    {/* Customer Info */}
-                    <div className="flex items-center space-x-4 mt-auto">
-                      <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 text-sm">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-xs text-gray-600 font-medium">
-                          {testimonial.role}
-                        </p>
-                        <p className="text-xs font-bold text-green-600">
-                          {testimonial.company}
-                        </p>
-                        <p className="text-xs text-gray-500 mt-1 font-medium">
-                          {testimonial.country}
-                        </p>
+                    {/* Company Info */}
+                    <div className="mb-3 p-2 bg-gray-50 rounded-lg">
+                      <p className="text-xs text-gray-600 font-medium">
+                        {testimonial.role} at {testimonial.company}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {testimonial.country}
+                      </p>
+                    </div>
+
+                    {/* Engagement Metrics */}
+                    <div className="flex items-center justify-between text-gray-500 text-xs">
+                      <div className="flex items-center space-x-4">
+                        <button className="flex items-center space-x-1 hover:text-blue-500 transition-colors">
+                          <IconMessageCircle size={14} />
+                          <span>{testimonial.replies}</span>
+                        </button>
+                        <button className="flex items-center space-x-1 hover:text-green-500 transition-colors">
+                          <IconRepeat size={14} />
+                          <span>{testimonial.retweets}</span>
+                        </button>
+                        <button className="flex items-center space-x-1 hover:text-red-500 transition-colors">
+                          <IconHeart size={14} />
+                          <span>{testimonial.likes}</span>
+                        </button>
+                        <button className="flex items-center space-x-1 hover:text-blue-500 transition-colors">
+                          <IconShare size={14} />
+                        </button>
                       </div>
                     </div>
                   </div>
