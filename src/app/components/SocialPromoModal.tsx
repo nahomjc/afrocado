@@ -99,7 +99,7 @@ export default function SocialPromoModal() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-2 sm:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -107,7 +107,7 @@ export default function SocialPromoModal() {
           onClick={handleClose}
         >
           <motion.div
-            className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden relative"
+            className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden relative"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -117,16 +117,16 @@ export default function SocialPromoModal() {
             {/* Close Button */}
             <motion.button
               onClick={handleClose}
-              className="absolute top-4 right-4 z-50 bg-white/95 backdrop-blur-sm rounded-full p-3 shadow-xl hover:bg-white transition-colors cursor-pointer"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-50 bg-white/95 backdrop-blur-sm rounded-full p-2 sm:p-3 shadow-xl hover:bg-white transition-colors cursor-pointer"
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
               style={{ zIndex: 1000 }}
             >
-              <IconX size={20} className="text-gray-600" />
+              <IconX size={16} className="text-gray-600 sm:w-5 sm:h-5" />
             </motion.button>
 
             {/* Header with Image */}
-            <div className="relative h-64 md:h-80 overflow-hidden">
+            <div className="relative h-48 xs:h-56 sm:h-64 md:h-80 overflow-hidden">
               {/* Background Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-600/80 via-emerald-500/70 to-yellow-400/60 z-10"></div>
 
@@ -186,15 +186,15 @@ export default function SocialPromoModal() {
               </div>
 
               {/* Header Content */}
-              <div className="absolute inset-0 z-30 flex flex-col justify-center items-center text-center p-6">
+              <div className="absolute inset-0 z-30 flex flex-col justify-center items-center text-center p-3 sm:p-6">
                 <motion.div
-                  className="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30"
+                  className="bg-white/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/30"
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
                 >
                   <motion.h2
-                    className="text-3xl md:text-4xl font-bold text-white mb-2"
+                    className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.5 }}
@@ -202,7 +202,7 @@ export default function SocialPromoModal() {
                     Join Our Community! 🌍
                   </motion.h2>
                   <motion.p
-                    className="text-white/90 text-lg"
+                    className="text-white/90 text-sm xs:text-base sm:text-lg"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.7 }}
@@ -214,18 +214,18 @@ export default function SocialPromoModal() {
             </div>
 
             {/* Content Section */}
-            <div className="p-6 md:p-8">
+            <div className="p-4 sm:p-6 md:p-8">
               {/* Main Message */}
               <motion.div
-                className="text-center mb-8"
+                className="text-center mb-6 sm:mb-8"
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3">
                   Stay Connected with Afrocado! 🥑
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm xs:text-base">
                   Get the latest updates on our premium African produce,
                   behind-the-scenes content, farming tips, and exclusive offers.
                   Join thousands of followers who love fresh, quality produce!
@@ -233,12 +233,12 @@ export default function SocialPromoModal() {
               </motion.div>
 
               {/* Social Media Buttons */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
                 {socialPlatforms.map((social, index) => (
                   <motion.button
                     key={social.platform}
                     onClick={() => handleSocialClick(social.platform)}
-                    className={`bg-gradient-to-r ${social.color} ${social.hoverColor} text-white rounded-xl p-4 flex flex-col items-center space-y-2 shadow-lg transition-all duration-300 hover:shadow-xl group`}
+                    className={`bg-gradient-to-r ${social.color} ${social.hoverColor} text-white rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 flex flex-col items-center space-y-1 sm:space-y-2 shadow-lg transition-all duration-300 hover:shadow-xl group`}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{
@@ -250,9 +250,11 @@ export default function SocialPromoModal() {
                     whileTap={{ scale: 0.95 }}
                   >
                     {/* Removed continuous rotation for better performance */}
-                    <social.icon size={24} />
+                    <social.icon size={18} className="sm:w-6 sm:h-6" />
                     <div className="text-center">
-                      <div className="font-semibold text-sm">{social.name}</div>
+                      <div className="font-semibold text-xs sm:text-sm">
+                        {social.name}
+                      </div>
                       <div className="text-xs opacity-80">
                         {social.followers}
                       </div>
@@ -263,7 +265,7 @@ export default function SocialPromoModal() {
 
               {/* Special Offer Banner */}
               <motion.div
-                className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl p-4 text-center relative overflow-hidden"
+                className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center relative overflow-hidden"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 1 }}
@@ -282,14 +284,14 @@ export default function SocialPromoModal() {
                 />
 
                 <div className="relative z-10">
-                  <div className="flex items-center justify-center space-x-2 mb-2">
-                    <IconShare size={20} className="text-white" />
-                    <span className="font-bold text-white text-lg">
+                  <div className="flex items-center justify-center space-x-1 sm:space-x-2 mb-1 sm:mb-2">
+                    <IconShare size={16} className="text-white sm:w-5 sm:h-5" />
+                    <span className="font-bold text-white text-sm sm:text-base md:text-lg">
                       Special Offer!
                     </span>
-                    <IconShare size={20} className="text-white" />
+                    <IconShare size={16} className="text-white sm:w-5 sm:h-5" />
                   </div>
-                  <p className="text-white text-sm">
+                  <p className="text-white text-xs sm:text-sm">
                     Follow us on any platform and get <strong>10% off</strong>{" "}
                     your first order!
                   </p>
@@ -297,30 +299,30 @@ export default function SocialPromoModal() {
               </motion.div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 mt-6">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 sm:mt-6">
                 <motion.button
                   onClick={() => handleSocialClick("tiktok")}
-                  className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                  className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-1 sm:space-x-2"
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 1.2 }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <IconBrandTiktok size={20} />
-                  <span>Follow on TikTok</span>
+                  <IconBrandTiktok size={16} className="sm:w-5 sm:h-5" />
+                  <span className="text-sm sm:text-base">Follow on TikTok</span>
                 </motion.button>
 
                 <motion.button
                   onClick={handleClose}
-                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-xl transition-all duration-300 border border-gray-200"
+                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-300 border border-gray-200"
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 1.2 }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Maybe Later
+                  <span className="text-sm sm:text-base">Maybe Later</span>
                 </motion.button>
               </div>
             </div>
