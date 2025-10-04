@@ -49,6 +49,15 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
       },
     });
 
+    // Set canvas background to white
+    if (canvasRef.current) {
+      const ctx = canvasRef.current.getContext("2d");
+      if (ctx) {
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+      }
+    }
+
     return () => {
       globe.destroy();
       window.removeEventListener("resize", onResize);
@@ -56,18 +65,25 @@ export default function GlobeSection({ className = "" }: GlobeSectionProps) {
   }, []);
 
   return (
-    <section className={`py-12 sm:py-16 lg:py-20 px-4 ${className}`}>
+    <section
+      className={`py-8 sm:py-12 lg:py-16 xl:py-20 px-4 bg-white ${className}`}
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Globe on the left */}
-          <div className="relative flex justify-center lg:justify-start py-8 lg:py-0">
-            <div className="relative w-full max-w-md h-80 sm:h-96 lg:h-[500px]">
+          <div className="relative flex justify-center lg:justify-start py-6 sm:py-8 lg:py-0 mt-4 sm:mt-0">
+            <div className="relative w-full max-w-md h-96 sm:h-[28rem] lg:h-[500px] bg-white rounded-2xl shadow-lg overflow-hidden">
               <canvas
                 ref={canvasRef}
-                className="w-full h-full"
-                style={{ width: "100%", height: "100%" }}
+                className="w-full h-full rounded-2xl bg-white"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "white",
+                  background: "white",
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none rounded-2xl" />
             </div>
           </div>
 
