@@ -393,7 +393,7 @@ export default function Navigation() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           {/* Creative Logo Section */}
           <div className="flex items-center">
             <motion.button
@@ -409,12 +409,12 @@ export default function Navigation() {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-300 to-emerald-400 rounded-2xl blur-md opacity-20 group-hover:opacity-30 transition-all duration-500" />
 
                 {/* Main logo container */}
-                <div className="relative w-20 h-20 bg-gradient-to-br from-white/90 to-green-50/90 backdrop-blur-sm rounded-2xl p-2 shadow-xl border border-green-200/50 group-hover:border-green-300/70 transition-all duration-300">
+                <div className="relative w-28 h-28 p-3 transition-all duration-300">
                   <Image
                     src="/about-img/logo1-removebg-preview.png"
                     alt="AFROCADDO Logo"
-                    width={64}
-                    height={64}
+                    width={88}
+                    height={88}
                     className="object-contain group-hover:scale-110 transition-transform duration-300"
                     priority
                   />
@@ -427,18 +427,18 @@ export default function Navigation() {
 
               <div className="hidden sm:block">
                 <motion.h1
-                  className="text-2xl font-bold bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent"
+                  className="text-3xl font-bold bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   AFROCADO
                 </motion.h1>
                 <motion.p
-                  className="text-sm text-green-600 font-medium flex items-center gap-1"
+                  className="text-base text-green-600 font-medium flex items-center gap-1"
                   whileHover={{ x: 2 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="text-xs">🌱</span>
+                  <span className="text-sm">🌱</span>
                   Premium African Produce
                 </motion.p>
               </div>
@@ -789,12 +789,12 @@ export default function Navigation() {
                 <div className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                      <div className="w-14 h-14 flex items-center justify-center">
                         <Image
                           src="/about-img/logo1-removebg-preview.png"
                           alt="AFROCADDO Logo"
-                          width={24}
-                          height={24}
+                          width={36}
+                          height={36}
                           className="object-contain"
                         />
                       </div>
