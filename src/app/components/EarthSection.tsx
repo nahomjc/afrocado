@@ -15,7 +15,7 @@ export default function EarthSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
+    <section className="relative min-h-screen bg-slate-900 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
       {/* Background stars */}
       <div className="absolute inset-0">
         {[...Array(100)].map((_, i) => (
