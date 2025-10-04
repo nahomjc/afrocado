@@ -12,6 +12,7 @@ import {
 
 export default function VideoSection() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   // YouTube video ID - replace with your actual video ID
   const youtubeVideoId = "J1ZDRabV8EI"; // Replace with your video ID
@@ -134,23 +135,19 @@ export default function VideoSection() {
                     >
                       <iframe
                         className="absolute top-0 left-0 w-full h-full"
-                        src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3&cc_load_policy=0&fs=1&disablekb=1&playsinline=1&autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&enablejsapi=0&origin=${
-                          typeof window !== "undefined"
-                            ? window.location.origin
-                            : ""
-                        }`}
+                        src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3&cc_load_policy=0&fs=1&playsinline=1&mute=1&enablejsapi=1`}
                         title="Afrocado - Premium African Produce Export Presentation"
                         frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                         onLoad={() => setIsVideoLoaded(true)}
-                        sandbox="allow-scripts allow-same-origin allow-presentation"
-                        referrerPolicy="no-referrer"
+                        onError={() => setHasError(true)}
+                        loading="lazy"
                       />
                     </div>
 
                     {/* Loading Overlay */}
-                    {!isVideoLoaded && (
+                    {!isVideoLoaded && !hasError && (
                       <motion.div
                         className="absolute inset-0 flex items-center justify-center bg-gray-900/90"
                         initial={{ opacity: 0 }}
@@ -171,6 +168,27 @@ export default function VideoSection() {
                             className="text-green-400"
                           />
                         </motion.div>
+                      </motion.div>
+                    )}
+
+                    {/* Error State */}
+                    {hasError && (
+                      <motion.div
+                        className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900/90 text-white p-8"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                      >
+                        <IconPlayerPlay
+                          size={48}
+                          className="text-red-400 mb-4"
+                        />
+                        <h3 className="text-xl font-bold mb-2">
+                          Video Unavailable
+                        </h3>
+                        <p className="text-gray-300 text-center">
+                          The video could not be loaded. Please try refreshing
+                          the page or check your internet connection.
+                        </p>
                       </motion.div>
                     )}
 
