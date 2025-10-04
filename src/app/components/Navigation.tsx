@@ -466,6 +466,7 @@ export default function Navigation() {
               {[
                 { id: "home", label: "Home", icon: IconHome },
                 { id: "about", label: "About", icon: IconInfoCircle },
+                { id: "globe", label: "Global", icon: IconWorld },
                 { id: "products", label: "Products", icon: IconLeaf },
                 { id: "values", label: "Values", icon: IconHeart },
                 { id: "contact", label: "Contact", icon: IconMail },
@@ -829,6 +830,12 @@ export default function Navigation() {
                         label: "About",
                         icon: IconInfoCircle,
                         description: "Our story & mission",
+                      },
+                      {
+                        id: "globe",
+                        label: "Global",
+                        icon: IconWorld,
+                        description: "Our global presence",
                       },
                       {
                         id: "products",

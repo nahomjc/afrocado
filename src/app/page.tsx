@@ -13,6 +13,7 @@ import ChatBot from "./components/ChatBot";
 import LoadingScreen from "./components/LoadingScreen";
 import TestimonialSection from "./components/TestimonialSection";
 import TeamSection from "./components/TeamSection";
+import GlobeSection from "./components/GlobeSection";
 import StickyFAQButton from "./components/StickyFAQButton";
 import SocialPromoModal from "./components/SocialPromoModal";
 
@@ -82,6 +83,15 @@ export default function Home() {
               aria-label="About Us"
             >
               <AboutSection />
+            </section>
+            <section
+              id="globe"
+              className={
+                highlightedSection === "globe" ? "section-highlight" : ""
+              }
+              aria-label="Global Presence"
+            >
+              <GlobeSection />
             </section>
             <section
               id="products"
