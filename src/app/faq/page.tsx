@@ -224,15 +224,17 @@ export default function FAQPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-600 via-green-700 to-green-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header with Back button and FAQ badge - Equal alignment */}
           <motion.div
-            className="text-center"
+            className="flex justify-between items-center mb-16 pt-8"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
           >
+            {/* Back to Home Button - Left aligned */}
             <motion.button
               onClick={() => router.back()}
-              className="inline-flex items-center text-green-100 hover:text-white mb-8 transition-colors"
+              className="inline-flex items-center text-green-100 hover:text-white transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -240,8 +242,9 @@ export default function FAQPage() {
               Back to Home
             </motion.button>
 
+            {/* FAQ Badge - Right aligned */}
             <motion.div
-              className="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8"
+              className="inline-flex items-center bg-white/20 rounded-full px-6 py-3"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -250,7 +253,14 @@ export default function FAQPage() {
                 Frequently Asked Questions
               </span>
             </motion.div>
+          </motion.div>
 
+          <motion.div
+            className="text-center"
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+          >
             <motion.h1
               className="text-5xl md:text-6xl font-bold mb-6"
               variants={fadeInUp}
