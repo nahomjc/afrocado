@@ -409,12 +409,12 @@ export default function Navigation() {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-300 to-emerald-400 rounded-2xl blur-md opacity-20 group-hover:opacity-30 transition-all duration-500" />
 
                 {/* Main logo container */}
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 p-2 transition-all duration-300">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 p-1 transition-all duration-300">
                   <Image
                     src="/about-img/logo1-removebg-preview.png"
                     alt="AFROCADDO Logo"
-                    width={64}
-                    height={64}
+                    width={80}
+                    height={80}
                     className="object-contain group-hover:scale-110 transition-transform duration-300"
                     priority
                   />
