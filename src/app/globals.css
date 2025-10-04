@@ -35,10 +35,10 @@ body {
   text-rendering: optimizeLegibility;
   /* Prevent horizontal scroll */
   overflow-x: hidden;
-  /* Hardware acceleration */
-  transform: translateZ(0);
+  /* Hardware acceleration - but with proper stacking context */
   will-change: scroll-position;
 }
+
 
 /* Avocado cursor for all elements */
 * {
@@ -212,7 +212,6 @@ input, textarea, [contenteditable] {
 
 /* Hardware acceleration for smooth animations */
 .smooth-scroll {
-  transform: translateZ(0);
   will-change: transform;
 }
 
@@ -231,7 +230,6 @@ section {
 /* Optimize navigation performance */
 nav {
   will-change: transform;
-  transform: translateZ(0);
 }
 
 /* Loading states to prevent black screens */
@@ -277,4 +275,19 @@ nav {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Ensure sticky buttons stay fixed */
+.chatbot-button, .faq-button, .phone-button {
+  position: fixed !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+/* Override any parent transforms for sticky elements */
+[data-sticky="true"] {
+  position: fixed !important;
+  z-index: 9999 !important;
+  transform: none !important;
 }
