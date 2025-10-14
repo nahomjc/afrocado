@@ -576,14 +576,11 @@ export default function HeroSection() {
               >
                 <motion.button
                   className="relative bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden"
-                  onClick={useCallback(
-                    (e: React.MouseEvent) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      router.push("/products-view");
-                    },
-                    [router]
-                  )}
+                  onClick={useCallback((e: React.MouseEvent) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open("tel:+251937287140", "_self");
+                  }, [])}
                   animate={{
                     boxShadow: [
                       "0 4px 15px rgba(34, 197, 94, 0.3)",
