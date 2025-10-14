@@ -31,7 +31,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hello! I'm here to help you learn about Afrocado's premium fruit and vegetable export services. How can I assist you today?",
+      text: "Hello! I'm here to help you learn about Afrocado Export's premium Ethiopian avocado services. How can I assist you today?",
       isUser: false,
       timestamp: new Date(),
     },
@@ -57,7 +57,7 @@ export default function ChatBot() {
       message.includes("about") ||
       message.includes("who")
     ) {
-      return "Afrocado is a premium fruit and vegetable export company specializing in high-quality African produce. We export to 25+ countries worldwide with over 15 years of experience and partnerships with 500+ farms across Africa.";
+      return "Afrocado Export is Ethiopia's premier avocado export company, founded in 2023 by Yonathan and Daniel. We specialize in premium Hass, Fuerte, Pinkerton, and Ettinger avocados, working with 15 dedicated farmers to export to 10+ countries across Europe, Asia, and the Middle East.";
     }
 
     // Products
@@ -65,9 +65,10 @@ export default function ChatBot() {
       message.includes("product") ||
       message.includes("fruit") ||
       message.includes("vegetable") ||
-      message.includes("what do you sell")
+      message.includes("what do you sell") ||
+      message.includes("avocado")
     ) {
-      return "We export a wide range of premium African produce including avocados, mangoes, citrus fruits, vegetables, and exotic fruits. All our products meet international quality standards and are sourced from certified partner farms.";
+      return "We specialize in premium Ethiopian avocados, offering four main varieties: Hass (creamy texture, rich nutty flavor), Fuerte (smooth-skinned, buttery texture), Pinkerton (elongated, excellent shelf life), and Ettinger (smooth green, delicate flavor). All avocados are sourced from 15 dedicated farmers in Ethiopia's high-altitude regions.";
     }
 
     // Export Countries
@@ -77,7 +78,7 @@ export default function ChatBot() {
       message.includes("where") ||
       message.includes("destination")
     ) {
-      return "We export to over 25 countries worldwide, including major markets in Europe, North America, Asia, and the Middle East. Our global network ensures fresh delivery to your location.";
+      return "We export to 10+ countries across Europe (including Russia), Asia, and the Middle East. Our established distribution networks ensure timely delivery and optimal product freshness with our 72-hour delivery commitment.";
     }
 
     // Quality Standards
@@ -87,7 +88,7 @@ export default function ChatBot() {
       message.includes("certification") ||
       message.includes("fresh")
     ) {
-      return "We maintain the highest quality standards with state-of-the-art cold chain logistics, rigorous quality control processes, and international certifications. Our products are harvested at peak ripeness and delivered fresh to your doorstep.";
+      return "We maintain the highest quality standards with efficient logistics management and careful quality control processes. Our avocados are hand-picked at optimal ripeness from high-altitude farms in Ethiopia and delivered fresh within 72 hours to ensure premium quality.";
     }
 
     // Pricing/Quote
@@ -117,7 +118,7 @@ export default function ChatBot() {
       message.includes("logistics") ||
       message.includes("transport")
     ) {
-      return "We use advanced cold chain logistics to ensure your products arrive fresh and in perfect condition. Our shipping methods are optimized for different destinations and product types, with real-time tracking available.";
+      return "We guarantee delivery within 72 hours using efficient logistics management. Our careful supply chain ensures your Ethiopian avocados arrive fresh and in perfect condition, with real-time tracking available for all shipments.";
     }
 
     // Partnership
@@ -127,7 +128,7 @@ export default function ChatBot() {
       message.includes("supplier") ||
       message.includes("source")
     ) {
-      return "We work with over 500 certified partner farms across Africa, ensuring consistent quality and supply. Our partnerships are built on trust, quality, and mutual benefit, supporting local communities while delivering premium products.";
+      return "We work directly with 15 dedicated farmers in Ethiopia's high-altitude regions, ensuring consistent quality and supply. Our partnerships are built on trust, quality, and mutual benefit, supporting local Ethiopian communities while delivering premium avocados to international markets.";
     }
 
     // Default responses
@@ -136,19 +137,19 @@ export default function ChatBot() {
       message.includes("hi") ||
       message.includes("hey")
     ) {
-      return "Hello! Welcome to Afrocado. I'm here to help you learn about our premium fruit and vegetable export services. What would you like to know?";
+      return "Hello! Welcome to Afrocado Export. I'm here to help you learn about our premium Ethiopian avocado export services. What would you like to know?";
     }
 
     if (message.includes("thank") || message.includes("thanks")) {
-      return "You're welcome! I'm here to help. Is there anything else you'd like to know about Afrocado's services?";
+      return "You're welcome! I'm here to help. Is there anything else you'd like to know about Afrocado Export's Ethiopian avocado services?";
     }
 
     if (message.includes("help") || message.includes("assist")) {
-      return "I can help you with information about our products, export services, quality standards, pricing, shipping, and more. Just ask me anything about Afrocado!";
+      return "I can help you with information about our Ethiopian avocados, export services, quality standards, pricing, shipping, and more. Just ask me anything about Afrocado Export!";
     }
 
     // Fallback response
-    return "That's a great question! While I can provide general information about Afrocado's services, for specific details or personalized assistance, I'd recommend contacting our sales team directly. They can provide more detailed information tailored to your needs.";
+    return "That's a great question! While I can provide general information about Afrocado Export's Ethiopian avocado services, for specific details or personalized assistance, I'd recommend contacting our sales team directly. They can provide more detailed information tailored to your needs.";
   }, []);
 
   const handleSendMessage = useCallback(async () => {
@@ -191,9 +192,9 @@ export default function ChatBot() {
 
   const quickQuestions = useMemo(
     () => [
-      "What products do you export?",
+      "What avocado varieties do you export?",
       "Which countries do you export to?",
-      "What are your quality standards?",
+      "What is your delivery time?",
       "How can I get a quote?",
     ],
     []
@@ -437,7 +438,7 @@ export default function ChatBot() {
                     transition={{ delay: 0.2 }}
                   >
                     <IconSparkles size={16} className="mr-2 text-yellow-300" />
-                    Afrocado Support
+                    Afrocado Export Support
                   </motion.h3>
                   <motion.div
                     className="flex items-center space-x-2"
@@ -584,7 +585,7 @@ export default function ChatBot() {
                         />
                       </div>
                       <span className="text-sm text-gray-600 font-medium">
-                        Afrocado is typing...
+                        Afrocado Export is typing...
                       </span>
                     </div>
                   </div>
