@@ -685,8 +685,8 @@ export default function Navigation() {
                               </p>
                               <p className="text-sm text-gray-400">
                                 Try searching for &quot;avocados&quot;,
-                                &quot;mangoes&quot;, or &quot;export
-                                services&quot;
+                                &quot;Hass&quot;, &quot;Fuerte&quot;, or
+                                &quot;Ethiopian export&quot;
                               </p>
                             </motion.div>
                           )}
@@ -712,17 +712,17 @@ export default function Navigation() {
                                 color: "from-green-400 to-emerald-500",
                               },
                               {
-                                term: "Mangoes",
-                                icon: "🥭",
-                                color: "from-yellow-400 to-orange-500",
+                                term: "Hass Avocados",
+                                icon: "🥑",
+                                color: "from-green-400 to-emerald-500",
                               },
                               {
-                                term: "Export Services",
-                                icon: "🚢",
+                                term: "Ethiopian Export",
+                                icon: "🇪🇹",
                                 color: "from-blue-400 to-cyan-500",
                               },
                               {
-                                term: "Quality Control",
+                                term: "Quality Standards",
                                 icon: "✅",
                                 color: "from-purple-400 to-pink-500",
                               },
