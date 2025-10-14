@@ -136,17 +136,12 @@ export default function RootLayout({
         hasCredential: [
           {
             "@type": "EducationalOccupationalCredential",
-            name: "ISO 22000 Food Safety Management",
+            name: "Quality Assurance Standards",
             credentialCategory: "certification",
           },
           {
             "@type": "EducationalOccupationalCredential",
-            name: "Organic Certification",
-            credentialCategory: "certification",
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            name: "HACCP Compliance",
+            name: "Ethiopian Agricultural Excellence",
             credentialCategory: "certification",
           },
         ],
@@ -184,7 +179,7 @@ export default function RootLayout({
           "@id": "https://afrocadoexports.com/#organization",
         },
         description:
-          "Leading African fruit and vegetable export company specializing in premium avocados, citrus fruits, fresh tomatoes, and tropical produce.",
+          "Leading Ethiopian avocado export company specializing in premium Hass, Fuerte, Pinkerton, and Ettinger avocados from dedicated farmers.",
       },
       {
         "@type": "LocalBusiness",

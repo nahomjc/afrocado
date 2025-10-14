@@ -1,26 +1,14 @@
 "use client";
 
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Variants } from "framer-motion";
-import { useCallback, useMemo, useEffect, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { IconTractor, IconWorld, IconStar } from "@tabler/icons-react";
 
 export default function HeroSection() {
   const router = useRouter();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const controls = useAnimation();
-
-  // Enhanced mouse tracking for interactive effects
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   // Enhanced floating variants with creative animations
   const floatingVariants = useMemo(
@@ -521,7 +509,7 @@ export default function HeroSection() {
                 >
                   🌍
                 </motion.span>
-                <span>Exporting to 25+ Countries</span>
+                <span>Exporting to 10+ Countries</span>
               </motion.span>
             </motion.div>
 
@@ -529,6 +517,24 @@ export default function HeroSection() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
               variants={fadeInUp}
             >
+              <motion.span
+                className="text-green-600"
+                animate={{
+                  textShadow: [
+                    "0 0 0px rgba(34, 197, 94, 0)",
+                    "0 0 20px rgba(34, 197, 94, 0.5)",
+                    "0 0 0px rgba(34, 197, 94, 0)",
+                  ],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                Ethiopia&apos;s Premier
+              </motion.span>
+              <br />
               <motion.span
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
@@ -546,62 +552,7 @@ export default function HeroSection() {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Premium
-              </motion.span>
-              <motion.span
-                className="text-green-600"
-                animate={{
-                  textShadow: [
-                    "0 0 0px rgba(34, 197, 94, 0)",
-                    "0 0 20px rgba(34, 197, 94, 0.5)",
-                    "0 0 0px rgba(34, 197, 94, 0)",
-                  ],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                African
-              </motion.span>
-              <br />
-              <motion.span
-                className="text-yellow-600"
-                animate={{
-                  textShadow: [
-                    "0 0 0px rgba(245, 158, 11, 0)",
-                    "0 0 20px rgba(245, 158, 11, 0.5)",
-                    "0 0 0px rgba(245, 158, 11, 0)",
-                  ],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                Fruit & Vegetable
-              </motion.span>
-              <br />
-              <motion.span
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                style={{
-                  background:
-                    "linear-gradient(45deg, #1f2937, #374151, #1f2937)",
-                  backgroundSize: "200% 200%",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Export Excellence
+                Avocado Source
               </motion.span>
             </motion.h1>
 
@@ -609,10 +560,9 @@ export default function HeroSection() {
               className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl"
               variants={fadeInUp}
             >
-              Leading the global market in premium African produce. From farm to
-              table, we ensure the highest quality standards with our
-              state-of-the-art cold chain logistics and rigorous quality control
-              processes.
+              Your trusted partner for quality you can count on. We combine
+              farmer-direct sourcing with smart logistics to guarantee
+              freshness, reduce costs, and get you the best of Ethiopia—faster.
             </motion.p>
 
             <motion.div
@@ -651,7 +601,7 @@ export default function HeroSection() {
                   whileHover={{
                     boxShadow: "0 12px 35px rgba(34, 197, 94, 0.6)",
                   }}
-                  aria-label="View our exported products and services"
+                  aria-label="Contact us for more information"
                 >
                   {/* Animated background effect */}
                   <motion.div
@@ -674,9 +624,71 @@ export default function HeroSection() {
                         ease: "linear",
                       }}
                     >
-                      🚀
+                      📞
                     </motion.span>
-                    <span>View Exported Products</span>
+                    <span>Contact Us Now</span>
+                  </span>
+                </motion.button>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <motion.button
+                  className="relative bg-white hover:bg-green-50 text-green-600 hover:text-green-700 font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden border-2 border-green-600 hover:border-green-700"
+                  onClick={useCallback(
+                    (e: React.MouseEvent) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      router.push("/products-view");
+                    },
+                    [router]
+                  )}
+                  animate={{
+                    boxShadow: [
+                      "0 4px 15px rgba(34, 197, 94, 0.2)",
+                      "0 8px 25px rgba(34, 197, 94, 0.3)",
+                      "0 4px 15px rgba(34, 197, 94, 0.2)",
+                    ],
+                  }}
+                  transition={{
+                    boxShadow: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  whileHover={{
+                    boxShadow: "0 12px 35px rgba(34, 197, 94, 0.4)",
+                  }}
+                  aria-label="View our premium avocado products"
+                >
+                  {/* Animated background effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+                    animate={{
+                      x: ["-100%", "100%"],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <span className="relative z-10 flex items-center space-x-2">
+                    <motion.span
+                      animate={{ rotate: [0, 360, 0] }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    >
+                      🥑
+                    </motion.span>
+                    <span>View Products</span>
                   </span>
                 </motion.button>
               </motion.div>
@@ -707,7 +719,7 @@ export default function HeroSection() {
                     ease: "easeInOut",
                   }}
                 >
-                  500+
+                  15
                 </motion.div>
                 <div className="text-gray-600 text-sm flex items-center justify-center lg:justify-start space-x-1">
                   <motion.div
@@ -720,7 +732,7 @@ export default function HeroSection() {
                   >
                     <IconTractor size={16} className="text-green-600" />
                   </motion.div>
-                  <span>Partner Farms</span>
+                  <span>Partner Farmers</span>
                 </div>
                 <motion.div
                   className="absolute -inset-2 bg-green-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
@@ -755,7 +767,7 @@ export default function HeroSection() {
                     ease: "easeInOut",
                   }}
                 >
-                  25+
+                  10+
                 </motion.div>
                 <div className="text-gray-600 text-sm flex items-center justify-center lg:justify-start space-x-1">
                   <motion.div
@@ -803,7 +815,7 @@ export default function HeroSection() {
                     ease: "easeInOut",
                   }}
                 >
-                  15+
+                  2+
                 </motion.div>
                 <div className="text-gray-600 text-sm flex items-center justify-center lg:justify-start space-x-1">
                   <motion.div

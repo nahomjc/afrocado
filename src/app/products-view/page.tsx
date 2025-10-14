@@ -36,200 +36,54 @@ const products: Product[] = [
     name: "Hass Avocados",
     category: "avocados",
     description:
-      "Premium Hass avocados from our certified organic farms. Available year-round with consistent quality and size specifications.",
-    image:
-      "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&h=400&fit=crop&crop=center",
+      "Premium Hass avocados with creamy texture and rich, nutty flavor. Sourced from high-altitude farms in Ethiopia.",
+    image: "/avocadoes/hass.jpeg",
     emoji: "🥑",
     availability: "Year-round",
-    origin: "Ethiopia, South Africa",
-    certifications: ["Organic", "Fair Trade", "GlobalGAP"],
+    origin: "Ethiopia",
+    certifications: ["Quality Assured", "Ethiopian Premium"],
   },
   {
     id: "2",
     name: "Fuerte Avocados",
     category: "avocados",
     description:
-      "Smooth-skinned Fuerte avocados with rich, buttery flavor. Perfect for international markets seeking premium quality.",
-    image:
-      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&h=400&fit=crop&crop=center",
+      "Smooth-skinned Fuerte avocados with buttery texture and mild flavor. Perfect for international markets seeking premium quality.",
+    image: "/avocadoes/fuerte.jpeg",
     emoji: "🥑",
-    availability: "Seasonal",
-    origin: "Ethiopia, Tanzania",
-    certifications: ["Organic", "GlobalGAP"],
+    availability: "Year-round",
+    origin: "Ethiopia",
+    certifications: ["Quality Assured", "Ethiopian Premium"],
   },
-
-  // Mangoes
   {
     id: "3",
-    name: "Kent Mangoes",
-    category: "mangoes",
+    name: "Pinkerton Avocados",
+    category: "avocados",
     description:
-      "Sweet, juicy Kent mangoes with vibrant orange flesh. Harvested at peak ripeness for optimal flavor and nutrition.",
-    image:
-      "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
-    emoji: "🥭",
-    availability: "Seasonal",
-    origin: "Ethiopia, Ghana",
-    certifications: ["Organic", "Fair Trade"],
+      "Elongated Pinkerton avocados with excellent shelf life and creamy flesh. Ideal for long-distance export to international markets.",
+    image: "/avocadoes/pinkerton.jpg",
+    emoji: "🥑",
+    availability: "Year-round",
+    origin: "Ethiopia",
+    certifications: ["Quality Assured", "Ethiopian Premium"],
   },
   {
     id: "4",
-    name: "Keitt Mangoes",
-    category: "mangoes",
+    name: "Ettinger Avocados",
+    category: "avocados",
     description:
-      "Large, sweet Keitt mangoes with excellent shelf life. Ideal for long-distance export to international markets.",
-    image:
-      "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
-    emoji: "🥭",
-    availability: "Seasonal",
-    origin: "Ethiopia, South Africa",
-    certifications: ["Organic", "GlobalGAP"],
-  },
-  {
-    id: "5",
-    name: "Tommy Atkins Mangoes",
-    category: "mangoes",
-    description:
-      "Classic Tommy Atkins mangoes with firm texture and sweet taste. Popular choice for global distribution.",
-    image:
-      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&h=400&fit=crop&crop=center",
-    emoji: "🥭",
-    availability: "Seasonal",
-    origin: "Ethiopia, Ghana",
-    certifications: ["GlobalGAP"],
-  },
-
-  // Citrus Fruits
-  {
-    id: "6",
-    name: "Valencia Oranges",
-    category: "citrus",
-    description:
-      "Juicy Valencia oranges rich in vitamin C. Perfect for fresh consumption and juice production.",
-    image:
-      "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=600&h=400&fit=crop&crop=center",
-    emoji: "🍊",
+      "Smooth green Ettinger avocados with delicate flavor and firm texture. Exotic appeal for premium markets.",
+    image: "/avocadoes/ettinger.jpg",
+    emoji: "🥑",
     availability: "Year-round",
-    origin: "South Africa, Morocco",
-    certifications: ["Organic", "GlobalGAP"],
-  },
-  {
-    id: "7",
-    name: "Eureka Lemons",
-    category: "citrus",
-    description:
-      "Premium Eureka lemons with high juice content and excellent acidity. Perfect for culinary and beverage applications.",
-    image:
-      "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=600&h=400&fit=crop&crop=center",
-    emoji: "🍋",
-    availability: "Year-round",
-    origin: "South Africa, Egypt",
-    certifications: ["Organic", "GlobalGAP"],
-  },
-  {
-    id: "8",
-    name: "Persian Limes",
-    category: "citrus",
-    description:
-      "Seedless Persian limes with bright green color and tangy flavor. Ideal for international export.",
-    image:
-      "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=600&h=400&fit=crop&crop=center",
-    emoji: "🍋",
-    availability: "Year-round",
-    origin: "Egypt, Morocco",
-    certifications: ["GlobalGAP"],
-  },
-
-  // Vegetables
-  {
-    id: "9",
-    name: "Cherry Tomatoes",
-    category: "vegetables",
-    description:
-      "Sweet cherry tomatoes with vibrant red color and firm texture. Grown using sustainable farming practices.",
-    image:
-      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&h=400&fit=crop&crop=center",
-    emoji: "🍅",
-    availability: "Year-round",
-    origin: "Ethiopia, Morocco",
-    certifications: ["Organic", "GlobalGAP"],
-  },
-  {
-    id: "10",
-    name: "Bell Peppers",
-    category: "vegetables",
-    description:
-      "Colorful bell peppers in red, yellow, and green varieties. Rich in vitamins and perfect for fresh markets.",
-    image:
-      "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&h=400&fit=crop&crop=center",
-    emoji: "🫑",
-    availability: "Year-round",
-    origin: "Ethiopia, South Africa",
-    certifications: ["Organic", "GlobalGAP"],
-  },
-  {
-    id: "11",
-    name: "Red Onions",
-    category: "vegetables",
-    description:
-      "Premium red onions with mild flavor and excellent storage properties. Ideal for international distribution.",
-    image:
-      "https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=600&h=400&fit=crop&crop=center",
-    emoji: "🧅",
-    availability: "Year-round",
-    origin: "Egypt, Morocco",
-    certifications: ["GlobalGAP"],
-  },
-
-  // Exotic Fruits
-  {
-    id: "12",
-    name: "Passion Fruit",
-    category: "exotic",
-    description:
-      "Tropical passion fruit with intense flavor and aromatic pulp. Exotic taste that captivates international markets.",
-    image:
-      "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
-    emoji: "🥝",
-    availability: "Seasonal",
-    origin: "Ethiopia, Uganda",
-    certifications: ["Organic", "Fair Trade"],
-  },
-  {
-    id: "13",
-    name: "Dragon Fruit",
-    category: "exotic",
-    description:
-      "Unique dragon fruit with vibrant pink skin and sweet white flesh. Exotic appeal for premium markets.",
-    image:
-      "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
-    emoji: "🐉",
-    availability: "Seasonal",
-    origin: "Ethiopia, South Africa",
-    certifications: ["Organic"],
-  },
-  {
-    id: "14",
-    name: "Papaya",
-    category: "exotic",
-    description:
-      "Sweet papaya with orange flesh and tropical flavor. Rich in vitamins and perfect for health-conscious consumers.",
-    image:
-      "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center",
-    emoji: "🥭",
-    availability: "Year-round",
-    origin: "Ethiopia, Ghana",
-    certifications: ["Organic", "GlobalGAP"],
+    origin: "Ethiopia",
+    certifications: ["Quality Assured", "Ethiopian Premium"],
   },
 ];
 
 const categories = [
   { id: "all", name: "All Products", emoji: "🌍" },
   { id: "avocados", name: "Avocados", emoji: "🥑" },
-  { id: "mangoes", name: "Mangoes", emoji: "🥭" },
-  { id: "citrus", name: "Citrus Fruits", emoji: "🍊" },
-  { id: "vegetables", name: "Vegetables", emoji: "🍅" },
-  { id: "exotic", name: "Exotic Fruits", emoji: "🥝" },
 ];
 
 export default function ProductsPage() {
@@ -302,11 +156,12 @@ export default function ProductsPage() {
             </button>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Exported Products
+              Our Premium Avocados
             </h1>
             <p className="text-xl text-green-100 max-w-3xl">
-              Discover our premium selection of African fruits and vegetables,
-              carefully sourced and exported to international markets worldwide.
+              Discover our premium selection of Ethiopian avocados, carefully
+              sourced from 15 dedicated farmers and exported to international
+              markets worldwide.
             </p>
           </motion.div>
         </div>

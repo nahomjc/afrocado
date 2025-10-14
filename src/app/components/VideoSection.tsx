@@ -227,9 +227,9 @@ export default function VideoSection() {
               {[
                 {
                   icon: <IconTrophy className="text-green-500" size={24} />,
-                  title: "Quality Excellence",
+                  title: "Ethiopian Excellence",
                   description:
-                    "See our rigorous quality control processes and international certifications in action.",
+                    "See our commitment to showcasing the best of Ethiopia's agricultural heritage and quality.",
                 },
                 {
                   icon: <IconLeaf className="text-emerald-500" size={24} />,
@@ -241,7 +241,7 @@ export default function VideoSection() {
                   icon: <IconUsers className="text-green-600" size={24} />,
                   title: "Global Impact",
                   description:
-                    "Learn how we're connecting African farmers with international markets.",
+                    "Learn how we're connecting Ethiopian farmers with international markets.",
                 },
                 {
                   icon: <IconClock className="text-emerald-600" size={24} />,

@@ -377,7 +377,7 @@ export default function Footer() {
                 <div className="w-4 h-4 bg-green-600 rounded-full flex items-center justify-center">
                   <IconCheck size={8} className="text-white" />
                 </div>
-                <span className="text-gray-300">ISO 22000</span>
+                <span className="text-gray-300">Quality Assured</span>
               </motion.div>
 
               <motion.div
@@ -387,7 +387,7 @@ export default function Footer() {
                 <div className="w-4 h-4 bg-emerald-600 rounded-full flex items-center justify-center">
                   <IconCheck size={8} className="text-white" />
                 </div>
-                <span className="text-gray-300">Organic</span>
+                <span className="text-gray-300">Ethiopian Premium</span>
               </motion.div>
 
               <motion.div

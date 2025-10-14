@@ -103,10 +103,12 @@ export default function AboutSection() {
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-5xl mx-auto leading-relaxed font-light">
-            Established in 2008, Afrocado has grown to become one of
-            Africa&apos;s leading fruit and vegetable export companies. We
-            specialize in sourcing, processing, and distributing premium
-            agricultural products from across the continent to global markets.
+            Established in 2023, Afrocado Export was founded by two friends,
+            Yonathan and Daniel, with a shared vision: to transform
+            Ethiopia&apos;s agricultural potential into global opportunity. We
+            are more than just an export company; we are a bridge connecting the
+            fertile highlands of Ethiopia to the world&apos;s most demanding
+            markets.
           </p>
         </motion.div>
 
@@ -133,11 +135,11 @@ export default function AboutSection() {
                 </h3>
               </div>
               <p className="text-gray-600 leading-relaxed text-lg">
-                To bridge the gap between Africa&apos;s rich agricultural
-                heritage and the world&apos;s growing demand for premium, fresh
-                produce. We are committed to sustainable farming practices, fair
-                trade, and delivering exceptional quality that exceeds
-                international standards.
+                Our mission is built on two pillars: adding sustainable value
+                for our farming partners and driving the modernization of
+                Ethiopian agriculture. We saw the dedication of local farmers
+                and the unparalleled quality of their produce, but also the gap
+                between their hard work and the international market.
               </p>
             </motion.div>
 
@@ -152,9 +154,12 @@ export default function AboutSection() {
                 <h3 className="text-2xl font-bold text-gray-900">Our Vision</h3>
               </div>
               <p className="text-gray-600 leading-relaxed text-lg">
-                To be the global leader in African agricultural exports,
-                recognized for our innovation, reliability, and contribution to
-                sustainable food systems worldwide.
+                At Afrocado Export, you are our top priority. We leverage strong
+                relationships with our farming networks and modern technology to
+                ensure you receive farm-fresh, high-quality produce within the
+                shortest possible time. We are committed to being the reliable,
+                professional, and innovative partner you can count on for the
+                finest agricultural products from the heart of Ethiopia.
               </p>
             </motion.div>
           </div>
@@ -181,7 +186,7 @@ export default function AboutSection() {
                   <IconCheck className="w-4 h-4 text-green-600" />
                 </div>
                 <span className="text-gray-700 text-lg leading-relaxed">
-                  Direct partnerships with 500+ certified organic farms
+                  Direct partnerships with 15 dedicated farmers
                 </span>
               </li>
               <li className="flex items-start group">
@@ -189,7 +194,8 @@ export default function AboutSection() {
                   <IconShieldCheck className="w-4 h-4 text-green-600" />
                 </div>
                 <span className="text-gray-700 text-lg leading-relaxed">
-                  ISO 22000 certified food safety management system
+                  Focus on operational efficiency and careful logistics
+                  management
                 </span>
               </li>
               <li className="flex items-start group">
@@ -197,7 +203,7 @@ export default function AboutSection() {
                   <IconTruck className="w-4 h-4 text-green-600" />
                 </div>
                 <span className="text-gray-700 text-lg leading-relaxed">
-                  End-to-end cold chain logistics with real-time tracking
+                  Delivery within 72 hours with efficient logistics
                 </span>
               </li>
               <li className="flex items-start group">
@@ -336,9 +342,9 @@ export default function AboutSection() {
               Global Reach
             </h3>
             <p className="text-gray-600 leading-relaxed text-lg">
-              Exporting to over 25 countries across Europe, North America, Asia,
-              and the Middle East. Our established distribution networks ensure
-              timely delivery and optimal product freshness.
+              Exporting to over 10+ countries across Europe including Russia,
+              Asia, and the Middle East. Our established distribution networks
+              ensure timely delivery and optimal product freshness.
             </p>
           </motion.div>
 

@@ -65,9 +65,9 @@ export default function FAQPage() {
       color: "from-yellow-500 to-yellow-600",
       questions: [
         {
-          question: "What quality certifications do you have?",
+          question: "What quality standards do you maintain?",
           answer:
-            "We are certified with ISO 22000 (Food Safety Management), HACCP, GlobalGAP, and Organic certifications. We also maintain BRC (British Retail Consortium) and IFS (International Featured Standards) certifications for international markets.",
+            "We maintain rigorous quality control processes from farm to port, ensuring all our avocados meet international standards. Our focus is on operational efficiency and careful logistics management to deliver the finest agricultural products from Ethiopia.",
         },
         {
           question: "How do you ensure product quality?",

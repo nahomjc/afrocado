@@ -21,97 +21,55 @@ import {
 const products = [
   {
     id: 1,
-    name: "Premium Avocados",
+    name: "Hass Avocados",
     emoji: "🥑",
-    image:
-      "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=800&h=600&fit=crop&crop=center",
+    image: "/avocadoes/hass.jpeg",
     description:
-      "Hass and Fuerte varieties with perfect ripeness and exceptional taste",
+      "Premium Hass avocados with creamy texture and rich, nutty flavor",
     details:
-      "Sourced from high-altitude farms in Ethiopia and Tanzania. Our avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
-    varieties: ["Hass", "Fuerte", "Pinkerton", "Reed"],
+      "Sourced from high-altitude farms in Ethiopia. Our Hass avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
+    varieties: ["Hass"],
     season: "Year-round",
     color: "from-green-400 to-green-600",
   },
   {
     id: 2,
-    name: "Citrus Fruits",
-    emoji: "🍊",
-    image:
-      "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=800&h=600&fit=crop&crop=center",
+    name: "Fuerte Avocados",
+    emoji: "🥑",
+    image: "/avocadoes/fuerte.jpeg",
     description:
-      "Fresh oranges, lemons, and grapefruits bursting with natural flavor",
+      "Smooth-skinned Fuerte avocados with buttery texture and mild flavor",
     details:
-      "Premium citrus varieties grown in optimal conditions. Our fruits are carefully selected for size, color, and sugar content to meet international standards.",
-    varieties: [
-      "Valencia Oranges",
-      "Eureka Lemons",
-      "Ruby Grapefruit",
-      "Tangerines",
-    ],
-    season: "March - October",
-    color: "from-orange-400 to-orange-600",
+      "Sourced from high-altitude farms in Ethiopia. Our Fuerte avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
+    varieties: ["Fuerte"],
+    season: "Year-round",
+    color: "from-green-400 to-green-600",
   },
   {
     id: 3,
-    name: "Fresh Tomatoes",
-    emoji: "🍅",
-    image:
-      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&h=600&fit=crop&crop=center",
+    name: "Pinkerton Avocados",
+    emoji: "🥑",
+    image: "/avocadoes/pinkerton.jpg",
     description:
-      "Vine-ripened tomatoes perfect for fresh consumption and processing",
+      "Elongated Pinkerton avocados with excellent shelf life and creamy flesh",
     details:
-      "High-quality tomatoes grown in controlled environments. Available in various sizes and colors, perfect for both retail and food service industries.",
-    varieties: ["Cherry", "Roma", "Beefsteak", "Plum"],
+      "Sourced from high-altitude farms in Ethiopia. Our Pinkerton avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
+    varieties: ["Pinkerton"],
     season: "Year-round",
-    color: "from-red-400 to-red-600",
+    color: "from-green-400 to-green-600",
   },
   {
     id: 4,
-    name: "Spices & Herbs",
-    emoji: "🌶️",
-    image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&h=600&fit=crop&crop=center",
+    name: "Ettinger Avocados",
+    emoji: "🥑",
+    image: "/avocadoes/ettinger.jpg",
     description:
-      "Aromatic spices and fresh herbs to enhance your culinary creations",
+      "Smooth green Ettinger avocados with delicate flavor and firm texture",
     details:
-      "Premium quality spices and herbs sourced from traditional growing regions. Dried and processed using traditional methods to preserve flavor and aroma.",
-    varieties: ["Black Pepper", "Cardamom", "Cinnamon", "Turmeric"],
+      "Sourced from high-altitude farms in Ethiopia. Our Ettinger avocados are hand-picked at optimal ripeness and packed in protective packaging to maintain quality during transit.",
+    varieties: ["Ettinger"],
     season: "Year-round",
-    color: "from-yellow-400 to-yellow-600",
-  },
-  {
-    id: 5,
-    name: "Tropical Fruits",
-    emoji: "🥭",
-    image:
-      "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=800&h=600&fit=crop&crop=center",
-    description:
-      "Exotic tropical fruits including mangoes, pineapples, and passion fruits",
-    details:
-      "Premium tropical fruits grown in ideal climatic conditions. Each fruit is carefully selected for optimal sweetness and texture.",
-    varieties: [
-      "Alphonso Mango",
-      "Smooth Cayenne Pineapple",
-      "Purple Passion Fruit",
-      "Papaya",
-    ],
-    season: "Seasonal",
-    color: "from-yellow-400 to-orange-500",
-  },
-  {
-    id: 6,
-    name: "Leafy Greens",
-    emoji: "🥬",
-    image:
-      "https://images.unsplash.com/photo-1571019613454-1dd7228f2d8b?w=800&h=600&fit=crop&crop=center",
-    description:
-      "Fresh leafy vegetables including kale, spinach, and lettuce varieties",
-    details:
-      "Crisp, fresh leafy greens grown in controlled environments. Packed immediately after harvest to maintain maximum freshness and nutritional value.",
-    varieties: ["Baby Spinach", "Kale", "Romaine Lettuce", "Arugula"],
-    season: "Year-round",
-    color: "from-green-400 to-emerald-500",
+    color: "from-green-400 to-green-600",
   },
 ];
 
@@ -296,10 +254,10 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   </h3>
                   <div className="space-y-3">
                     {[
-                      "ISO 22000 Food Safety Certified",
-                      "Organic Certified",
-                      "HACCP Compliant",
-                      "EU & USDA Approved",
+                      "Quality Assurance Standards",
+                      "Ethiopian Agricultural Excellence",
+                      "International Quality Standards",
+                      "Premium Grade Certification",
                     ].map((standard, index) => (
                       <motion.div
                         key={index}
@@ -325,8 +283,8 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   </h3>
                   <div className="space-y-3">
                     {[
-                      "Cold Chain Logistics",
-                      "48hrs Harvest to Port",
+                      "Efficient Logistics Management",
+                      "72hrs Delivery Time",
                       "Real-time Tracking",
                       "Global Delivery Network",
                     ].map((feature, index) => (
@@ -354,13 +312,13 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   </h3>
                   <div className="bg-white border border-orange-200 rounded-lg p-4">
                     <p className="text-orange-800 font-semibold text-lg mb-2">
-                      Premium African Farms
+                      Premium Ethiopian Farms
                     </p>
                     <p className="text-orange-600 text-sm leading-relaxed">
-                      Sourced from certified partner farms across Ethiopia,
-                      Tanzania, and Uganda. Each farm follows sustainable
-                      farming practices and maintains the highest quality
-                      standards.
+                      Sourced from 15 dedicated partner farms in Ethiopia. Each
+                      farm follows sustainable farming practices and maintains
+                      the highest quality standards for premium avocado
+                      production.
                     </p>
                   </div>
                 </div>

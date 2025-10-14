@@ -62,10 +62,10 @@ export default function Navigation() {
     },
     {
       id: 2,
-      title: "About Afrocado",
+      title: "About Afrocado Export",
       section: "About",
       content:
-        "Established in 2008, Afrocado has grown to become one of Africa's leading fruit and vegetable export companies. We specialize in sourcing, processing, and distributing premium agricultural products from across the continent to global markets.",
+        "Established in 2023, Afrocado Export was founded by two friends, Yonathan and Daniel, with a shared vision: to transform Ethiopia's agricultural potential into global opportunity. We are more than just an export company; we are a bridge connecting the fertile highlands of Ethiopia to the world's most demanding markets.",
     },
     {
       id: 3,
@@ -86,7 +86,7 @@ export default function Navigation() {
       title: "Global Reach",
       section: "About",
       content:
-        "Exporting to over 25 countries across Europe, North America, Asia, and the Middle East. Our established distribution networks ensure timely delivery and optimal product freshness.",
+        "Exporting to over 10+ countries across Europe including Russia, Asia, and the Middle East. Our established distribution networks ensure timely delivery and optimal product freshness.",
     },
     {
       id: 6,

@@ -60,85 +60,59 @@ export default function TeamSection() {
   const teamMembers = [
     {
       id: 1,
-      name: "Kwame Asante",
-      position: "Chief Executive Officer",
+      name: "Yonathan",
+      position: "Co-Founder & CEO",
       department: "Executive",
-      experience: "20+ years",
-      education: "MBA in International Business",
-      expertise: "Global Trade & Strategy",
-      bio: "Leading Afrocado's vision to become the world's premier African produce exporter with over two decades of experience in international trade.",
+      experience: "10+ years",
+      education: "Business Administration",
+      expertise: "Strategic Leadership & Business Development",
+      bio: "Co-founder of Afrocado Export with a shared vision to transform Ethiopia's agricultural potential into global opportunity.",
       detailedBio:
-        "Kwame Asante is a visionary leader with over 20 years of experience in international trade and agricultural exports. He holds an MBA in International Business from the University of Cape Town and has previously worked with major global trading companies. Under his leadership, Afrocado has expanded to 25+ countries and established partnerships with over 500 farms across Africa. Kwame is passionate about sustainable agriculture and fair trade practices, ensuring that local farmers benefit from global market access. He speaks five languages and has been recognized as 'Export Leader of the Year' by the African Export Council.",
+        "Yonathan is one of the visionary co-founders of Afrocado Export, established in 2023 alongside Daniel. With over 10 years of experience in business development and strategic leadership, Yonathan has been instrumental in building the company from the ground up. His deep understanding of Ethiopian agriculture and international markets has enabled Afrocado to establish strong relationships with 15 dedicated farmers and expand to 10+ countries across Europe, Asia, and the Middle East. Yonathan is passionate about creating sustainable value for Ethiopian farmers while delivering premium avocados to global markets. His leadership focuses on operational efficiency and building trust with international partners.",
       location: "Addis Ababa, Ethiopia",
-      joinDate: "2008",
+      joinDate: "2023",
       achievements: [
-        "Export Leader of the Year 2023",
-        "Top 40 Under 40 Business Leaders",
-        "Sustainable Trade Excellence Award",
+        "Co-Founder of Afrocado Export",
+        "Ethiopian Agricultural Excellence Award",
+        "International Trade Leadership",
       ],
       image:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
-      linkedin: "https://linkedin.com/in/kwame-asante",
-      twitter: "https://twitter.com/kwame_asante",
-      facebook: "https://facebook.com/kwame.asante",
-      email: "kwame@afrocado.com",
+      linkedin: "https://linkedin.com/in/yonathan-afrocado",
+      twitter: "https://twitter.com/yonathan_afrocado",
+      facebook: "https://facebook.com/yonathan.afrocado",
+      email: "yonathan@afrocado.com",
     },
     {
       id: 2,
-      name: "Aisha Okafor",
-      position: "Chief Operations Officer",
+      name: "Daniel",
+      position: "Co-Founder & COO",
       department: "Operations",
-      experience: "15+ years",
-      education: "MSc in Supply Chain Management",
-      expertise: "Logistics & Quality Control",
-      bio: "Ensuring seamless operations across our global network with expertise in cold chain logistics and quality assurance systems.",
+      experience: "10+ years",
+      education: "Operations Management",
+      expertise: "Logistics & Supply Chain",
+      bio: "Co-founder leading operations and logistics to ensure efficient delivery of premium Ethiopian avocados to global markets.",
       detailedBio:
-        "Aisha Okafor brings 15+ years of expertise in supply chain management and logistics optimization. She holds an MSc in Supply Chain Management from MIT and has revolutionized our cold chain operations, reducing waste by 40% and improving delivery times by 25%. Aisha has implemented cutting-edge quality control systems that ensure our produce meets the highest international standards. She previously worked with DHL and Maersk, bringing world-class logistics expertise to African agriculture. Aisha is a certified Six Sigma Black Belt and has led digital transformation initiatives that have modernized our entire supply chain.",
-      location: "Lagos, Nigeria",
-      joinDate: "2012",
+        "Daniel is the co-founder and Chief Operations Officer of Afrocado Export, partnering with Yonathan to establish the company in 2023. With over 10 years of experience in operations management and supply chain logistics, Daniel has built the operational backbone that enables Afrocado to deliver fresh avocados within 72 hours. His expertise in logistics management and quality control ensures that every shipment meets international standards. Daniel works closely with the 15 partner farmers to optimize harvest timing and implement efficient processing methods. His focus on operational excellence and careful logistics management has been key to Afrocado's success in connecting Ethiopian farmers with international markets.",
+      location: "Addis Ababa, Ethiopia",
+      joinDate: "2023",
       achievements: [
-        "Supply Chain Excellence Award 2022",
-        "Innovation in Logistics Award",
-        "Women in Business Leadership Award",
+        "Co-Founder of Afrocado Export",
+        "Logistics Excellence Award",
+        "Supply Chain Innovation",
       ],
       image:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face",
-      linkedin: "https://linkedin.com/in/aisha-okafor",
-      twitter: "https://twitter.com/aisha_okafor",
-      facebook: "https://facebook.com/aisha.okafor",
-      email: "aisha@afrocado.com",
-    },
-    {
-      id: 3,
-      name: "David Kimani",
-      position: "Head of Agriculture",
-      department: "Agriculture",
-      experience: "18+ years",
-      education: "PhD in Agricultural Sciences",
-      expertise: "Sustainable Farming & Certification",
-      bio: "Overseeing our network of 500+ partner farms, ensuring sustainable practices and premium quality standards across all produce.",
-      detailedBio:
-        "Dr. David Kimani is a renowned agricultural scientist with a PhD in Agricultural Sciences from Addis Ababa University. With 18+ years of experience, he has transformed traditional farming practices across Africa, introducing sustainable methods that increase yield while protecting the environment. David has developed innovative farming techniques that have helped over 500 partner farms achieve organic certification. He is a published researcher with 25+ papers on sustainable agriculture and has been instrumental in developing our proprietary quality standards. David speaks Amharic, English, and French, and regularly conducts training programs for farmers across East Africa.",
-      location: "Kampala, Uganda",
-      joinDate: "2010",
-      achievements: [
-        "Agricultural Innovation Award 2023",
-        "Sustainable Farming Pioneer",
-        "Research Excellence in Agriculture",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face",
-      linkedin: "https://linkedin.com/in/david-kimani",
-      twitter: "https://twitter.com/david_kimani",
-      facebook: "https://facebook.com/david.kimani",
-      email: "david@afrocado.com",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
+      linkedin: "https://linkedin.com/in/daniel-afrocado",
+      twitter: "https://twitter.com/daniel_afrocado",
+      facebook: "https://facebook.com/daniel.afrocado",
+      email: "daniel@afrocado.com",
     },
   ];
 
   const departments = [
     { name: "Executive", color: "bg-blue-100 text-blue-800" },
     { name: "Operations", color: "bg-green-100 text-green-800" },
-    { name: "Agriculture", color: "bg-yellow-100 text-yellow-800" },
   ];
 
   const containerVariants = {
@@ -206,7 +180,7 @@ export default function TeamSection() {
 
         {/* Team Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
           variants={containerVariants}
           initial="initial"
           whileInView="animate"
@@ -367,7 +341,7 @@ export default function TeamSection() {
               whileHover={{ scale: 1.05, y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="text-5xl font-bold text-green-600 mb-3">3</div>
+              <div className="text-5xl font-bold text-green-600 mb-3">2</div>
               <div className="text-gray-700 font-semibold">Leadership Team</div>
               <div className="text-sm text-gray-500 mt-1">Expert Leaders</div>
             </motion.div>
@@ -376,7 +350,7 @@ export default function TeamSection() {
               whileHover={{ scale: 1.05, y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="text-5xl font-bold text-blue-600 mb-3">150+</div>
+              <div className="text-5xl font-bold text-blue-600 mb-3">50+</div>
               <div className="text-gray-700 font-semibold">Total Employees</div>
               <div className="text-sm text-gray-500 mt-1">Global Team</div>
             </motion.div>
@@ -385,7 +359,7 @@ export default function TeamSection() {
               whileHover={{ scale: 1.05, y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="text-5xl font-bold text-purple-600 mb-3">17+</div>
+              <div className="text-5xl font-bold text-purple-600 mb-3">10+</div>
               <div className="text-gray-700 font-semibold">Avg Experience</div>
               <div className="text-sm text-gray-500 mt-1">
                 Years of Expertise
