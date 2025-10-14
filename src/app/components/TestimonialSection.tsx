@@ -131,7 +131,7 @@ export default function TestimonialSection() {
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            What Our <span className="text-blue-600">Partners</span> Are Saying
+            What Our <span className="text-green-600">Partners</span> Are Saying
           </h2>
 
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
