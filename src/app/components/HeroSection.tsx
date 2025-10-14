@@ -5,7 +5,12 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Variants } from "framer-motion";
 import { useCallback, useMemo } from "react";
-import { IconTractor, IconWorld, IconStar } from "@tabler/icons-react";
+import {
+  IconTractor,
+  IconWorld,
+  IconStar,
+  IconPhone,
+} from "@tabler/icons-react";
 
 export default function HeroSection() {
   const router = useRouter();
@@ -621,7 +626,7 @@ export default function HeroSection() {
                         ease: "linear",
                       }}
                     >
-                      📞
+                      <IconPhone size={16} />
                     </motion.span>
                     <span>Contact Us Now</span>
                   </span>

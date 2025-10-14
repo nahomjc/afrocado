@@ -11,6 +11,7 @@ import {
   IconShare,
   IconDots,
   IconCheck,
+  IconSocial,
 } from "@tabler/icons-react";
 
 export default function TestimonialSection() {
@@ -125,8 +126,8 @@ export default function TestimonialSection() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <span className="text-blue-700 text-sm font-medium">
-              🐦 Social Proof
+            <span className="text-green-700 text-sm font-medium flex items-center space-x-2">
+              <IconSocial size={16} /> Social Proof
             </span>
           </motion.div>
 
