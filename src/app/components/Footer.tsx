@@ -405,6 +405,30 @@ export default function Footer() {
               </motion.div>
             </div>
           </div>
+
+          {/* Powered by Kingdom Code */}
+          <motion.div
+            className="mt-6 pt-4 border-t border-gray-600"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <div className="text-center">
+              <p className="text-gray-400 text-sm">
+                Powered by{" "}
+                <a
+                  href="https://next-js-portfolio-t8hp.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-400 font-medium hover:text-green-300 transition-colors duration-300 underline decoration-green-400/50 hover:decoration-green-300"
+                >
+                  Kingdom code
+                </a>{" "}
+                and made with <span className="text-red-400">❤️</span> love
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </footer>
