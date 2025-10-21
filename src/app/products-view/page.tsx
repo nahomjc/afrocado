@@ -160,7 +160,7 @@ export default function ProductsPage() {
             </h1>
             <p className="text-xl text-green-100 max-w-3xl">
               Discover our premium selection of Ethiopian avocados, carefully
-              sourced from 15 dedicated farmers and exported to international
+              sourced from 50+ dedicated farmers and exported to international
               markets worldwide.
             </p>
           </motion.div>

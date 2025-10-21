@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 import {
   IconChevronLeft,
@@ -16,7 +17,6 @@ import {
   IconTrendingUp,
   IconShieldCheck,
 } from "@tabler/icons-react";
-import Image from "next/image";
 
 export default function AboutSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -186,7 +186,7 @@ export default function AboutSection() {
                   <IconCheck className="w-4 h-4 text-green-600" />
                 </div>
                 <span className="text-gray-700 text-lg leading-relaxed">
-                  Direct partnerships with 15 dedicated farmers
+                  Direct partnerships with 50+ dedicated farmers
                 </span>
               </li>
               <li className="flex items-start group">
@@ -224,6 +224,84 @@ export default function AboutSection() {
               </li>
             </ul>
           </motion.div>
+        </motion.div>
+
+        {/* Farm Photos Section */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              Our <span className="text-green-600">Farm Partners</span>
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the beautiful farms where our premium avocados are grown by
+              our dedicated partner farmers across Ethiopia.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <motion.div
+              className="relative group overflow-hidden rounded-2xl shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <Image
+                src="/afrcado-farm/photo_2025-10-20_09-32-41.jpg"
+                alt="Afrocado Farm Partner 1"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h4 className="font-semibold text-lg">Premium Avocado Farm</h4>
+                <p className="text-sm text-gray-200">Ethiopian Highlands</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="relative group overflow-hidden rounded-2xl shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <Image
+                src="/afrcado-farm/photo_2025-10-20_09-32-44.jpg"
+                alt="Afrocado Farm Partner 2"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h4 className="font-semibold text-lg">Sustainable Farming</h4>
+                <p className="text-sm text-gray-200">Partner Farm</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="relative group overflow-hidden rounded-2xl shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <Image
+                src="/afrcado-farm/photo_2025-10-20_09-32-45.jpg"
+                alt="Afrocado Farm Partner 3"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h4 className="font-semibold text-lg">Quality Production</h4>
+                <p className="text-sm text-gray-200">Ethiopian Excellence</p>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Image Carousel Section */}
@@ -359,9 +437,9 @@ export default function AboutSection() {
               Quality Assurance
             </h3>
             <p className="text-gray-600 leading-relaxed text-lg">
-              Rigorous quality control processes from farm to port. Our
-              certified laboratories conduct comprehensive testing for
-              pesticides, contaminants, and nutritional content.
+              Rigorous quality control processes from farm to port. Our quality
+              control team conducts comprehensive testing for pesticides,
+              contaminants, and nutritional content.
             </p>
           </motion.div>
 

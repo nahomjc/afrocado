@@ -10,7 +10,6 @@ import {
   IconMapPin,
   IconShield,
   IconAward,
-  IconCertificate,
   IconCheck,
   IconArrowRight,
 } from "@tabler/icons-react";
@@ -260,7 +259,6 @@ export default function Footer() {
                 "About Us",
                 "Privacy Policy",
                 "Terms of Service",
-                "Certifications",
                 "Careers",
               ].map((item, index) => (
                 <motion.li
@@ -288,7 +286,7 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Certifications Section */}
+        {/* Quality Standards Section */}
         <motion.div
           className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-xl p-6 mb-8"
           initial={{ opacity: 0, y: 30 }}
@@ -298,10 +296,10 @@ export default function Footer() {
         >
           <div className="text-center mb-6">
             <h3 className="text-xl font-bold text-white mb-1">
-              Our Certifications
+              Our Quality Standards
             </h3>
             <p className="text-gray-300 text-sm">
-              Trusted by international standards
+              Committed to excellence in every product
             </p>
           </div>
 
@@ -312,11 +310,13 @@ export default function Footer() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <IconCertificate size={20} className="text-white" />
+                <IconShield size={20} className="text-white" />
               </div>
               <div className="text-left">
-                <p className="font-semibold text-white text-sm">ISO 22000</p>
-                <p className="text-xs text-gray-300">Food Safety</p>
+                <p className="font-semibold text-white text-sm">
+                  Quality Assured
+                </p>
+                <p className="text-xs text-gray-300">Premium Standards</p>
               </div>
             </motion.div>
 
@@ -329,8 +329,10 @@ export default function Footer() {
                 <IconCheck size={20} className="text-white" />
               </div>
               <div className="text-left">
-                <p className="font-semibold text-white text-sm">Organic</p>
-                <p className="text-xs text-gray-300">Certified</p>
+                <p className="font-semibold text-white text-sm">
+                  Ethiopian Premium
+                </p>
+                <p className="text-xs text-gray-300">Local Excellence</p>
               </div>
             </motion.div>
 
@@ -340,11 +342,13 @@ export default function Footer() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <IconShield size={20} className="text-white" />
+                <IconAward size={20} className="text-white" />
               </div>
               <div className="text-left">
-                <p className="font-semibold text-white text-sm">HACCP</p>
-                <p className="text-xs text-gray-300">Compliant</p>
+                <p className="font-semibold text-white text-sm">
+                  Quality Control
+                </p>
+                <p className="text-xs text-gray-300">Rigorous Testing</p>
               </div>
             </motion.div>
           </div>

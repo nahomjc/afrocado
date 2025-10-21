@@ -131,7 +131,7 @@ export default function FAQPage() {
         {
           question: "Do you offer organic products?",
           answer:
-            "Yes, we offer certified organic products including organic avocados, mangoes, and vegetables. All organic products are certified by recognized international organic certification bodies.",
+            "Yes, we offer premium quality products including avocados, mangoes, and vegetables. All products meet high quality standards and are sourced from our partner farms.",
         },
         {
           question: "Can you provide custom packaging?",

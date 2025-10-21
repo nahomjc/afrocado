@@ -410,10 +410,10 @@ export default function HeroSection() {
                               </motion.span>
                               <div className="flex flex-col">
                                 <span className="text-xs font-bold text-white leading-tight">
-                                  CERTIFIED
+                                  PREMIUM
                                 </span>
                                 <span className="text-xs text-green-100 leading-tight">
-                                  ORGANIC
+                                  QUALITY
                                 </span>
                               </div>
                             </div>
@@ -721,7 +721,7 @@ export default function HeroSection() {
                     ease: "easeInOut",
                   }}
                 >
-                  15
+                  50+
                 </motion.div>
                 <div className="text-gray-600 text-sm flex items-center justify-center lg:justify-start space-x-1">
                   <motion.div

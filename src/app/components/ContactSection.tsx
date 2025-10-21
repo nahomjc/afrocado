@@ -74,6 +74,18 @@ export default function ContactSection() {
       sampleQuantity: "",
       shippingAddress: "",
     });
+
+    // Scroll to modal after a brief delay to ensure it's rendered
+    setTimeout(() => {
+      const modalElement = document.querySelector('[data-modal="true"]');
+      if (modalElement) {
+        modalElement.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
+      }
+    }, 100);
   };
 
   const closeModal = () => {
@@ -667,18 +679,25 @@ export default function ContactSection() {
         {/* Modal Dialogs */}
         {activeModal && (
           <motion.div
-            className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeModal}
+            style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
           >
             <motion.div
-              className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white/95 backdrop-blur-xl rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-white/20 relative"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
+              style={{
+                position: "relative",
+                margin: "auto",
+                transform: "translateY(0)",
+              }}
+              data-modal="true"
             >
               {/* Modal Header */}
               <div className="flex items-center justify-between mb-6">

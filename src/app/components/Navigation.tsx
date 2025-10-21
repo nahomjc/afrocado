@@ -93,7 +93,7 @@ export default function Navigation() {
       title: "Quality Assurance",
       section: "About",
       content:
-        "Rigorous quality control processes from farm to port. Our certified laboratories conduct comprehensive testing for pesticides, contaminants, and nutritional content.",
+        "Rigorous quality control processes from farm to port. Our quality laboratories conduct comprehensive testing for pesticides, contaminants, and nutritional content.",
     },
     {
       id: 7,
@@ -114,7 +114,7 @@ export default function Navigation() {
       title: "Avocados",
       section: "Products",
       content:
-        "Premium Hass avocados from our certified organic farms. Available year-round with consistent quality and size specifications.",
+        "Premium Hass avocados from our partner farms. Available year-round with consistent quality and size specifications.",
     },
     {
       id: 10,
@@ -411,10 +411,6 @@ export default function Navigation() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="relative">
-                {/* Organic glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-all duration-500 animate-pulse" />
-                <div className="absolute inset-0 bg-gradient-to-br from-green-300 to-emerald-400 rounded-2xl blur-md opacity-20 group-hover:opacity-30 transition-all duration-500" />
-
                 {/* Main logo container */}
                 <div className="relative w-20 h-20 sm:w-24 sm:h-24 p-1 transition-all duration-300">
                   <Image

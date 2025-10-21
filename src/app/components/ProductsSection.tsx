@@ -246,7 +246,7 @@ export default function ProductsSection() {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <div className="text-3xl font-bold text-green-600 mb-2">15</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">50+</div>
               <div className="text-gray-700 font-medium">Partner Farmers</div>
               <div className="text-gray-500 text-sm">
                 Direct relationships with Ethiopian farmers

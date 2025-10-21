@@ -14,6 +14,8 @@ import {
   IconMapPin,
   IconCalendar,
   IconAward,
+  IconUserCircle,
+  IconUsers,
 } from "@tabler/icons-react";
 
 // Typewriter Effect Component
@@ -76,8 +78,7 @@ export default function TeamSection() {
         "Ethiopian Agricultural Excellence Award",
         "International Trade Leadership",
       ],
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
+      image: "avatar-icon",
       linkedin: "https://linkedin.com/in/yonathan-afrocado",
       twitter: "https://twitter.com/yonathan_afrocado",
       facebook: "https://facebook.com/yonathan.afrocado",
@@ -101,8 +102,7 @@ export default function TeamSection() {
         "Logistics Excellence Award",
         "Supply Chain Innovation",
       ],
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
+      image: "/lead-img/profile-dani.png",
       linkedin: "https://linkedin.com/in/daniel-afrocado",
       twitter: "https://twitter.com/daniel_afrocado",
       facebook: "https://facebook.com/daniel.afrocado",
@@ -139,6 +139,18 @@ export default function TeamSection() {
   const handleMemberClick = (member: (typeof teamMembers)[0]) => {
     setSelectedMember(member);
     setIsModalOpen(true);
+
+    // Scroll to modal after a brief delay to ensure it's rendered
+    setTimeout(() => {
+      const modalElement = document.querySelector('[data-team-modal="true"]');
+      if (modalElement) {
+        modalElement.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
+      }
+    }, 100);
   };
 
   const closeModal = () => {
@@ -162,8 +174,8 @@ export default function TeamSection() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <span className="text-green-700 text-sm font-semibold">
-              👥 Our Expert Team
+            <span className="text-green-700 text-sm font-semibold flex items-center gap-2">
+              <IconUsers size={16} className="text-green-600" /> Our Expert Team
             </span>
           </motion.div>
 
@@ -205,12 +217,21 @@ export default function TeamSection() {
                 {/* Profile Section */}
                 <div className="text-center mb-6">
                   <div className="relative inline-block">
-                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg ring-4 ring-green-500 ring-opacity-50">
+                      {member.image === "avatar-icon" ? (
+                        <div className="w-full h-full bg-green-100 flex items-center justify-center">
+                          <IconUserCircle
+                            size={80}
+                            className="text-green-600"
+                          />
+                        </div>
+                      ) : (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-contain"
+                        />
+                      )}
                     </div>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                       <IconCheck size={12} className="text-white" />
@@ -373,14 +394,15 @@ export default function TeamSection() {
       <AnimatePresence>
         {isModalOpen && selectedMember && (
           <motion.div
-            className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeModal}
+            style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
           >
             <motion.div
-              className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide"
+              className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide border border-white/20"
               initial={{ scale: 0.8, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -389,7 +411,11 @@ export default function TeamSection() {
               style={{
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
+                position: "relative",
+                margin: "auto",
+                transform: "translateY(0)",
               }}
+              data-team-modal="true"
             >
               {/* Modal Header */}
               <div className="relative bg-gradient-to-r from-green-600 to-emerald-600 p-8 rounded-t-3xl">
@@ -403,11 +429,20 @@ export default function TeamSection() {
                 <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
                   <div className="relative">
                     <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                      <img
-                        src={selectedMember.image}
-                        alt={selectedMember.name}
-                        className="w-full h-full object-cover"
-                      />
+                      {selectedMember.image === "avatar-icon" ? (
+                        <div className="w-full h-full bg-white flex items-center justify-center">
+                          <IconUserCircle
+                            size={90}
+                            className="text-green-400"
+                          />
+                        </div>
+                      ) : (
+                        <img
+                          src={selectedMember.image}
+                          alt={selectedMember.name}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
                       <IconCheck size={16} className="text-white" />

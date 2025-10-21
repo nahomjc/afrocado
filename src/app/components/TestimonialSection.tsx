@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { FlagIcon, FlagIconCode } from "react-flag-kit";
 import {
   IconChevronLeft,
   IconChevronRight,
@@ -27,8 +28,9 @@ export default function TestimonialSection() {
       image:
         "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "Afrocado has been our trusted partner for over 3 years. Their premium quality fruits and vegetables consistently exceed our expectations. The cold chain logistics ensure our customers receive the freshest produce possible. #FreshProduce #ExportQuality",
-      country: "🇩🇪 Germany",
+      text: "Afrocado has been our trusted partner for over 2 years. Their premium quality fruits and vegetables consistently exceed our expectations. The cold chain logistics ensure our customers receive the freshest produce possible. #FreshProduce #ExportQuality",
+      country: "Qatar",
+      flag: "QA",
       timestamp: "2h",
       likes: 47,
       retweets: 12,
@@ -45,7 +47,8 @@ export default function TestimonialSection() {
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       rating: 5,
       text: "The quality and reliability of Afrocado's export services are unmatched. Their attention to detail in packaging and shipping has helped us build a strong reputation in the Middle Eastern market. #ExportExcellence #QualityFirst",
-      country: "🇦🇪 UAE",
+      country: "UAE",
+      flag: "AE",
       timestamp: "4h",
       likes: 89,
       retweets: 23,
@@ -61,8 +64,9 @@ export default function TestimonialSection() {
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "Working with Afrocado has transformed our business. Their certified organic produce and sustainable farming practices align perfectly with our company values. Highly recommended! #OrganicProduce #SustainableFarming",
-      country: "🇺🇸 USA",
+      text: "Working with Afrocado has transformed our business. Their premium quality produce and sustainable farming practices align perfectly with our company values. Highly recommended! #PremiumProduce #SustainableFarming",
+      country: "Saudi Arabia",
+      flag: "SA",
       timestamp: "6h",
       likes: 156,
       retweets: 34,
@@ -85,19 +89,6 @@ export default function TestimonialSection() {
   const cardVariants = {
     initial: { opacity: 0, y: 50 },
     animate: { opacity: 1, y: 0 },
-  };
-
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <span
-        key={index}
-        className={`text-lg ${
-          index < rating ? "text-yellow-400" : "text-gray-300"
-        }`}
-      >
-        ⭐
-      </span>
-    ));
   };
 
   const nextTestimonial = () => {
@@ -206,7 +197,13 @@ export default function TestimonialSection() {
                   <p className="text-xs text-gray-600 font-medium">
                     {testimonial.role} at {testimonial.company}
                   </p>
-                  <p className="text-xs text-gray-500">{testimonial.country}</p>
+                  <p className="text-xs text-gray-500 flex items-center space-x-1">
+                    <FlagIcon
+                      code={testimonial.flag as FlagIconCode}
+                      size={16}
+                    />
+                    <span>{testimonial.country}</span>
+                  </p>
                 </div>
 
                 {/* Engagement Metrics */}
@@ -317,8 +314,12 @@ export default function TestimonialSection() {
                       <p className="text-xs text-gray-600 font-medium">
                         {testimonial.role} at {testimonial.company}
                       </p>
-                      <p className="text-xs text-gray-500">
-                        {testimonial.country}
+                      <p className="text-xs text-gray-500 flex items-center space-x-1">
+                        <FlagIcon
+                          code={testimonial.flag as FlagIconCode}
+                          size={14}
+                        />
+                        <span>{testimonial.country}</span>
                       </p>
                     </div>
 

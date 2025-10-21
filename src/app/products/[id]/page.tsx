@@ -315,7 +315,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                       Premium Ethiopian Farms
                     </p>
                     <p className="text-orange-600 text-sm leading-relaxed">
-                      Sourced from 15 dedicated partner farms in Ethiopia. Each
+                      Sourced from 50+ dedicated partner farms in Ethiopia. Each
                       farm follows sustainable farming practices and maintains
                       the highest quality standards for premium avocado
                       production.
