@@ -318,7 +318,7 @@ export default function Navigation() {
   };
 
   const handleEmailContact = () => {
-    window.open("mailto:info@afrocado.com", "_self");
+    window.open("mailto:info@afrocadoexports.com", "_self");
   };
 
   const handleWebsiteVisit = () => {

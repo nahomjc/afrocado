@@ -393,7 +393,9 @@ export default function ProductsPage() {
                         </div>
                         <div>
                           <p className="font-medium text-gray-900">Email Us</p>
-                          <p className="text-gray-600">info@afrocado.com</p>
+                          <p className="text-gray-600">
+                            info@afrocadoexports.com
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">

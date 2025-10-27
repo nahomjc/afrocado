@@ -129,7 +129,7 @@ export default function RootLayout({
           "@type": "ContactPoint",
           telephone: "+251-XXX-XXX-XXXX",
           contactType: "customer service",
-          email: "info@afrocadoexport.com",
+          email: "info@afrocadoexports.com",
           availableLanguage: ["English", "Amharic"],
         },
         sameAs: [

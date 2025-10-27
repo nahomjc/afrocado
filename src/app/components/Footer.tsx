@@ -83,7 +83,18 @@ export default function Footer() {
                 <div>
                   <p className="text-xs text-gray-400">Email</p>
                   <p className="text-white font-medium text-sm">
-                    info@afrocado.com
+                    info@afrocadoexport.com
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-green-600 rounded-lg flex items-center justify-center">
+                  <IconMail size={12} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400">Sales Email</p>
+                  <p className="text-white font-medium text-sm">
+                    sales@afrocadoexport.com
                   </p>
                 </div>
               </div>
