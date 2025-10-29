@@ -301,6 +301,25 @@ export default function AboutSection() {
                 <p className="text-sm text-gray-200">Ethiopian Excellence</p>
               </div>
             </motion.div>
+
+            <motion.div
+              className="relative group overflow-hidden rounded-2xl shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <Image
+                src="/afrcado-farm/avocado-3.jpg"
+                alt="Afrocado Avocado Cluster"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h4 className="font-semibold text-lg">Harvest Ready</h4>
+                <p className="text-sm text-gray-200">Lush Ethiopian Orchards</p>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
 
